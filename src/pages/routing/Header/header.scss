@@ -4,14 +4,13 @@
     left:0;
     width:100vw;
     z-index:1000; //stays at the top
-    border-bottom: 1px solid var(--color-neutral-3);
+    border-bottom: 1px solid var(--color-neutral-bg);
     display: flex;
     align-items: center;
     padding: 0.25rem 1rem;
     gap: 0.25rem;
     height: var(--header-height);
     background-color: var(--color-bg);
-    // height: clamp(40px, 60px,px);
 
     .notif{
         margin-right: 0.75rem;

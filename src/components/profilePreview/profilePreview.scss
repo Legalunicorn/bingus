@@ -1,0 +1,46 @@
+.profile-preview-card{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    max-width: 100%;
+    img{
+        height:2rem;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        margin-right: 0.75rem; //make this a mixin
+    }
+
+    div{
+        white-space:nowrap;
+        align-items: center;
+        overflow:hidden;
+        p{
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        p:first-child{
+            font-weight: bold;
+
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+        p:nth-child(2){
+            font-size: 0.9rem;
+            color: var(--color-neutral-1);
+        }
+    }
+    button{
+        // font-family: n;
+        margin-left: auto;
+        margin-right:0.5rem;
+
+        &:hover{
+            color: var(--color-bg);
+            background-color: var(--color-text);
+        }
+    }
+
+
+}

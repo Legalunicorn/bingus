@@ -1,5 +1,45 @@
 #home-page{
-    div{
-        // border: 1px solid red;
+    .feed-options{
+        font-family: Alata;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        font-size: 1.25rem;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--color-neutral-bg);
+
+        span.selected{
+            border-bottom: 3px solid var(--color-accent);
+            border-radius: 0.1rem;
+        }
+
     }
+
+
+    .content-side{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        position: sticky;
+        height: fit-content;
+
+        top:var(--header-height);
+
+        > div{
+            border: 1px solid var(--color-neutral-bg);
+            padding: 1rem 0.75rem;
+            border-radius: 0.5rem;
+
+            > p:first-child{
+                padding-bottom: 0.75rem;
+                font-weight: bold;
+            }
+        }
+    }
+
+    // .user-list{
+    //     display: flex;;
+    //     flex-direction: column;
+    //     // gap:0.5rem;
+    // }
 }

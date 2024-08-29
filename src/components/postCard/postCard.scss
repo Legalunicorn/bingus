@@ -1,5 +1,5 @@
 .postcard{
-    // border: 1px solid red;
+    // border-bottom: 1px solid var(--color-neutral-bg);
     padding: 1rem 1.5rem;
     display:flex;
     flex-direction: column;
@@ -17,14 +17,19 @@
             &:nth-child(2){
                 color: var(--color-text);
                 font-weight:bold;
+
+                &:hover{
+                    text-decoration: underline;
+                }
             }
         }
 
-        img{
+        img{ //pfp
             object-fit:cover;
             border-radius: 50%;
             aspect-ratio: 1/1;
-            height: 35px;
+            // height: 35px;
+            height: 2rem;
             margin-right: 0.75rem;
         }
     }
@@ -49,9 +54,10 @@
             }
         }
 
-        img{
+        img{ //pic
             padding: 0.75rem 0;
             border-radius: 2rem;
+            width: 100%;
         }
     }
 
@@ -60,15 +66,16 @@
         display: flex;
         align-items: center;
         gap: 1.5rem;
-        padding-top: 0.75rem;
+        padding-top: 1rem;
+        padding-bottom: 1.5rem;
         color: var(--color-neutral-1);
+        opacity: 0.8;
 
         p{
-            font-weight: bold;
+            // font-weight: bold;
             display: flex;
             gap: 0.25rem;
             justify-content: center;
-            // border: 1px solid red;
         }
         svg:nth-child(3){
             margin-left:auto;

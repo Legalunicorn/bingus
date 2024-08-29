@@ -1,13 +1,11 @@
 
 
 .sidebar{
-    // border: 1px solid lime;
     height:fit-content;
-    top: 4.65rem;
+    top: var(--header-height);
     position: sticky;
     display: flex;
     align-items: center;
-    // border-right: 1px solid var(--color-neutral-3);
     font-size: 1.25rem;
     min-height: 100%;
     flex: 1 0 25%;
@@ -32,10 +30,10 @@
             align-items: center;
             padding: 0.5rem 0.75rem;
             border-radius:1.25rem;
-            transition: 0.25s ease-in-out;
+            transition: 0.2s ease-in;
             &:hover{
                 transform: translateX(-0.2rem);
-                background-color: var(--color-neutral-bg);
+                background-color: var(--color-neutral-3);
 
             }
         }
@@ -58,8 +56,14 @@
         padding-top: 0;
         padding: 0.75rem;
         padding-left: 1rem;
+        align-items: end;
 
-        // max-width: fit-content ;
+    }
+}
+
+@media only screen and (max-width: 980px){ //where the side content hides
+    .sidebar{
+        flex: 0.25 0 6%;
     }
 }
 

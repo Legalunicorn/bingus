@@ -2,6 +2,7 @@
 import { useState } from "react";
 import "./home.scss"
 import PostCard from "../../components/postCard/PostCard";
+import ProfilePreview from "../../components/profilePreview/ProfilePreview";
 
 
 
@@ -10,10 +11,17 @@ import PostCard from "../../components/postCard/PostCard";
 const Home = () => {
     const [feedSort,setFeedSort] = useState('recent') //or TOP 
 
+    //TODO Onclick for recent and following
+
 
     return (
         <div className="content" id="home-page">
+            
             <div className="content-main">
+                <div className="feed-options">
+                    <span className="selected">Recent</span>
+                    <span>Following</span>
+                </div>
                 {/* ---here are a tone of posts--- */}
        
                 {idk.posts.map(post=>(
@@ -24,7 +32,31 @@ const Home = () => {
 
             </div>
             <div className="content-side">
-                cock cock cock cock cock cock cock cock cock cock cock
+                <div className="new-users">
+                    <p>Latest users</p>
+                        {data.content_side.new_users.map(user=>(
+                            <ProfilePreview user={user}/>
+                        ))}
+                </div>
+                <div className="top-users">
+                    <p>Most followed</p>
+                        {data.content_side.top_users.map(user=>(
+                            <ProfilePreview user={user}/>
+                        ))}
+                </div>
+             
+                Data loaders from data.side_contents 
+                which //TODO api fetch to determine if these people have been followed or not
+                <br />
+                dsdf
+                <br />
+                dasdsadsadas
+                <br />
+                aiondaoda
+                iasdassdaondaond
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo vero magni, modi impedit, maxime amet consequatur porro quas accusamus harum quo ea? Totam aut sapiente sequi incidunt necessitatibus nemo nostrum.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, sit cupiditate eligendi hic neque, dolorum, incidunt consectetur perferendis saepe ipsa voluptatibus quaerat harum iure dicta rem maxime aperiam sapiente inventore! Ad corrupti atque hic incidunt, eligendi expedita laudantium ex odit nesciunt nisi voluptatem veritatis similique praesentium non quam sint error ut fugiat totam, quod quis, impedit corporis at eaque. Ratione quis amet illum aliquid neque tempora molestias, a rerum, perspiciatis laudantium eius, nesciunt recusandae numquam iure! Quo commodi deserunt minus ullam. Quaerat tenetur, quasi eaque voluptates officia incidunt. Necessitatibus, vel asperiores ipsum enim obcaecati vero iste cum. Reiciendis, repellendus fuga?
+                
             </div>
         </div>
 
@@ -33,6 +65,63 @@ const Home = () => {
 }
  
 export default Home;
+
+const data ={
+    "content_side":{
+        "new_users":[
+                {
+                    "id": 2,
+                    "username": "skibididnponsenoslongahhusername",
+                    "displayName": "User 0",
+                    "profile": {
+                        "profilePicture": "https://res.cloudinary.com/ds80ayjp7/image/upload/v1724155844/bingus_pfp/u2gjzzipfko2bfheqkct.png"
+                    }
+                },
+                {
+                    "id": 2,
+                    "username": "Bingus2",
+                    "displayName": "User 0",
+                    "profile": {
+                        "profilePicture": "https://res.cloudinary.com/ds80ayjp7/image/upload/v1724155844/bingus_pfp/u2gjzzipfko2bfheqkct.png"
+                    }
+                },
+                {
+                    "id": 2,
+                    "username": "Bingus2",
+                    "displayName": "User 0",
+                    "profile": {
+                        "profilePicture": "https://res.cloudinary.com/ds80ayjp7/image/upload/v1724155844/bingus_pfp/u2gjzzipfko2bfheqkct.png"
+                    }
+                },                
+        ],
+        "top_users":[
+            {
+                "id": 2,
+                "username": "Bingus2",
+                "displayName": "User 0",
+                "profile": {
+                    "profilePicture": "https://res.cloudinary.com/ds80ayjp7/image/upload/v1724155844/bingus_pfp/u2gjzzipfko2bfheqkct.png"
+                }
+            },
+            {
+                "id": 2,
+                "username": "Bingus2",
+                "displayName": "User 0",
+                "profile": {
+                    "profilePicture": "https://res.cloudinary.com/ds80ayjp7/image/upload/v1724155844/bingus_pfp/u2gjzzipfko2bfheqkct.png"
+                }
+            },
+            {
+                "id": 2,
+                "username": "Bingus2",
+                "displayName": "User 0",
+                "profile": {
+                    "profilePicture": "https://res.cloudinary.com/ds80ayjp7/image/upload/v1724155844/bingus_pfp/u2gjzzipfko2bfheqkct.png"
+                }
+            },                
+    ],        
+    }
+}
 
 const mock = [{
     "id": 13,
@@ -73,8 +162,8 @@ const idk = {
             "body": " oisdjfosij ofdsij oijf d    ",
             "gitLink": null,
             "repoLink": null,
-            "attachment": null,
-            "public_id": null,
+            "attachment": "-",
+            "public_id": "https://cdn.pixabay.com/photo/2016/07/07/16/46/dice-1502706_640.jpg",
             "createdAt": "2024-08-20T08:20:33.849Z",
             "nextPostId": null,
             "userId": 2,
@@ -292,7 +381,7 @@ const idk = {
 
 //Stuff to fetch
 /*
-- top 3 users
+- todiv 3 users
 - recent 3 users 
 
 - all posts daata 

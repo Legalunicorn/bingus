@@ -17,14 +17,16 @@
     flex: 3 0 75%;
 
     > div:first-child{
-        border-right: 1px solid var(--color-neutral-3);
-        border-left: 1px solid var(--color-neutral-3);
-        flex:3 0 66.6%; //main content 
+        border-right: 1px solid var(--color-neutral-bg);
+        border-left: 1px solid var(--color-neutral-bg);
+        flex:3 0 60%; //main content 
+        width: 60%;
     }
     > div:nth-child(2){
-        // border-left: 1px solid var(--color-neutral-3);
+        // max-width: 40%;
         padding: 1rem 1.5rem;
-        flex:1 1 33.3%; // Side content, same width as nav ba r
+        width: 40%; //added this and now it works
+        flex:1 1 40%; // Side content, same width as nav ba r
     }
 }
 
@@ -33,11 +35,11 @@
         max-width: 680px;
     }
     .content > div:first-child{
-        flex:1;
         max-width: 600px;
     }
     .content > div:nth-child(2){
-        display:none;
+        display:none !important;
+
     }
 
 }
