@@ -1,0 +1,164 @@
+
+:root{
+  font-family: Inter,system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height:1.5;
+  font-weight: 400;
+  font-size: 15px;
+  color: var(--color-text-dm);
+  background-color: var(--color-bg-dm);
+
+  --content-width: 1600px;
+  --header-height: 70px;
+
+  --color-text:  #f7f4f8;
+  --color-bg: #121212;
+  --color-primary: #e2a998;
+  --color-secondary: #83311b;
+  --color-accent: #e66c47;
+
+  --color-neutral-bg: #252525;
+
+  --color-neutral-1: #C4C2CE;
+  --color-neutral-2: #7C818F;
+  --color-neutral-3: #565565;
+
+
+  --color-text-dm: #f7f4f8;
+  // --color-text-lm: #231510;
+
+  --color-bg-dm: #121212;
+  // --color-bg-lm: #fbf7f4;
+
+  --color-primary-dm: #e2a998;
+  // --color-primary-lm:#672e1d;
+
+  --color-secondary-dm: #83311b;
+  // --color-secondary-lm: #e4927c;
+  
+  --color-accent-dm: #e66c47;
+  // --color-accent-lm:#b83e19;
+
+  //#BD7B7A
+  //#dddbff
+
+  /*
+  //README try this out for toggle theme
+  body{
+    //define colors
+  }
+
+  body.light{
+    //define colors again with same name but for light now
+  }
+
+  */
+
+}
+
+*,
+*::before,
+*::after{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+
+  &:focus{
+    outline:none;
+  }
+}
+
+#main{
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  min-height: 100vh;
+
+}
+
+a{
+  text-decoration: none;
+}
+
+//Content MAIN
+.content-main{
+
+}
+
+//Content SIDE
+
+
+@media(prefers-color-scheme:light){
+  :root{
+    --color-text: #0b080c;
+    //define all the color schemes
+  }
+}
+
+/* :root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+} */

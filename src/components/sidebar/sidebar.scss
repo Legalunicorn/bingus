@@ -1,0 +1,66 @@
+
+
+.sidebar{
+    // border: 1px solid lime;
+    height:fit-content;
+    top: 4.65rem;
+    position: sticky;
+    display: flex;
+    align-items: center;
+    // border-right: 1px solid var(--color-neutral-3);
+    font-size: 1.25rem;
+    min-height: 100%;
+    flex: 1 0 25%;
+    min-width: fit-content;
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    .nav-name{
+        font-weight: bold;
+    }
+
+    ul{
+        padding-top: 1rem;
+        display:flex;
+        flex-direction: column;
+        gap: clamp(0.5rem, 3vh,4vh);
+
+        li{
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 0.75rem;
+            border-radius:1.25rem;
+            transition: 0.25s ease-in-out;
+            &:hover{
+                transform: translateX(-0.2rem);
+                background-color: var(--color-neutral-bg);
+
+            }
+        }
+    }
+
+    .sidebar-element{
+        display: flex;
+        gap: 0.25rem;
+    }
+}
+
+
+@media only screen and (max-width: 1275px){
+    .nav-name{
+        
+        display:none;
+    }
+    .sidebar{
+        flex: 0.25 0 6%;
+        padding-top: 0;
+        padding: 0.75rem;
+        padding-left: 1rem;
+
+        // max-width: fit-content ;
+    }
+}
+
+//TODO max-width: 480 -> change position of sidebar to be bottom

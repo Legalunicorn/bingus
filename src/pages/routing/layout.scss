@@ -1,0 +1,43 @@
+
+
+
+#page{
+    padding-top: var(--header-height);
+    margin-left:auto;
+    margin-right:auto;
+    width: 90vw;
+    max-width: var(--content-width);
+    display: flex;
+    justify-content:  center;
+    min-height: 100vh;
+}
+
+.content{
+    display: flex;
+    flex: 3 0 75%;
+
+    > div:first-child{
+        border-right: 1px solid var(--color-neutral-3);
+        border-left: 1px solid var(--color-neutral-3);
+        flex:3 0 66.6%; //main content 
+    }
+    > div:nth-child(2){
+        // border-left: 1px solid var(--color-neutral-3);
+        padding: 1rem 1.5rem;
+        flex:1 1 33.3%; // Side content, same width as nav ba r
+    }
+}
+
+@media only screen and (max-width:980px){
+    #page{
+        max-width: 680px;
+    }
+    .content > div:first-child{
+        flex:1;
+        max-width: 600px;
+    }
+    .content > div:nth-child(2){
+        display:none;
+    }
+
+}
