@@ -77,8 +77,14 @@
             gap: 0.25rem;
             justify-content: center;
         }
-        svg:nth-child(3){
-            margin-left:auto;
+        
+        svg{        
+            &:nth-child(n+3){
+            opacity: 0.5;
+                &:hover{
+                    opacity: 1;
+                }
+            }
         }
     }
 

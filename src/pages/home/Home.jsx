@@ -32,13 +32,13 @@ const Home = () => {
 
             </div>
             <div className="content-side">
-                <div className="new-users">
+                <div className="side-content-box">
                     <p>Latest users</p>
                         {data.content_side.new_users.map(user=>(
                             <ProfilePreview user={user}/>
                         ))}
                 </div>
-                <div className="top-users">
+                <div className="side-content-box">
                     <p>Most followed</p>
                         {data.content_side.top_users.map(user=>(
                             <ProfilePreview user={user}/>

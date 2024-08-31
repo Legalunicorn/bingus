@@ -37,6 +37,14 @@
         }
     }
 
+    .side-content-box{
+        > p:first-child{
+            font-size: 1.25rem;
+            border-bottom: 1px solid var(--color-neutral-bg);
+            margin-bottom: 0.7oo5rem;
+        }
+    }
+
     // .user-list{
     //     display: flex;;
     //     flex-direction: column;

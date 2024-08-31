@@ -12,8 +12,26 @@
     height: var(--header-height);
     background-color: var(--color-bg);
 
+    .test{
+        font-weight: bold;
+        font-size: 0.9em;
+        width:1.6rem;
+        height:1.6rem;
+        line-height: 1.6rem;
+        text-align: center;
+        
+        background-color: var(--color-bg);
+        background-color: #ce3d3d;
+
+        border-radius: 2rem;
+        position:absolute;
+        left:1.25rem;
+        
+    }
+
     .notif{
-        margin-right: 0.75rem;
+        position: relative;
+        margin-right: 1.5rem;
         margin-left:auto;
     }
 

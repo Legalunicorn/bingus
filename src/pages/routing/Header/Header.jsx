@@ -14,10 +14,15 @@ const Header = () => {
             <p className="brand">Bingus</p>
             
 
-            <IconBell 
-            className="notif"
-            size="30"
-            />
+            <div className="notif">
+                <IconBell 
+                // className="notif"
+                size="30"
+                />
+                <span className="test">10</span>
+
+            </div>
+
             <img src="https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/b589cd15-608d-412c-86d7-f6c2fe162924/width=450/3917845.jpeg" alt="" />
         </div>
     );
