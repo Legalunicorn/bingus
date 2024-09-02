@@ -17,7 +17,7 @@ const Home = () => {
 
     const feedQuery = useQuery({
         queryKey:['feed'],
-        queryFn: ()=>myFetch("/init",user)
+        queryFn: ()=>myFetch("/init",{},user)
     })
     
 

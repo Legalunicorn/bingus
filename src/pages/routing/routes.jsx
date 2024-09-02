@@ -2,31 +2,41 @@ import { createBrowserRouter,Outlet } from "react-router-dom"
 import { ProtectedRoute } from "./ProtectedRoutes"
 import Layout from "./Layout"
 import Home from "../home/Home"
+import AuthPage from "../auth/AuthLayout"
 // import
 
 //pages
 
 
 
+//auth, others, 
+
 const router = createBrowserRouter([
     {
+        // element: 
+        path:"/auth",
+        children:[
+            {
+                path:"login",
+                element:<AuthPage form='Login'/>
+            },
+            {
+                path:"signup",
+                element: <AuthPage form='Signup'/>
+            },
+        ],
+    },{
+        path:"/",
         element:<Layout/>,
         children:[
             //Unprotected Routes
             {
-                path:"/",
+                path:"",
                 element:<p>penis</p>//create the UI for the feed page
             },
+
             {
-                path:"/login",
-                element:<p>-</p>
-            },
-            {
-                path:"/signup",
-                element: <p>-</p>
-            },
-            {
-                path:"/about",
+                path:"about",
                 element:<p></p>
             },
             //Protected Routes 
@@ -35,10 +45,10 @@ const router = createBrowserRouter([
                     <ProtectedRoute/>
                
                 ),
-                path:"/p",
+                path:"p", //protected
                 children:[
                     {
-                        path:"",
+                        path:"home",
                         element:<Home/>
                     },
                     {

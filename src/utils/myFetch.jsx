@@ -13,7 +13,8 @@ const API_URL = import.meta.env.VITE_API_URL
  */
 
 //Cannot use useContext inside a function like this. thus im passing in the user
-export const  myFetch= async (url,user={},options={},content_type="application/json")=>{
+export const  myFetch= async (url,options={},user={},content_type="application/json")=>{
+
     
     const response = await fetch(API_URL+url,
         {
@@ -30,7 +31,8 @@ export const  myFetch= async (url,user={},options={},content_type="application/j
     if (response.status==401 && data.msg=='TokenExpiredError'){
         throw new Error("Token has expired. Please login again.")
     } else {
-        throw new Error(data.error.msg || data.error.message || 'Failied to fetch data')
+        console.log(data);
+        throw new Error(data.error  || 'Failied to fetch data')
     }
 
 }
