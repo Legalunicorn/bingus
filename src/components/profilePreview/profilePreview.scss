@@ -9,6 +9,7 @@
         aspect-ratio: 1/1;
         object-fit: cover;
         margin-right: 0.75rem; //make this a mixin
+        border-radius: 50%;
     }
 
     div{
@@ -33,13 +34,28 @@
     }
     button{
         // font-family: n;
+        font-weight: bold;
+        width: 6.75rem;
         margin-left: auto;
         margin-right:0.5rem;
+
+        &.filled{
+            
+            color: var(--color-secondary);
+            color: var(--color-bg);
+            background-color: var(--color-neutral-1);
+            &:hover{
+                border: 1px solid var(--color-primary);
+                // border: 2px solid var(red);
+                background-color: var(--color-primary);
+            }
+        }
 
         &:hover{
             color: var(--color-bg);
             background-color: var(--color-text);
         }
+
     }
 
 

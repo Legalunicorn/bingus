@@ -15,7 +15,7 @@ const router = createBrowserRouter([
             //Unprotected Routes
             {
                 path:"/",
-                element:<Home/> //create the UI for the feed page
+                element:<p>penis</p>//create the UI for the feed page
             },
             {
                 path:"/login",
@@ -32,17 +32,17 @@ const router = createBrowserRouter([
             //Protected Routes 
             {
                 element: (
-                    <ProtectedRoute>
-                        <Outlet />
-                    </ProtectedRoute>
+                    <ProtectedRoute/>
+               
                 ),
+                path:"/p",
                 children:[
                     {
-                        path:"/",
-                        element:<p>Home</p>
+                        path:"",
+                        element:<Home/>
                     },
                     {
-                        path:"/users/:username"
+                        path:"users/:username"
                     }
                 ]
             }

@@ -1,3 +1,4 @@
+
 #home-page{
     .feed-options{
         font-family: Alata;
@@ -41,13 +42,9 @@
         > p:first-child{
             font-size: 1.25rem;
             border-bottom: 1px solid var(--color-neutral-bg);
-            margin-bottom: 0.7oo5rem;
+            margin-bottom: 0.75rem;
         }
     }
 
-    // .user-list{
-    //     display: flex;;
-    //     flex-direction: column;
-    //     // gap:0.5rem;
-    // }
+
 }

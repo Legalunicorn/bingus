@@ -3,15 +3,30 @@ import { useState } from "react";
 import "./home.scss"
 import PostCard from "../../components/postCard/PostCard";
 import ProfilePreview from "../../components/profilePreview/ProfilePreview";
+import { useQuery } from "@tanstack/react-query";
+import { myFetch } from "../../utils/myFetch";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
-
-
-
-
+/*
+use
+*/
 const Home = () => {
-    const [feedSort,setFeedSort] = useState('recent') //or TOP 
+    const {user} = useAuthContext();
+    const [feedSort,setFeedSort] = useState('recent') //or following 
 
-    //TODO Onclick for recent and following
+
+    const feedQuery = useQuery({
+        queryKey:['feed'],
+        queryFn: ()=>myFetch("/init",user)
+    })
+    
+
+    if (feedQuery.isLoading) return ("loading")
+    if (feedQuery.error) return ("error")
+
+    const {new_post,new_follower_posts,new_users,top_users} = feedQuery.data;
+    console.log("?",feedQuery.data)
+
 
 
     return (
@@ -19,29 +34,41 @@ const Home = () => {
             
             <div className="content-main">
                 <div className="feed-options">
-                    <span className="selected">Recent</span>
-                    <span>Following</span>
+                    <span onClick={()=>setFeedSort('recent')} className={feedSort=='recent'?'selected':''}>Recent</span>
+                    <span onClick={()=>setFeedSort('following')}  className={feedSort=='following'?'selected':''}>Following</span>
                 </div>
-                {/* ---here are a tone of posts--- */}
-       
-                {idk.posts.map(post=>(
+                {feedSort=='recent'?
+                new_post.map(post=>(
                     <PostCard
+                        key={post.id}
                         post={post}
                     />
-                ))}
+                ))
+                :
+                new_follower_posts.map(post=>(
+                    <PostCard
+                        key={post.id}
+                        post={post}
+                    />
+                ))
+                }
+       
+    
 
             </div>
             <div className="content-side">
                 <div className="side-content-box">
                     <p>Latest users</p>
-                        {data.content_side.new_users.map(user=>(
-                            <ProfilePreview user={user}/>
+                        {new_users.map(user=>(
+                            
+                            <ProfilePreview  key={user.id} user={user}/>
                         ))}
                 </div>
                 <div className="side-content-box">
                     <p>Most followed</p>
-                        {data.content_side.top_users.map(user=>(
-                            <ProfilePreview user={user}/>
+                        {top_users.map(user=>(
+                            
+                            <ProfilePreview key={user.id} user={user}/>
                         ))}
                 </div>
              
@@ -66,7 +93,7 @@ const Home = () => {
  
 export default Home;
 
-const data ={
+const frick ={
     "content_side":{
         "new_users":[
                 {
@@ -78,7 +105,7 @@ const data ={
                     }
                 },
                 {
-                    "id": 2,
+                    "id": 20,
                     "username": "Bingus2",
                     "displayName": "User 0",
                     "profile": {
@@ -86,7 +113,7 @@ const data ={
                     }
                 },
                 {
-                    "id": 2,
+                    "id": 29,
                     "username": "Bingus2",
                     "displayName": "User 0",
                     "profile": {
@@ -96,27 +123,36 @@ const data ={
         ],
         "top_users":[
             {
-                "id": 2,
+                "id": 28,
                 "username": "Bingus2",
                 "displayName": "User 0",
                 "profile": {
                     "profilePicture": "https://res.cloudinary.com/ds80ayjp7/image/upload/v1724155844/bingus_pfp/u2gjzzipfko2bfheqkct.png"
+                },
+                "_count":{
+                    "followers":0
                 }
             },
             {
-                "id": 2,
+                "id": 27,
                 "username": "Bingus2",
                 "displayName": "User 0",
                 "profile": {
                     "profilePicture": "https://res.cloudinary.com/ds80ayjp7/image/upload/v1724155844/bingus_pfp/u2gjzzipfko2bfheqkct.png"
+                },
+                "_count":{
+                    "followers":0
                 }
             },
             {
-                "id": 2,
+                "id": 42,
                 "username": "Bingus2",
                 "displayName": "User 0",
                 "profile": {
                     "profilePicture": "https://res.cloudinary.com/ds80ayjp7/image/upload/v1724155844/bingus_pfp/u2gjzzipfko2bfheqkct.png"
+                },
+                "_count":{
+                    "followers":0
                 }
             },                
     ],        

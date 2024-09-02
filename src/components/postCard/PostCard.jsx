@@ -2,17 +2,22 @@ import { formatDistanceToNowStrict } from "date-fns";
 import "./postCard.scss"
 import { IconBrandGithub, IconHeart, IconLink, IconMessageCircle } from "@tabler/icons-react";
 
+
 const PostCard = ({
     post //should be an object with the following
 }) => { 
     const written_time = formatDistanceToNowStrict(new Date(post.createdAt));
 
+    if (post.attachment){
+        console.log(post.public_id);
+    }
 
 
     //TODO identify whether the user has liked this post before or not
     //TODO include it in the API call somehow
     return (
         <div className="postcard">
+
 
             <div className="post-header"> 
                 {post.author.profile?
@@ -35,7 +40,7 @@ const PostCard = ({
 
 
                 {post.attachment &&
-                    <img src={post.public_id} alt="Post Media"/>
+                    <img src={post.attachment} alt="Post Media"/>
                 }
 
             </div>

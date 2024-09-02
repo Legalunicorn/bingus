@@ -3,7 +3,7 @@ import { sidebarData } from "./sidebarData";
 import "./sidebar.scss"
 
 const Sidebar = () => {
-    console.log(sidebarData)
+    // console.log(sidebarData)
     return (
         <div className="sidebar">
             <ul className="sidebar-ul">
