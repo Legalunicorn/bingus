@@ -15,11 +15,13 @@ const API_URL = import.meta.env.VITE_API_URL
 //Cannot use useContext inside a function like this. thus im passing in the user
 export const  myFetch= async (url,options={},user={},content_type="application/json")=>{
 
-    
+    // console.log("user sent was",user)
+    console.log("OPTS",options)
     const response = await fetch(API_URL+url,
         {
             headers:{
-                "Content-Type": content_type, // This is set in both cases
+                // "Content-Type": content_type, // This is set in both cases
+                ...(content_type? {"Content-Type":content_type}:{}),
                 ...(user ? { "Authorization": `Bearer ${user.token}` } : {}) // Conditionally include Authorization header
               },
             mode:"cors",
