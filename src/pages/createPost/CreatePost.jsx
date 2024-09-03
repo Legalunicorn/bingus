@@ -85,7 +85,9 @@ const CreatePost = () => {
         data.append("body",e.target.body.value)
         console.log("BODY IS",e.target.body.value);
         if (attachment) data.append("attachment", e.target.attachment.files[0]); //attachment
-        if (tags.length>0) data.append('tags',tags)
+        if (tags.length>0){
+            tags.forEach(tag=>data.append("tags",tag))
+        }
         if (git) data.append("gitLink",link)
 
         createPostMutation.mutate(data)
