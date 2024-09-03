@@ -19,6 +19,7 @@ const Login = () => {
 
     // TODO uncomment this after testing login properly
     useEffect(()=>{
+        //TODO uncomment this after testing login functionality fully
         // if (user){
         //     console.log("Already Logged in. Redirecting..")
         //     navigate("/p/home")

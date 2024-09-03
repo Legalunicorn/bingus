@@ -13,7 +13,7 @@
     padding: 1rem 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    // border:1px solid red;
 
     .nav-name{
         font-weight: bold;
@@ -31,10 +31,15 @@
             padding: 0.5rem 0.75rem;
             border-radius:1.25rem;
             transition: 0.2s ease-in;
+            gap: 0.5rem;
             &:hover{
                 transform: translateX(-0.2rem);
                 background-color: var(--color-neutral-3);
 
+            }
+
+            svg{
+                margin-right: 1rem;
             }
         }
     }

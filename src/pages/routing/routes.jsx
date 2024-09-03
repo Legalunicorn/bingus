@@ -6,6 +6,7 @@ import AuthPage from "../auth/AuthLayout"
 import Login from "../auth/Login"
 import Signup from "../auth/Signup"
 import SetUsername from "../auth/SetUsername"
+import CreatePost from "../createPost/CreatePost"
 // import
 
 
@@ -52,7 +53,9 @@ const router = createBrowserRouter([
         path:"/",
         element:<Layout/>,
         children:[
-            //Unprotected Routes
+            /**
+             * ============== UNPROTECTED ROUTES ===============
+             */
             {
                 path:"",
                 element:<p>penis</p>//create the UI for the feed page
@@ -62,17 +65,22 @@ const router = createBrowserRouter([
                 path:"about",
                 element:<p></p>
             },
-            //Protected Routes 
+            /**
+             * =============== PROTECTED ROUTES =================
+             */
             {
                 element: (
                     <ProtectedRoute/>
-               
                 ),
                 path:"p", //protected
                 children:[
                     {
                         path:"home",
                         element:<Home/>
+                    },
+                    {
+                        path:"create",
+                        element:<CreatePost/>
                     },
                     {
                         path:"users/:username"

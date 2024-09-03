@@ -83,11 +83,11 @@
 
             }
         }
-        // .error-box:empty:before{
-        //     content:' ';
-        //     white-space: pre;
-        //     // background-color: red;
-        // }
+        .error-box:empty:before{
+            content:' ';
+            white-space: pre;
+            // background-color: red;
+        }
 
         .or{
             color: var(--color-neutral-3);
@@ -170,7 +170,7 @@
 
         img{
             position: relative;
-            // animation: MoveUpDown 8s linear infinite;
+            // filter: drop-shadow(0 6rem 0.25rem #473c3caf);
             max-width: 600px;
             max-height: 600px;
             aspect-ratio: 1;
@@ -178,6 +178,7 @@
             transition: 0.3s ease-in-out;
 
             &:hover{
+                filter: drop-shadow(0 5rem 0.25rem #473c3caf);
                 transform: scale(1.05);
             }
         }
@@ -238,7 +239,13 @@
 }
 
 
+
 @media only screen and (max-width:680px){
+
+    .auth-page div:nth-child(1){
+        border: 2px solid red;
+        min-width:100vw;
+    }
     .auth-page div:nth-child(2){
         background-color: green;
         display:none;
