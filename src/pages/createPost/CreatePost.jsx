@@ -37,14 +37,12 @@ const CreatePost = () => {
 
     const handleAddTag = (e) =>{
         //BUG enter no longer creaates a line in textbody, consider changing or leaving it
-        console.log(e.keyCode);
+        // console.log(e.keyCode);
         if (e.keyCode===13){
             e.preventDefault();
             if (document.activeElement==tagsRef.current && tagsRef.current.value!=''){
-                console.log('hi')
                 //first check if it exist already, dont allow duplicate tags
                 const value = tagsRef.current.value.toLowerCase(); //tags are case insensitiveS
-                console.log("BEF",tags)
                 if (!tags.includes(value)){
                     setTags(prevTags=>[...prevTags,value])
                     setTag("");
@@ -53,12 +51,9 @@ const CreatePost = () => {
         }
     }
     const onAttachmentChange = (e) =>{
-
         if (e.target.files && e.target.files[0]){
             if (e.target.files[0].size>MAX_FILE_SIZE ){
                 toast.warn("File exceeded 8mb")
-                // console.log("oi skibidi")
-                // setError(a=>`${a}. File exceeded 8mb.`)
             }
             else setAttachment(URL.createObjectURL(e.target.files[0]));
         }
@@ -86,12 +81,14 @@ const CreatePost = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const data = new FormData();
-        data.append("attachment", e.target.attachment.files[0]);
-        data.append('body', e.target.body.value);
-        if (tags) data.append('tags',tags)
+        
+        data.append("body",e.target.body.value)
+        console.log("BODY IS",e.target.body.value);
+        if (attachment) data.append("attachment", e.target.attachment.files[0]); //attachment
+        if (tags.length>0) data.append('tags',tags)
         if (git) data.append("gitLink",link)
 
-        createPostMutation.mutate({data})
+        createPostMutation.mutate(data)
     }
 
     const createPostMutation = useMutation({
@@ -99,13 +96,15 @@ const CreatePost = () => {
             return myFetch("/posts",{
                 method:"POST",
                 body:variables
-            },{user},'')
+            },user,null) //dont set the content type 
         },
         onSuccess: ()=>{
+            toast.success("Post created")
             queryClient.invalidateQueries(["feed"],{exact:true}) //refresh the feed
             navigate("/p/home")
         },
         onError:(error,variables,context)=>{
+            console.log(error.message)
             toast.error(error.message)
 
         }
@@ -114,7 +113,7 @@ const CreatePost = () => {
         <div className="content new-post">
             
             <div> 
-                <Form encType="multipart/form-data">
+                <Form encType="multipart/form-data" onSubmit={handleSubmit}>
                     <TextareaAutosize
                         onChange={handleChangeText}
                         className="textarea"
