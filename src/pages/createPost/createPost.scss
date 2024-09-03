@@ -133,6 +133,10 @@
                     background-color: var(--color-accent);
                     color: var(--color-text);
                 }
+
+                &:disabled{
+                    opacity: 0.5;
+                }
             }
         }
 

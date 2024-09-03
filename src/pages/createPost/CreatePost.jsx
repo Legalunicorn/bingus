@@ -53,7 +53,7 @@ const CreatePost = () => {
     const onAttachmentChange = (e) =>{
         if (e.target.files && e.target.files[0]){
             if (e.target.files[0].size>MAX_FILE_SIZE ){
-                toast.warn("File exceeded 8mb")
+                toast.warn("File exceeded 6mb")
             }
             else setAttachment(URL.createObjectURL(e.target.files[0]));
         }
@@ -88,7 +88,7 @@ const CreatePost = () => {
         if (tags.length>0){
             tags.forEach(tag=>data.append("tags",tag))
         }
-        if (git) data.append("gitLink",link)
+        if (git) data.append("gitLink",git)
 
         createPostMutation.mutate(data)
     }
@@ -169,7 +169,7 @@ const CreatePost = () => {
                             onClick={()=>{setOptions("git")}}
                         />
                         <p>{text.length}/2000</p>
-                        <button type="submit">Post</button>
+                        <button disabled={createPostMutation.isPending} type="submit">Post</button>
                     </div>
                     {options=="tags" ?
                         <>
@@ -204,7 +204,7 @@ const CreatePost = () => {
                     ""
                 }
             </p>
-            <ToastConfig/>
+            {/* <ToastConfig/> */}
             </div>
             <div>
 
