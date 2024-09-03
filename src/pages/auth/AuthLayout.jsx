@@ -9,16 +9,17 @@ import { Form } from "react-router-dom";
 import Signup from "./Signup";
 
 
-const AuthPage = ({form}) => {
-    const [currForm,setCurrForm] = useState(form || 'Login'); //'Login' or 'Signup'
+const AuthPage = ({children}) => {
+    // const [currForm,setCurrForm] = useState(form || 'Login'); //'Login' or 'Signup'
     // //form = login OR sign up. will display dyniamically
-    useEffect(()=>{
-        setCurrForm(form) //when user clicks button to login/signup -> rerender auth layout
-    },[form])
+    // useEffect(()=>{
+    //     setCurrForm(form) //when user clicks button to login/signup -> rerender auth layout
+    // },[form])
     return (
         <div className="auth-page">
             <div className="form-side">
-                {currForm=='Login'?<Login/>:<Signup/>}
+                {children}
+                {/* {currForm=='Login'?<Login/>:<Signup/>} */}
             </div>
             <div className="art-side"> 
                 <p>Bingus</p>

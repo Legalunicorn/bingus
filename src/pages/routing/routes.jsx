@@ -3,7 +3,11 @@ import { ProtectedRoute } from "./ProtectedRoutes"
 import Layout from "./Layout"
 import Home from "../home/Home"
 import AuthPage from "../auth/AuthLayout"
+import Login from "../auth/Login"
+import Signup from "../auth/Signup"
+import SetUsername from "../auth/SetUsername"
 // import
+
 
 //pages
 
@@ -18,12 +22,31 @@ const router = createBrowserRouter([
         children:[
             {
                 path:"login",
-                element:<AuthPage form='Login'/>
+                element:(
+                    <AuthPage>
+                        <Login/>
+                    </AuthPage>
+                )
             },
             {
                 path:"signup",
-                element: <AuthPage form='Signup'/>
+                // element: <AuthPage form='Signup'/>
+                element:(
+                    <AuthPage>
+                        <Signup/>
+                    </AuthPage>
+                )
             },
+            {
+                element:
+                // (<ProtectedRoute> //BUG this cannot be protected because token is not yet in the context
+                    <AuthPage>
+                        <SetUsername/>
+                    </AuthPage>
+                // </ProtectedRoute>),
+                ,
+                path: "oauth/setusername"
+            }
         ],
     },{
         path:"/",

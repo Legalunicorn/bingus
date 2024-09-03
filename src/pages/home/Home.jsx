@@ -7,12 +7,11 @@ import { useQuery } from "@tanstack/react-query";
 import { myFetch } from "../../utils/myFetch";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
-/*
-use
-*/
 const Home = () => {
+
     const {user} = useAuthContext();
-    const [feedSort,setFeedSort] = useState('recent') //or following 
+    const [feedSort,setFeedSort] = useState('recent') //or following
+    
 
 
     const feedQuery = useQuery({
@@ -20,14 +19,11 @@ const Home = () => {
         queryFn: ()=>myFetch("/init",{},user)
     })
     
-
     if (feedQuery.isLoading) return ("loading")
     if (feedQuery.error) return ("error")
 
     const {new_post,new_follower_posts,new_users,top_users} = feedQuery.data;
     console.log("?",feedQuery.data)
-
-
 
     return (
         <div className="content" id="home-page">

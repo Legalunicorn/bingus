@@ -1,9 +1,10 @@
+@font-face{
+    font-family: "Google";
+    src: url("../../assets/fonts/Roboto/Roboto-Medium.ttf")
+}
 .auth-page{
     // border: 1px solid red;
-    @font-face{
-        font-family: "Google";
-        src: url("../../assets/fonts/Roboto/Roboto-Medium.ttf")
-    }
+
     display:flex;
     background-color: var(--color-bg);
 
@@ -24,14 +25,14 @@
         min-width: 300px;
         max-width: 540px;
 
-        p:nth-child(2){
+        > p:nth-of-type(1){
             padding-top: 0.5rem;
             font-family: Alata;
             font-size: 1.25rem;
             font-weight: bold;
         }
 
-        p:nth-child(3){
+        > p:nth-of-type(2){
             color: var(--color-neutral-2);
             padding-bottom: 1.75rem;
         }
@@ -62,15 +63,20 @@
         }
 
         .error-box{
-            // border: 1px solid red;
+            padding: 1rem 0;
             display: flex;
             justify-content: center;
             align-items: center;
             width:100%;
             max-width: 340px;
-            // border: 1px solid red;
             color: #d31b1b;
-
+            gap: 5px;
+            svg{
+                margin-bottom: auto;
+            }
+            span{
+                margin-bottom:auto;
+            }
             &:empty:before{
                 content:" ";
                 white-space:pre;
@@ -124,8 +130,14 @@
             &:hover{
                 background-color: #F2F2F2;
             }
- 
 
+        }
+        ul{
+            margin-top: 0.5rem;
+            width: 100%;
+            max-width: 300px;
+            // border: 1px solid red;
+            color:var(--color-neutral-3);
         }
     }
 
@@ -182,15 +194,27 @@
     input,button{
         // outline:0px solid var(--color-primary);
         font-family: Alata;
-        border: none;
         width: 100%;
         max-width: 340px;
         border:0;
         border-radius: 2rem;
         margin: 0.5rem 0;
         padding: 0.75rem 1rem;
-        // transition: 0.2s ease-in-out;
-        
+        // transition: 0.2s ease-in-out 
+    }
+    .input-container{
+        position: relative;
+        // border: 1px solid red;
+        width:100%;
+        max-width: 340px;
+
+        .input-icon{
+            color: var(--color-neutral-3);
+            // border: 1px solid red;
+            position:absolute;
+            right: 10%;
+            top: 30%;
+        }
     }
     input:focus{
         outline:2px solid #ff8e24;
@@ -201,6 +225,15 @@
         background-color: var(--color-text);
         outline: 2px solid vaR(--color-bg);
         color:var(--color-bg);
+    }
+    button:disabled{
+        opacity: 0.6;
+    }
+
+    .mismatch{
+        outline: 2px solid red !important;
+
+
     }
 }
 

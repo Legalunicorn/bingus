@@ -1,26 +1,41 @@
 
 import "./auth.scss"
-import { Form, useNavigate} from "react-router-dom";
+import { Form, useNavigate, useSearchParams} from "react-router-dom";
 import { useState,useEffect } from "react";
 import Logo from "../../assets/images/bingus_logo.svg"
 import GoogleLogo from "../../assets/images/google.svg"
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { myFetch } from "../../utils/myFetch";
 import { IconAlertOctagon } from "@tabler/icons-react";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const Login = () => {
+    
     const navigate = useNavigate();
     const [error,setError] = useState();
     const [disabled,setDisabled] = useState(false);
     const {user,dispatch} = useAuthContext();
+    const [searchParams] = useSearchParams(); //Auth redirect here, redirect to home page
 
-    //TODO uncomment this after testing login properly
-    // useEffect(()=>{
-    //     if (user){
-    //         console.log("Already Logged in. Redirecting..")
-    //         navigate("/p/home")
-    //     }
-    // },[])
+    // TODO uncomment this after testing login properly
+    useEffect(()=>{
+        // if (user){
+        //     console.log("Already Logged in. Redirecting..")
+        //     navigate("/p/home")
+        // }
+        const tokenParam = searchParams.get("token");
+        const userParam = searchParams.get("username")
+        console.log(tokenParam,userParam,"hi")
+        if (tokenParam && userParam){
+            console.log(tokenParam)
+            console.log(userParam)
+            dispatch({type:"LOGIN",payload:{token:tokenParam,username:userParam}})
+            localStorage.setItem("user",JSON.stringify({token:tokenParam,username:userParam}))
+            navigate("/p/home")
+
+        }
+
+    },[])
 
     const handleSubmit = async(e)=>{
         setDisabled(true);
@@ -36,7 +51,7 @@ const Login = () => {
             //will automatically throw error if !response.ok
             //so anything here any below should be response ok 
             // check first
-            console.log(data);
+            // console.log(data);
             const {token,username} = data; //from the server
             dispatch({type:"LOGIN",payload:{token,username}})
             localStorage.setItem('user',JSON.stringify({token,username}))
@@ -70,6 +85,7 @@ const Login = () => {
                     type="password"
                     name="password"
                     // ref={password}
+                    autoComplete="new-password"
                     placeholder='Password'
                     minLength="2"
                     required
@@ -92,7 +108,7 @@ const Login = () => {
             <p className="or"><span>or</span></p>
 
 
-            <button className="google" >
+            <button className="google" onClick={()=>{window.location.href=`${API_URL}/auth/oauth/google`}}>
                 <img className="google-icon" src={GoogleLogo} alt="" />
                 <span>Continue with Google</span>
             </button>
