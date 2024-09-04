@@ -7,6 +7,7 @@ import Login from "../auth/Login"
 import Signup from "../auth/Signup"
 import SetUsername from "../auth/SetUsername"
 import CreatePost from "../createPost/CreatePost"
+import ViewPost from "../viewPost/ViewPost"
 // import
 
 
@@ -77,6 +78,10 @@ const router = createBrowserRouter([
                     {
                         path:"home",
                         element:<Home/>
+                    },
+                    {
+                        path:"posts/:postId",
+                        element: <ViewPost/>
                     },
                     {
                         path:"create",

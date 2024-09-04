@@ -6,7 +6,6 @@ import ProfilePreview from "../../components/profilePreview/ProfilePreview";
 import { useQuery } from "@tanstack/react-query";
 import { myFetch } from "../../utils/myFetch";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import CreatePost from "../createPost/CreatePost";
 
 const Home = () => {
 
@@ -34,7 +33,6 @@ const Home = () => {
                     <span onClick={()=>setFeedSort('recent')} className={feedSort=='recent'?'selected':''}>Recent</span>
                     <span onClick={()=>setFeedSort('following')}  className={feedSort=='following'?'selected':''}>Following</span>
                 </div>
-                {/* <CreatePost/> */}
                 {feedSort=='recent'?
                 new_post.map(post=>(
                     <PostCard
