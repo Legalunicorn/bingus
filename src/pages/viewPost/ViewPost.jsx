@@ -23,6 +23,8 @@ const ViewPost = () => {
     if (postQuery.isError) return (<p>{postQuery.error.message}</p>
     ) //TODO proper error
 
+    //TODO fi
+
     
     const {post} = postQuery.data;
     console.log(post);
@@ -35,19 +37,24 @@ const ViewPost = () => {
                 <PostCard
                     post={post}
                 />
+                
                 <Form>
-                    <TextareaAutosize/>
-                    <IconSend2/>
-                    {/* <p></p>
-                    <button>
-                        <IconSend2/>
-                    </button> */}
+                    <TextareaAutosize
+                        className="textarea"
+                        placeholder="Type a comment.."
+
+                    />
+                    <button>Post</button>
                 </Form>
+                <p>View comments ({post.comments?post.comments.length: 0})</p>
                 <div className="comment-section">
                     {post.comments && post.comments.map(comment=>(
                         <CommentCard comment={comment} key={comment.id}/>
                     ))}
                 </div>
+            </div>
+            <div>
+                what the sigma
             </div>
 
         </div>
