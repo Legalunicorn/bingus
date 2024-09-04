@@ -1,0 +1,17 @@
+.view-post{
+    //change the post card here specifically
+
+    .postcard{
+        // border: 1px solid lime;
+
+        .post-header{
+            span:nth-of-type(2){
+                // display:none;
+                // color: var(--color-bg); //
+                opacity: 0;
+                margin-left:auto;
+                // color :red;
+            }
+        }
+    }
+}

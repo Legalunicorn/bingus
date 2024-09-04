@@ -1,12 +1,18 @@
 import { formatDistanceToNowStrict } from "date-fns";
 import "./postCard.scss"
 import { IconBrandGithub, IconHeart, IconLink, IconMessageCircle } from "@tabler/icons-react";
+import { useNavigate } from "react-router-dom";
 
 
-const PostCard = ({
-    post //should be an object with the following
+const PostCard = ({ //TODO decide if i should reuse this for the post page
+    //TODO add a option to make the card clicakble or not? or make it in the home
+    post, //should be an object with the following
+    handleClick
 }) => { 
     const written_time = formatDistanceToNowStrict(new Date(post.createdAt));
+
+    //BUG
+    const navigate = useNavigate();
 
     if (post.attachment){
         console.log(post.public_id);
@@ -16,7 +22,7 @@ const PostCard = ({
     //TODO identify whether the user has liked this post before or not
     //TODO include it in the API call somehow
     return (
-        <div className="postcard">
+        <div onClick={handleClick} className="postcard">
 
 
             <div className="post-header"> 

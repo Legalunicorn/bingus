@@ -6,11 +6,17 @@ import ProfilePreview from "../../components/profilePreview/ProfilePreview";
 import { useQuery } from "@tanstack/react-query";
 import { myFetch } from "../../utils/myFetch";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-
+    const navigate = useNavigate();
     const {user} = useAuthContext();
     const [feedSort,setFeedSort] = useState('recent') //or following
+    
+    function handleClick(postId){
+        console.log("bro...")
+        navigate(`/p/posts/${postId}`);
+    }
     
 
 
@@ -19,8 +25,8 @@ const Home = () => {
         queryFn: ()=>myFetch("/init",{},user)
     })
     
-    if (feedQuery.isLoading) return ("loading")
-    if (feedQuery.error) return ("error")
+    if (feedQuery.isLoading) return ("loading") //TODO create a proper loading
+    if (feedQuery.error) return ("error") //TODO proper error
 
     const {new_post,new_follower_posts,new_users,top_users} = feedQuery.data;
     console.log("?",feedQuery.data)
@@ -38,6 +44,9 @@ const Home = () => {
                     <PostCard
                         key={post.id}
                         post={post}
+                        handleClick={()=>handleClick(post.id)}
+                       
+            
                     />
                 ))
                 :
@@ -45,6 +54,7 @@ const Home = () => {
                     <PostCard
                         key={post.id}
                         post={post}
+                        // handleClick={()=>handleClick(post.id)}
                     />
                 ))
                 }
