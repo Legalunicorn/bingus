@@ -29,23 +29,23 @@
         // border-bottom: 1px solid var(--color-neutral-bg);
         // border: 1px solid red;
     }
-    form{
+    // form{
         
-        padding: 1rem 1.5rem;
-        // border :1px solid red;
-        display: flex;
-        align-items: center;
+    //     padding: 1rem 1.5rem;
+    //     // border :1px solid red;
+    //     display: flex;
+    //     align-items: center;
 
-        button{
-            margin-top:auto;
-            transition: 0.25s ease-in-out;
-            &:hover{
-                color:var(--color-bg);
-                background-color: var(--color-text);
-                border: 1px solid var(--color-text);
-            }
-        }
-    }
+    //     button{
+    //         margin-top:auto;
+    //         transition: 0.25s ease-in-out;
+    //         &:hover{
+    //             color:var(--color-bg);
+    //             background-color: var(--color-text);
+    //             border: 1px solid var(--color-text);
+    //         }
+    //     }
+    // }
 
     .textarea{
         font-family: Inter,system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;

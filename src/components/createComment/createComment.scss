@@ -1,0 +1,21 @@
+.create-comment{
+    
+    padding: 1rem 1.5rem;
+    // border :1px solid red;
+    display: flex;
+    align-items: center;
+
+    button{
+        margin-top:auto;
+        transition: 0.25s ease-in-out;
+        &:hover{
+            color:var(--color-bg);
+            background-color: var(--color-text);
+            border: 1px solid var(--color-text);
+        }
+
+        &:disabled{
+            opacity: 0.4;
+        }
+    }
+}
