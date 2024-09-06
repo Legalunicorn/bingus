@@ -1,16 +1,13 @@
-import { Form, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "./viewPost.scss"
 import { useQuery } from "@tanstack/react-query";
 import { useFetch } from "../../hooks/useFetch";
-import { useAuthContext } from "../../hooks/useAuthContext";
 import PostCard from "../../components/postCard/PostCard";
-import { IconArrowLeft, IconSend2 } from "@tabler/icons-react";
 import CommentCard from "../../components/CommentCard/CommentCard";
 import BackNav from "../../components/backNav/BackNav";
 import CreateComment from "../../components/createComment/CreateComment";
 
 const ViewPost = () => {
-    const {user} = useAuthContext()
     const {postId} = useParams();
     const getPost = useFetch()
     const postQuery = useQuery({
@@ -25,6 +22,7 @@ const ViewPost = () => {
     //TODO fi
 
     const {post} = postQuery.data;
+    console.log(post)
     return (
         <div className="content view-post">
             <div>
@@ -36,7 +34,7 @@ const ViewPost = () => {
                     postId={post.id}
                 />
 
-                <p>View comments ({post.comments?post.comments.length: 0})</p>
+                <p>View comments ({post._count.comments})</p>
                 <div className="comment-section">
                     {post.comments && post.comments.map(comment=>(
                         <CommentCard comment={comment} key={comment.id}/>

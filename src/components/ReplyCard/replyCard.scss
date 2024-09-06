@@ -1,0 +1,40 @@
+.reply-card{
+    //TODO refactor this some how
+    // ALOT in common with commentcards
+    // border: 1px solid red;
+    // margin-left:1.5rem;
+    padding: 0.75rem 0 0.75rem 2rem;
+
+    .reply-header{
+        
+        display: flex;
+        align-items: center;
+        padding-bottom: 0.5rem;
+        gap: 0.5rem;
+
+        span{
+            color: var(--color-neutral-3);
+            &:nth-of-type(1){
+                font-weight: bold;
+                color: var(--color-text);
+            }
+    
+        }
+    }
+
+    .reply-body{
+        padding: 0.75rem 0 1rem 0;
+    }
+
+    .reply-buttons{
+        color : var(--color-neutral-2);
+        margin-top: 0.75rem;
+        p{
+            display: flex;;
+            gap: 0.5rem;
+        }
+
+    }
+
+
+}
