@@ -3,21 +3,29 @@ import "./commentCard.scss"
 import { IconHeart, IconMessage, IconMessages } from "@tabler/icons-react";
 import { useState,Fragment } from "react";
 import { useFetch } from "../../hooks/useFetch";
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import ReplyCard from "../ReplyCard/ReplyCard";
 const VITE_DEFAULT_PFP = import.meta.env.VITE_DEFAULT_PFP;
+import { Form } from "react-router-dom";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import TextareaAutosize from "react-textarea-autosize";
 
-//Manage the replies in here?
+
 /*
-How fetching replies works
-i need to store the cursor Id, probably inside a useState
-i need to store the child comment data too, also probably a useState
-below the comment box, i simply map over all child data if any and render them
-when fetching replies, i need to update the comment state as well as updated cursor
+How to post new reply?
+> click on reply
+> input box appears
+// > send input, use mutation??
+    -> if all the replies are loaded
+    -> 
+
  */
-const CommentCard = ({comment}) => {
+const CommentCard = ({comment,postId}) => {
     const written_time = formatDistanceToNowStrict(new Date(comment.createdAt));
     const [showReplies,setShowReplies] = useState(false);
+    const [showInput,setShowInput] = useState(false);
+    const [input,setInput] = useState('');
+    const queryClient = useQueryClient();
     //TODO differentiate between show replies and show more
 
     const myFetch = useFetch();
@@ -25,39 +33,61 @@ const CommentCard = ({comment}) => {
         console.log("FETCH REPLIES CID::",pageParam)
         return await myFetch(`/comments/${comment.id}?cursorId=${pageParam}`)
     }
-    //Attempt at useInfnite query
+    const fetchPostReply = async()=>{
+        return await myFetch('/comments',{
+            method:"POST",
+            body:JSON.stringify({
+                parentComment:comment.id,
+                body:input,
+                postId
+            })
+        })
+    }
 
+    const createReplyMutation = useMutation({
+        mutationFn: fetchPostReply,
+        onSuccess: ()=>{
+            console.log("comment id : ",comment.id)
+            refetch();
+            // queryClient.refetchQueries(['replies',comment.id])
+            queryClient.invalidateQueries(['post',postId])
+            // queryClient.fetchInfiniteQuery(['replies',comment.id])
+            setShowInput(false);
+            console.log("Sucess reply posted");
+            setInput('');
+        },
+        onError:(error)=>{
+            toast.error(error.message);
+            console.log(error);
+        }
+    })
+
+    const handleSubmitReply = (e)=>{
+        e.preventDefault();
+        createReplyMutation.mutate();
+    }
+
+
+    
 
     const {
         data,
         error,
         fetchNextPage,
         hasNextPage,
-        isFetching,
+        isFetching, //TODO figure out where to use this?
         isFetchingNextPage,
-        status
+        status,
+        refetch
     } = useInfiniteQuery({
         queryKey:['replies',comment.id],
         queryFn: fetchReplies,
         initialPageParam: -1,
         getNextPageParam: (prevData)=>prevData.cursorId,
         enabled:false
-        
-        
     })
-    if (status=='error') console.log(error);
+    if (status=='error') console.log(error); //TODO clean up
     if (status=='error') return (<p>{error.message}</p>)
-    console.log("s: ",data);
-
-    // const showReplyQuery = useQuery({ 
-    //     queryKey:["replies",comment.id] ,//invalidate this when new reply added? theres some logical issue with pagination and cursor i think
-    //     queryFn: ()=>myFetch(`/comments/${comment.id}`), //has no cursor
-    //     enabled:false
-    // })
-
-    // if (showReplyQuery.isLoading) return ("loading") //TODO move this down belwo
-    // if (showReplyQuery.isError) return ("blah blah") //Move this down below to the replies part
-
 
     return (
 
@@ -77,7 +107,8 @@ const CommentCard = ({comment}) => {
                 <p>
                     <IconHeart/> {comment._count.likes}
                 </p>
-                {comment.childComment.length>0 &&
+
+                {comment.childComment.length>0? 
                     showReplies?
                     <p onClick={()=>{setShowReplies(false)}}>
                         <IconMessages/> Hide replies
@@ -86,13 +117,34 @@ const CommentCard = ({comment}) => {
                     <p onClick={()=>{
                         if(!data) fetchNextPage();
                         setShowReplies(true);
+                        setShowInput(false);
                     }}>
                         <IconMessages/> show replies
                     </p> 
+                    :
+                    <></>
                 }
-                <p><IconMessage/> reply</p> 
+
+                <p onClick={()=>setShowInput(prev=>!prev)}
+                ><IconMessage/> reply</p> 
                          
             </div>
+
+            {showInput && //refactor user-profile to its own component!
+                <>
+                <Form onSubmit={handleSubmitReply}>
+                    <TextareaAutosize
+                        required
+                        className="reply-comment"
+                        placeholder="Add a reply..."
+                        onChange={(e)=>{setInput(e.target.value)}}
+                        value={input}
+                    />
+                    <button type="submit">reply</button>
+                </Form>                
+                </>
+
+            }
             {data && showReplies &&
                 <div className="group-replies">
                     {data.pages.map((group,i)=>(
@@ -109,9 +161,10 @@ const CommentCard = ({comment}) => {
             }
 
             {isFetchingNextPage? 
-                <p>Loading..</p>:
-            hasNextPage &&  showReplies && <p onClick={()=>fetchNextPage()}>Load more</p>
+                <p className="loadmore">Loading..</p>:
+            hasNextPage &&  showReplies && <p className="loadmore"onClick={()=>fetchNextPage()}>Load more</p>
             }
+
 
 
         </div>

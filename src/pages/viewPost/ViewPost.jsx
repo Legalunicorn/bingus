@@ -37,7 +37,12 @@ const ViewPost = () => {
                 <p>View comments ({post._count.comments})</p>
                 <div className="comment-section">
                     {post.comments && post.comments.map(comment=>(
-                        <CommentCard comment={comment} key={comment.id}/>
+                        <CommentCard 
+                            comment={comment} 
+                            postId={post.id}
+                            key={comment.id}
+                            
+                        />
                     ))}
                 </div>
             </div>

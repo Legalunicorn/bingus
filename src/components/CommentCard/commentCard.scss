@@ -1,8 +1,9 @@
 .parent-comment-card{
-    padding:2rem 1.5rem 2rem 2rem;
+    padding:1rem 1.5rem 2rem 2rem;
 
     // padding: 1rem 1.5rem;
     // border: 1px solid red;
+    border-bottom: 1px solid var(--color-neutral-bg);
 
     .comment-header{
         display: flex;
@@ -36,10 +37,19 @@
         color: var(--color-neutral-2);
         margin-top: 1rem;
         display: flex;
-        // border: 1px solid red;
+        padding-bottom: 1rem;
+        // border-bottom: 1px solid var(--color-neutral-bg);
         gap: 2rem;
 
+        p:last-of-type{
+            &:hover{
+                border-bottom: 1px solid var(--color-neutral-2);
+                margin-bottom: -1px;
+            }
+        }
+
         p{
+            padding-bottom: 0.25rem;
             display: flex;
             gap: 0.5rem;
 
@@ -52,6 +62,45 @@
     .group-replies{
         margin-top: 1.25rem;
         padding-top: 0.5rem;
-        border-top: 1px solid var(--color-neutral-bg);
+        // border-top: 1px solid var(--color-neutral-bg);
+    }
+
+    >form{
+        padding: 0.5rem 0;
+        display: flex;
+        flex-direction: column;
+        // border-bottom: 1px solid var(--color-neutral-bg);
+        .reply-comment{
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background-color: var(--color-bg);
+            border:0;
+            color: var(--color-text);
+            resize: none;
+            min-height: 4rem;
+            font-family: Inter;
+
+            &:focus{
+                outline:none;
+            }
+        }
+
+        button{
+            margin-left:auto;
+
+            &:hover{
+                color: var(--color-bg);
+                background-color: var(--color-text);
+            }
+        }
+
+
+    }
+
+    .loadmore{
+        text-align: center;
+        font-style: italic;
+        opacity: 0.8;
     }
 }
+

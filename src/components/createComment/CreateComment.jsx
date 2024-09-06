@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import {useState } from "react";
 import "./createComment.scss"
 import { Form } from "react-router-dom";
 import TextareaAutosize from "react-textarea-autosize";
@@ -36,7 +36,6 @@ const CreateComment = ({postId}) => {
             toast.error(error.message)
         }
     })
-
 
     return (
     <Form className="create-comment" onSubmit={handleSubmit}>
