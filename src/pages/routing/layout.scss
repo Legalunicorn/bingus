@@ -15,6 +15,7 @@
 .content{
     display: flex;
     flex: 3 0 75%;
+    max-width:75%;
 
     > div:first-child{
 
@@ -25,7 +26,7 @@
         width: 60%;
     }
     > div:nth-child(2){
-        // max-width: 40%;
+        max-width: 40%;
         padding: 1rem 1.5rem;
         width: 40%; //added this and now it works
         flex:1 1 40%; // Side content, same width as nav ba r
@@ -42,6 +43,7 @@
         max-width: 600px;
     }
     .content > div:nth-child(2){
+        border: 1px solid red;
         display:none !important;
 
     }
@@ -60,7 +62,7 @@
 
     .content{
         width: 100%;
-        // border: 2px solid white;
+        border: 2px solid red;
         > div:first-child{
             padding-bottom: 8vh;
             border-left: 0;

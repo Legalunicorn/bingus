@@ -4,6 +4,8 @@
     padding: 1rem 1.5rem;
     display:flex;
     flex-direction: column;
+    max-width: 100%;
+    
 
     .post-header{
         display:flex;
@@ -38,7 +40,6 @@
     .post-body{
         padding-top: 0.75rem;
         font-weight: 350;
-        // text-wrap: nowrap;
         overflow-wrap: break-word;
 
         .post-tags{
