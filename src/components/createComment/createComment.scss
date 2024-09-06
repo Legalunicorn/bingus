@@ -1,7 +1,6 @@
 .create-comment{
     
     padding: 1rem 1.5rem;
-    // border :1px solid red;
     display: flex;
     align-items: center;
 
@@ -16,6 +15,10 @@
 
         &:disabled{
             opacity: 0.4;
+        }
+
+        &:focus{
+            border: 2px solid blue;
         }
     }
 }

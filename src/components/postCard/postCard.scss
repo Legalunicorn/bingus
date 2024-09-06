@@ -38,6 +38,8 @@
     .post-body{
         padding-top: 0.75rem;
         font-weight: 350;
+        // text-wrap: nowrap;
+        overflow-wrap: break-word;
 
         .post-tags{
             padding: 0.25rem 0;

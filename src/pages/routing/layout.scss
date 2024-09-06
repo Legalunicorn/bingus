@@ -17,8 +17,10 @@
     flex: 3 0 75%;
 
     > div:first-child{
+
         border-right: 1px solid var(--color-neutral-bg);
         border-left: 1px solid var(--color-neutral-bg);
+        // border: 5px solid gold;
         flex:3 0 60%; //main content 
         width: 60%;
     }
@@ -52,11 +54,18 @@
         width: 100vw;
         margin:0;
         flex-direction: column;
+
+
     }
 
     .content{
         width: 100%;
-        border: 2px solid white;
+        // border: 2px solid white;
+        > div:first-child{
+            padding-bottom: 8vh;
+            border-left: 0;
+            border-right:0;
+        }
     }
 
 }

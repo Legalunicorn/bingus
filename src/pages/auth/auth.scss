@@ -3,8 +3,6 @@
     src: url("../../assets/fonts/Roboto/Roboto-Medium.ttf")
 }
 .auth-page{
-    // border: 1px solid red;
-
     display:flex;
     background-color: var(--color-bg);
 
@@ -136,7 +134,6 @@
             margin-top: 0.5rem;
             width: 100%;
             max-width: 300px;
-            // border: 1px solid red;
             color:var(--color-neutral-3);
         }
     }
@@ -205,13 +202,11 @@
     }
     .input-container{
         position: relative;
-        // border: 1px solid red;
         width:100%;
         max-width: 340px;
 
         .input-icon{
             color: var(--color-neutral-3);
-            // border: 1px solid red;
             position:absolute;
             right: 10%;
             top: 30%;
@@ -243,7 +238,6 @@
 @media only screen and (max-width:680px){
 
     .auth-page div:nth-child(1){
-        border: 2px solid red;
         min-width:100vw;
     }
     .auth-page div:nth-child(2){
