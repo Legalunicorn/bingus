@@ -8,6 +8,8 @@ import PostCard from "../../components/postCard/PostCard";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import TextareaAutosize from "react-textarea-autosize";
+import ProfileInput from "./ProfileInput";
+import ProfileStats from "../../components/profileStats/ProfileStats";
 const VITE_DEFAULT_PFP = import.meta.env.VITE_DEFAULT_PFP;
 
 const EditProfile = () => {
@@ -37,6 +39,7 @@ const EditProfile = () => {
     useEffect(()=>{
         if (status==="success" && data?.user?.profile){
             const profile = data.user.profile
+            console.log("profile::",profile)
             setBio(profile.bio);
             setWebsite(profile?.website || '');
             setGithub(profile?.github || '')
@@ -84,106 +87,70 @@ const EditProfile = () => {
                                 />
                             </div>
                             <div>
-                                {editingField==="username"?
-                                    <div className="edit-input">
-                                        <input
-                                            type="text"
-                                            value={username}
-                                            onChange={(e)=>{setUsername(e.target.value)}}
-                                            required
-                                            className="input-for-edit profile-username"
-                                            maxLength="25"
-                                            minLength="2"
-                                            pattern="^[a-zA-Z0-9_.]*$"
-                                            title="Username must be alphanumeric, and may contain periods, understore, and hypens"
-                                        >
-                                        </input>
-                                        <IconCheck onClick={()=>setEditingField('')}/>
-                                    </div>
-                                    :
-                                    <div className="edit-input">
-                                    <p className="profile-username">{username}</p>
-                                    <IconEdit onClick={()=>{setEditingField('username')}}/>                                    
-                                    </div>
-                                }
-                                {editingField==="displayname"?
-                                    <div className="edit-input">
-                                    <input 
-                                        className="profile-displayname"
-                                        type="text"
-                                        value={displayname}
-                                        onChange={(e)=>{setDisplayname(e.target.value)}}
-                                        maxLength="25"
-                                    />
-                                    <IconCheck onClick={()=>setEditingField('')}/>
-                                    </div>
-                                    :
-                                    <div className="edit-input">
-                                        <p className="profile-displayname">{displayname}</p>
-                                        <IconEdit  size="16px"onClick={()=>{setEditingField('displayname')}}/> 
-                                    </div>
-                                }
-                                <div className="stats">
-                                    <div>
-                                        <p>{currUser._count.followers}</p>
-                                        <p>Followers</p>
 
-                                    </div>
-                                    <div>
-                                        <p>{currUser._count.following}</p>
-                                        <p>Following</p>
-
-                                    </div>
-                                    <div>
-                                        <p>{currUser._count.posts}</p>
-                                        <p>Posts</p>
-                                    </div>
-                                </div>
+                                <ProfileInput
+                                    fieldState={username}
+                                    fieldName='username'
+                                    editingField={editingField}
+                                    setEditingField={setEditingField}
+                                    setField={setUsername}
+                                    className="input-for-edit profile-username"
+                                    maxLength="25"
+                                    minLength="2"
+                                    pattern="^[a-zA-Z0-9_.]*$"
+                                    title="Username must be alphanumeric, and may contain periods, understore, and hypens"
+                                />
+                                <ProfileInput
+                                    fieldState={displayname}
+                                    fieldName='displayname'
+                                    editingField={editingField}
+                                    setEditingField={setEditingField}
+                                    setField={setDisplayname}
+                                    className="profile-displayname"
+                                />
+                                <ProfileStats
+                                    followers={currUser._count.followers}
+                                    following={currUser._count.following}
+                                    posts={currUser._count.posts}
+                                />
                             </div>
                         </div>
 
 
                         <div className="profile-details">
-                            <div className="edit-input">
-                                {editingField==="bio"?
-                                <>
-                                    <TextareaAutosize
-                                    cacheMeasurement
-                                        maxLength="150"
-                                        value={bio}
-                                        className="profile-bio"
-                                        onChange={(e)=>{setBio(e.target.value)}}
-                                    />
-                                    <IconCheck onClick={()=>setEditingField('')}/>
-                                </>
-                                :
-                                <>
-                                    <p className="profile-bio">{bio}</p>
-                                    <IconEdit onClick={()=>{setEditingField('bio')}}/>   
-                                </>
-                                }
-                            </div>                            
-
-                            {currUser?.profile?.website &&
-                                <div>
-                                    <IconWorld />
-                                    <a href={`//${currUser.profile.website}`} target="_blank">{currUser.profile.website}</a>
-                                </div>
-                            }
-                            {
-                                currUser?.profile?.github &&
-                                <div>
-                                    <IconBrandGithub />
-                                    <a target="_blank"
-                                        href={`//${currUser.profile.github}`}
-                                    >github</a>
-                                </div>
-                            }
+                            
+                            <ProfileInput
+                                fieldState={bio}
+                                fieldName='bio'
+                                editingField={editingField}
+                                setEditingField={setEditingField}
+                                setField={setBio}
+                                inputType={TextareaAutosize}
+                            />  
+  
+                            <ProfileInput
+                                iconName="IconWorld"
+                                fieldState={website}
+                                fieldName='website'
+                                editingField={editingField}
+                                setEditingField={setEditingField}
+                                setField={setWebsite}
+                            />                        
+                            <ProfileInput
+                                iconName="IconBrandGithub"
+                                fieldState={github}
+                                fieldName='github'
+                                editingField={editingField}
+                                setEditingField={setEditingField}
+                                setField={setGithub}
+                            />
                             
                         </div>
                         <button 
                             className="save-changes"
-                        >Save Changes</button>
+                        >
+                            Save Changes
+                        </button>
                         <div className="profile-posts">
                             <p>Posts</p>
                             {currUser.posts.map(post => (
@@ -198,7 +165,7 @@ const EditProfile = () => {
 
                 }
             </div>
-            <div> //side
+            <div>
                 side_contents
             </div>
         </div>

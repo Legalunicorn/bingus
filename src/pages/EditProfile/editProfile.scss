@@ -29,8 +29,15 @@
     }
 
     .save-changes{
+        font-family: Alata;
+        font-weight: bold;
         margin: 0.5rem 1rem;
-        border-radius: 0.3rem;
+        border-radius: 0.5rem;
+
+        &:hover{
+            color: var(--color-bg);
+            background-color: var(--color-text);
+        }
     }
 
     .edit-input{
@@ -50,6 +57,7 @@
         border: 1px solid var(--color-neutral-2);
         border-radius: 0.2rem;
         padding: 0.25rem;
+        width: 90%;
         max-width: 90%;
 ;
 

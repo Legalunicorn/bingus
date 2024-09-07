@@ -5,6 +5,7 @@ import { useFetch } from "../../hooks/useFetch";
 import { IconBrandGithub, IconWorld } from "@tabler/icons-react";
 import PostCard from "../../components/postCard/PostCard";
 import BackNav from "../../components/backNav/BackNav"
+import ProfileStats from "../../components/profileStats/ProfileStats";
 const VITE_DEFAULT_PFP = import.meta.env.VITE_DEFAULT_PFP;
 
 const UserProfile = () => {
@@ -54,22 +55,11 @@ const UserProfile = () => {
                             <div>
                                 <p className="profile-username">{user.username}</p>
                                 <p className="profile-displayname">{user.displayName}</p>
-                                <div className="stats">
-                                    <div>
-                                        <p>{user._count.followers}</p>
-                                        <p>Followers</p>
-
-                                    </div>
-                                    <div>
-                                        <p>{user._count.following}</p>
-                                        <p>Following</p>
-
-                                    </div>
-                                    <div>
-                                        <p>{user._count.posts}</p>
-                                        <p>Posts</p>
-                                    </div>
-                                </div>
+                                <ProfileStats
+                                    followers={user._count.followers}
+                                    following={user._count.following}
+                                    posts={user._count.posts}
+                                />
                                 {user.isBeingFollowed?
                                     <button >Unfollow</button>:
                                     <button >Follow</button>
