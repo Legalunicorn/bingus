@@ -9,6 +9,12 @@ export const authReducer = (state,action) =>{
         case 'LOGOUT':{
             return {user:null}
         }
+        case 'UPDATE':{
+            return {user:{
+                ...state.user,
+                ...action.payload
+            }}
+        }
         default:
             state; //no changes
     }

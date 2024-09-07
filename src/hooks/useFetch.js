@@ -5,8 +5,9 @@ const API_URL = import.meta.env.VITE_API_URL;
 export function useFetch(url,options={},content_type="application/json"){
     const {user} = useAuthContext();
 
-    const handleFetch = async (url,options={}) =>{
-        // console.log("INSIDE ARE: ",options);
+    const handleFetch = async (url,options={},content_type) =>{
+        console.log("INSIDE ARE: ",options);
+        console.log("content type is: ",content_type)
         // console.log("URL IS",API_URL+url)
 
         const response = await fetch(API_URL+url,{

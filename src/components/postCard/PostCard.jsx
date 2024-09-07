@@ -14,9 +14,9 @@ const PostCard = ({ //TODO decide if i should reuse this for the post page
     //BUG
     const navigate = useNavigate();
 
-    if (post.attachment){
-        console.log(post.public_id);
-    }
+    // if (post.attachment){
+    //     console.log(post.public_id);
+    // }
 
 
     //TODO identify whether the user has liked this post before or not

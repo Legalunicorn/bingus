@@ -34,9 +34,17 @@
         margin: 0.5rem 1rem;
         border-radius: 0.5rem;
 
-        &:hover{
+        &:hover:enabled{
             color: var(--color-bg);
             background-color: var(--color-text);
+        }
+
+        &:disabled{
+            opacity: 0.4;
+
+            &:hover{
+
+            }
         }
     }
 

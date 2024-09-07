@@ -1,24 +1,24 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import "./editProfile.scss"
 import { useFetch } from "../../hooks/useFetch";
 import BackNav from "../../components/backNav/BackNav";
-import { IconBrandGithub, IconCheck, IconEdit, IconSquareRoundedCheck, IconWorld } from "@tabler/icons-react";
+import { IconEdit } from "@tabler/icons-react";
 import PostCard from "../../components/postCard/PostCard";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import TextareaAutosize from "react-textarea-autosize";
 import ProfileInput from "./ProfileInput";
 import ProfileStats from "../../components/profileStats/ProfileStats";
-const VITE_DEFAULT_PFP = import.meta.env.VITE_DEFAULT_PFP;
 
 const EditProfile = () => {
     const MAX_FILE_SIZE = 1024*1024*6;
-    const {user} = useAuthContext();
+    const {user,dispatch} = useAuthContext();
     const myFetch = useFetch('/');
+    const queryClient = useQueryClient();
 
     //States for all the editables
-    const [attachment,setAttachment] = useState(user.profilePicture); //when they pick a new username
+    const [attachment,setAttachment] = useState(null); //when they pick a new username
     const attachmentRef = useRef(null);
     const [editingField,setEditingField] = useState(); //ENUM: username,bio,website,github,displayName
     const [username,setUsername] = useState(user.username);
@@ -29,38 +29,93 @@ const EditProfile = () => {
     
 
     const fetchUser = async ()=>{
-        return await myFetch(`/users/profile/${user.id}`)
+        return await myFetch(`/users/self/${user.id}`,{
+            cache:"no-store"
+        })
     }
+    const fetchUpdateUser = async(data)=>{
+        return await myFetch(`/users/${user.id}/profile`,{
+            method:"PATCH",
+            body:data
+        })
+    }
+
+    const handleUpdateUser = async()=>{
+        setEditingField("")
+        const data = new FormData();
+        data.append("username",username)
+        data.append("displayname",displayname)
+        data.append("bio",bio)
+        data.append("website",website)
+        data.append("github",github)
+        if (attachment!=user.profilePicture){
+            data.append("attachment",attachmentRef.current.files[0])
+        }
+        updateUserMutation.mutate(data)
+
+        // return await myFetch(`/users/${user.id}/profile`,{
+        //     method:"PATCH",
+        //     body:data
+        // },'isForm')
+    }
+
+    const updateUserMutation = useMutation({
+        mutationFn:(variables)=>{
+            return fetchUpdateUser(variables)
+        },
+        onSuccess:(newData)=>{
+            toast.success("Profile Updated!")
+            queryClient.invalidateQueries('posts','profile')
+            queryClient.invalidateQueries('feed')
+            //Update user context //TODO
+            dispatch({type:"UPDATE",payload:{
+                username,
+                profilePicture:newData.user.profile.profilePicture
+            }})
+
+        },
+        onError:(error)=>{
+            console.log(error);
+            queryClient.invalidateQueries('posts','profile')
+            toast.error(error.message);
+        }
+    })
 
     const {data,error,isPending,status} = useQuery({
         queryKey:['posts','profile'], //mutate this when new post is created, as well as when profile mutated
         queryFn: fetchUser
     })
+
+
     useEffect(()=>{
         if (status==="success" && data?.user?.profile){
             const profile = data.user.profile
-            console.log("profile::",profile)
+            // console.log("profile::",profile)
+            setAttachment(profile.profilePicture)
             setBio(profile.bio);
             setWebsite(profile?.website || '');
             setGithub(profile?.github || '')
             setDisplayname(data.user.displayName)
-            //ProfilePicture + Username is already set 
         }
     },[status])
     const onChangeAttachment = (e)=>{
         if (e.target.files && e.target.files[0]){
             if (e.target.files[0].size>MAX_FILE_SIZE){
-                toast.warm("File exceed 6mb");
+                toast.warn("File exceed 6mb");
             } else {
                 setAttachment(URL.createObjectURL(e.target.files[0]));
             }
         }
     }
+    
 
 
     // Render 
     if (isPending) return(<>hi</>);
     const currUser = data.user;
+    // console.log("Random check:");
+    // console.log(attachment)
+    // console.log(currUser.profile.profilePicture)
     // console.log(data.user)
     return (
         <div className="content user-profile-page self-profile">
@@ -147,7 +202,9 @@ const EditProfile = () => {
                             
                         </div>
                         <button 
+                            disabled={updateUserMutation.isPending}
                             className="save-changes"
+                            onClick={handleUpdateUser}
                         >
                             Save Changes
                         </button>
