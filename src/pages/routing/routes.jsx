@@ -9,6 +9,7 @@ import SetUsername from "../auth/SetUsername"
 import CreatePost from "../createPost/CreatePost"
 import ViewPost from "../viewPost/ViewPost"
 import UserProfile from "../userProfile/UserProfile"
+import EditProfile from "../EditProfile/EditProfile"
 // import
 
 
@@ -87,6 +88,10 @@ const router = createBrowserRouter([
                     {
                         path:"users/:userId",
                         element:<UserProfile/>
+                    },
+                    {
+                        path:"view-profile",
+                        element: <EditProfile/>
                     },
                     {
                         path:"create",

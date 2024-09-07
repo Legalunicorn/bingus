@@ -8,6 +8,8 @@ import "./layout.scss"
 //page -> side bar + content
 
 export default function Layout () {
+
+    //Load this first
     return (
         <>
             {/* eveyrthing */}

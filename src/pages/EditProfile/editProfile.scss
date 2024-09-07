@@ -1,0 +1,71 @@
+
+.self-profile{
+    .profile-main{
+        .editable-pfp{
+            max-width:30%;
+            // border: 1px solid lime;
+            position: relative;
+
+            img{
+                // border: 2px solid red;
+                width: 100%;
+            }
+        
+            svg{ //editicon; 
+                background-color: black;
+                border-radius: 50%;
+                padding:0.2rem;
+                position: absolute;
+                left:0;
+                top: 75%;
+                left: 75%;
+            }
+        
+            input{
+                display: none;
+            }
+
+        }
+    }
+
+    .save-changes{
+        margin: 0.5rem 1rem;
+        border-radius: 0.3rem;
+    }
+
+    .edit-input{
+        // border: 1px solid red;
+        display: flex;
+        max-width: 100%;
+        text-overflow: ellipsis;
+        svg:hover{
+            opacity:0.5;
+        }
+    }
+
+    input,textarea{
+        font-family: Inter,Arial, Helvetica, sans-serif;
+        color: var(--color-text);
+        background-color: var(--color-bg);
+        border: 1px solid var(--color-neutral-2);
+        border-radius: 0.2rem;
+        padding: 0.25rem;
+        max-width: 90%;
+;
+
+        &:focus{
+            outline:none;
+            // outline: 1px solid var(--color-primary);
+        }
+    }
+
+    textarea{
+        width: 100%;
+        resize: none;
+        font-size: 1rem;
+        // border-radius: 2rem;
+        padding: 0.5rem;
+        height: 1rem;
+        // min-height: 2rem;
+    }
+}

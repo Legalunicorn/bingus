@@ -4,33 +4,46 @@
     .profile-main{
         display: flex;
         padding: 1.5rem 1rem;
-        gap: 3rem;
+        gap: 1rem;
         font-size: 1.1rem;
+        align-items: center;
         
         img{
             
             // width: clamp(45%,45%,300px);
-            width: 45%;
+            object-fit: cover;
+            width: 30%;
             height: fit-content;
             aspect-ratio: 1 !important;
             border-radius: 50%;
             border: 2px solid var(--color-neutral-bg);
         }
-        >div{
-            width: 55%;
-            // border: 1px solid red;
+        >div:last-of-type{
+            width: 70%;
+            padding-left : 1rem;
             margin-left:auto;
             margin-right: auto;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             // gap:1.5rem;
 
-            >p:nth-of-type(1){
+            .profile-username{
+                text-align: center;
+                max-width: 100%;
                 font-weight: bold;
-                font-size: 2rem;
+                font-size: 1.2rem;
+                overflow-wrap:break-word;
+                text-overflow: ellipsis;
+                // border: 1px solid red;
+                
             }
-            >p:nth-of-type(2){
+            .profile-displayname{
+                max-width: 100%;
+                text-align: center;
+                overflow-wrap:break-word;
+                // text-overflow: ellipsis;
                 color: var(--color-neutral-1);
             }
 
@@ -45,10 +58,14 @@
                     font-weight: bold;
                     text-align: center;
                 }
+                >div>p:nth-child(2){
+                    font-size: 0.95rem;
+                }
  
             }
             button{
-                max-width: 90%;
+                width: 70%;
+                // width: fit-content;
 
                 &:hover{
                     background-color: var(--color-neutral-1);
@@ -77,6 +94,14 @@
             }
 
         }
+
+        .profile-bio,.profile-website,.profile-github{
+            // border: 1px solid red;
+            max-width: 90%;
+            overflow-wrap: break-word;
+        }
+
+ 
     }
 
     .profile-posts{

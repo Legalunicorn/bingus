@@ -28,7 +28,8 @@ const UserProfile = () => {
         queryFn: getUser
     })
 
-    if (isPending) return (<>hi</>)
+    if (isPending) return (<>hi</>);
+    console.log("data is",data);
     const { user } = data; //for easier 
     console.log(user)
     // const {user} =test;
