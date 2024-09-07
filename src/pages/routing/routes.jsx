@@ -8,6 +8,7 @@ import Signup from "../auth/Signup"
 import SetUsername from "../auth/SetUsername"
 import CreatePost from "../createPost/CreatePost"
 import ViewPost from "../viewPost/ViewPost"
+import UserProfile from "../userProfile/UserProfile"
 // import
 
 
@@ -82,6 +83,10 @@ const router = createBrowserRouter([
                     {
                         path:"posts/:postId",
                         element: <ViewPost/>
+                    },
+                    {
+                        path:"users/:userId",
+                        element:<UserProfile/>
                     },
                     {
                         path:"create",

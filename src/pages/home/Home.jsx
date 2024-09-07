@@ -25,11 +25,13 @@ const Home = () => {
         queryFn: ()=>myFetch("/init",{},user)
     })
     
-    if (feedQuery.isLoading) return ("loading") //TODO create a proper loading
-    if (feedQuery.error) return ("error") //TODO proper error
+    if (feedQuery.isLoading) return (
+        <div className="content"><p>loading</p></div> //TODO fix the loading page widths and stuff 
+    )
+    // if (feedQuery.error) return ("error") //TODO proper error
 
     const {new_post,new_follower_posts,new_users,top_users} = feedQuery.data;
-    console.log("?",feedQuery.data)
+    // console.log("?",feedQuery.data)
 
     return (
         <div className="content" id="home-page">

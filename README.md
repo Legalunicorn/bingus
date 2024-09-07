@@ -16,6 +16,10 @@
     functional
 
 
+//BUGS
+1. navigate(-1) will bring the user to a whole differen domain if the user was on a different website and access a page that has a backNav button
+
+
 
 //TODO -> alot of refactoring to do for all auth pages
 //the style file is one super long speghetti code

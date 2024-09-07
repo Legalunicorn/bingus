@@ -22,8 +22,9 @@ const Header = () => {
                 <span className="test">10</span>
 
             </div>
+            <img src={user.profilePicture} alt="profile_picture" />
 
-            <img src="https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/b589cd15-608d-412c-86d7-f6c2fe162924/width=450/3917845.jpeg" alt="" />
+            {/* <img src="https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/b589cd15-608d-412c-86d7-f6c2fe162924/width=450/3917845.jpeg" alt="" /> */}
         </div>
     );
 }

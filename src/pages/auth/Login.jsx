@@ -26,12 +26,21 @@ const Login = () => {
         // }
         const tokenParam = searchParams.get("token");
         const userParam = searchParams.get("username")
+        const idParam = searchParams.get("id");
+        const profilePictureParam = searchParams.get("profilePicture")
         console.log(tokenParam,userParam,"hi")
-        if (tokenParam && userParam){
-            console.log(tokenParam)
-            console.log(userParam)
-            dispatch({type:"LOGIN",payload:{token:tokenParam,username:userParam}})
-            localStorage.setItem("user",JSON.stringify({token:tokenParam,username:userParam}))
+        if (tokenParam && userParam && idParam && profilePictureParam){ //as long as one is present we can do this
+            const payload = {
+                token:tokenParam,
+                username:userParam,
+                id:idParam,
+                profilePicture: profilePictureParam
+            }
+            //DONE
+            dispatch({type:"LOGIN",payload:payload})
+            localStorage.setItem("user",JSON.stringify(payload))
+
+            //localStorage -> auth persistence, 
             navigate("/p/home")
 
         }
@@ -49,13 +58,14 @@ const Login = () => {
                     password:e.target.password.value
                 })
             })
-            //will automatically throw error if !response.ok
-            //so anything here any below should be response ok 
-            // check first
-            // console.log(data);
-            const {token,username} = data; //from the server
-            dispatch({type:"LOGIN",payload:{token,username}})
-            localStorage.setItem('user',JSON.stringify({token,username}))
+
+            //DONE
+            // const {token,username,id,profilePicture} = data; //from the server
+            // data will have 1.token,2.username,3.id, 4.profilepciue
+            // dispatch({type:"LOGIN",payload:{token,username}})
+            // localStorage.setItem('user',JSON.stringify({token,username}))
+            dispatch({type:'LOGIN',payload:data}) //username, id , profilepicture, token
+            localStorage.setItem('user',JSON.stringify(data))
             navigate("/p/home")
         } catch(err){
             console.log(err);

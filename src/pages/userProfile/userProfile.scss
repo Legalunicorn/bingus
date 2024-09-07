@@ -1,0 +1,95 @@
+.user-profile-page{
+    // max-width: 100%;
+
+    .profile-main{
+        display: flex;
+        padding: 1.5rem 1rem;
+        gap: 3rem;
+        font-size: 1.1rem;
+        
+        img{
+            
+            // width: clamp(45%,45%,300px);
+            width: 45%;
+            height: fit-content;
+            aspect-ratio: 1 !important;
+            border-radius: 50%;
+            border: 2px solid var(--color-neutral-bg);
+        }
+        >div{
+            width: 55%;
+            // border: 1px solid red;
+            margin-left:auto;
+            margin-right: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            // gap:1.5rem;
+
+            >p:nth-of-type(1){
+                font-weight: bold;
+                font-size: 2rem;
+            }
+            >p:nth-of-type(2){
+                color: var(--color-neutral-1);
+            }
+
+            .stats{
+                margin: 1rem 0;
+                // border: 1px solid orange;
+                display: flex;
+                justify-content:flex-start;
+                gap: 2vw;
+                // >div>p:nth-child(2)
+                >div>p:nth-child(1){
+                    font-weight: bold;
+                    text-align: center;
+                }
+ 
+            }
+            button{
+                max-width: 90%;
+
+                &:hover{
+                    background-color: var(--color-neutral-1);
+                    color: var(--color-bg);
+                }
+            }
+        }
+    }
+
+    .profile-details{
+        padding: 1.5rem 1rem;
+        display:flex;
+        flex-direction: column;
+        gap:0.5rem;
+
+        >div{
+            display: flex;
+            gap:0.5rem;
+            a{
+                text-decoration: none;
+                color:var(--color-text);
+
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+
+        }
+    }
+
+    .profile-posts{
+        display: flex;
+        flex-direction: column;
+        >p:first-child{
+            margin-left:auto;
+            margin-right: auto;
+            padding: 0.25rem 3rem;
+            text-align: center;
+            border-bottom: 2px solid var(--color-neutral-2);
+        }
+    }
+
+
+}

@@ -31,7 +31,7 @@ const PostCard = ({ //TODO decide if i should reuse this for the post page
                 <img  src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg" alt="" />
                 }
                 
-                <span>{post.author.username}</span>
+                <span onClick={(e)=>{e.stopPropagation();navigate(`/p/users/${post.author.id}`)}}>{post.author.username}</span>
                 <span>•</span>
                 <span>{written_time} ago</span>
             </div>

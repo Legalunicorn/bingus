@@ -67,10 +67,13 @@ const SetUsername = () => {
             },temp)
 
             setDisabled(false);
-            const r_token = data.token; //have to use r_token because i used token already
-            const username = data.username;
-            dispatch({type:"LOGIN",payload:{token:r_token,username}});
-            localStorage.setItem("user",JSON.stringify({token,username}))
+            // const r_token = data.token; //have to use r_token because i used token already
+            // const username = data.username;
+            // dispatch({type:"LOGIN",payload:{token:r_token,username}});
+            // localStorage.setItem("user",JSON.stringify({token,username}))
+            //DONE
+            dispatch({type:'LOGIN',payload:data})
+            localStorage.setItem("user",JSON.stringify(data))
             navigate("/p/home")
 
 

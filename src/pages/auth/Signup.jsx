@@ -45,9 +45,12 @@ const Signup = () => {
                 })
             })
             console.log(data);
-            let {token,username} = data;
-            dispatch({type:"LOGIN",payload:{token,username}})
-            localStorage.setItem("user",JSON.stringify({token,username}))
+            // let {token,username} = data;
+            // dispatch({type:"LOGIN",payload:{token,username}})
+            // localStorage.setItem("user",JSON.stringify({token,username}))
+            //DONE
+            dispatch({type:"LOGIN",payload:data})
+            localStorage.setItem("user",JSON.stringify(data))
             navigate("/p/home")
 
         } catch(err){
