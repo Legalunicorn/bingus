@@ -14,7 +14,7 @@ import ProfileStats from "../../components/profileStats/ProfileStats";
 const EditProfile = () => {
     const MAX_FILE_SIZE = 1024*1024*6;
     const {user,dispatch} = useAuthContext();
-    const myFetch = useFetch('/');
+    const myFetch = useFetch();
     const queryClient = useQueryClient();
 
     //States for all the editables
@@ -37,7 +37,7 @@ const EditProfile = () => {
         return await myFetch(`/users/${user.id}/profile`,{
             method:"PATCH",
             body:data
-        })
+        },false)
     }
 
     const handleUpdateUser = async()=>{

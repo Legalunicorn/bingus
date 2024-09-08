@@ -5,14 +5,17 @@ const API_URL = import.meta.env.VITE_API_URL;
 export function useFetch(url,options={},content_type="application/json"){
     const {user} = useAuthContext();
 
-    const handleFetch = async (url,options={},content_type) =>{
+    const handleFetch = async (url,options={},content_type=true) =>{
         console.log("INSIDE ARE: ",options);
         console.log("content type is: ",content_type)
         // console.log("URL IS",API_URL+url)
 
         const response = await fetch(API_URL+url,{
                 headers:{
-                    ...(content_type?{"Content-Type":content_type}:{}),
+                    ...(content_type?{"Content-Type":'application/json'}:{}), 
+
+                    //if there is a content type we set it to null
+                    //if there is no content type
                     ...(user? {"Authorization":`Bearer ${user.token}`}:{})
                 },
                 mode:"cors",

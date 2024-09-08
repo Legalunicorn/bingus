@@ -56,7 +56,7 @@ const Home = () => {
                     <PostCard
                         key={post.id}
                         post={post}
-                        // handleClick={()=>handleClick(post.id)}
+                        handleClick={()=>handleClick(post.id)}
                     />
                 ))
                 }

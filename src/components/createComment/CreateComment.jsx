@@ -16,6 +16,7 @@ const CreateComment = ({postId}) => {
 
     const handleSubmit =(e)=>{
         e.preventDefault(); //TODO check if i really need this
+        console.log("sending over comment:",comment);
         createCommentMutation.mutate() //prom props
     }
 
