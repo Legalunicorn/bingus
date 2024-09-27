@@ -65,8 +65,10 @@ const EditProfile = () => {
         },
         onSuccess:(newData)=>{
             toast.success("Profile Updated!")
-            queryClient.invalidateQueries('posts','profile')
-            queryClient.invalidateQueries('feed')
+            //Invalidate posts that show user Data
+            queryClient.invalidateQueries('post')
+            // queryClient.invalidateQueries('posts','profile')
+            // queryClient.invalidateQueries('feed')
             //Update user context //TODO
             dispatch({type:"UPDATE",payload:{
                 username,
@@ -76,13 +78,14 @@ const EditProfile = () => {
         },
         onError:(error)=>{
             console.log(error);
-            queryClient.invalidateQueries('posts','profile')
+            //Why did i do this??? //TODO remove if not needed
+            // queryClient.invalidateQueries('posts','profile')
             toast.error(error.message);
         }
     })
 
     const {data,error,isPending,status} = useQuery({
-        queryKey:['posts','profile'], //mutate this when new post is created, as well as when profile mutated
+        queryKey:['post','profile'], //mutate this when new post is created, as well as when profile mutated
         queryFn: fetchUser
     })
 
@@ -215,6 +218,7 @@ const EditProfile = () => {
                                     key={post.id}
                                     post={post}
                                     handleClick={() => (navigate(`/p/posts/${post.id}`))}
+                                    pageQueryKey={['post','profile']}
                                 />
                             ))}
                         </div>

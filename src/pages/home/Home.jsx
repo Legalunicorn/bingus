@@ -21,8 +21,8 @@ const Home = () => {
 
 
     const feedQuery = useQuery({
-        queryKey:['feed'],
-        queryFn: ()=>myFetch("/init",{},user)
+        queryKey:['feed','post'],
+        queryFn: ()=>myFetch("/init",{},user) //
     })
     
     if (feedQuery.isLoading) return (
@@ -31,7 +31,8 @@ const Home = () => {
     // if (feedQuery.error) return ("error") //TODO proper error
 
     const {new_post,new_follower_posts,new_users,top_users} = feedQuery.data;
-    // console.log("?",feedQuery.data)
+    
+    console.log("?",feedQuery.data.new_post[0]._count)
 
     return (
         <div className="content" id="home-page">
@@ -47,6 +48,7 @@ const Home = () => {
                         key={post.id}
                         post={post}
                         handleClick={()=>handleClick(post.id)}
+                        pageQueryKey={['feed','post']}
                        
             
                     />
@@ -57,6 +59,7 @@ const Home = () => {
                         key={post.id}
                         post={post}
                         handleClick={()=>handleClick(post.id)}
+                        pageQueryKey={['feed','post']}
                     />
                 ))
                 }

@@ -6,8 +6,8 @@ export function useFetch(url,options={},content_type="application/json"){
     const {user} = useAuthContext();
 
     const handleFetch = async (url,options={},content_type=true) =>{
-        console.log("INSIDE ARE: ",options);
-        console.log("content type is: ",content_type)
+        // console.log("INSIDE ARE: ",options);
+        // console.log("content type is: ",content_type)
         // console.log("URL IS",API_URL+url)
 
         const response = await fetch(API_URL+url,{

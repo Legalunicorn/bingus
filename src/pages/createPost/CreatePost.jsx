@@ -102,7 +102,7 @@ const CreatePost = () => {
         },
         onSuccess: ()=>{
             toast.success("Post created")
-            queryClient.invalidateQueries(["feed"],{exact:true}) //refresh the feed
+            queryClient.invalidateQueries(["feed"]) //refresh the feed
             navigate("/p/home")
         },
         onError:(error,variables,context)=>{

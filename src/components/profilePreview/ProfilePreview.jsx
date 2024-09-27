@@ -6,7 +6,7 @@ const ProfilePreview = ({
     user 
 }) => {
     //TODO onclick for follow unfollow users
-    console.log(user)
+    // console.log(user)
     return (
         <div className="profile-preview-card">
             {user.profile && user.profile?.profilePicture ?

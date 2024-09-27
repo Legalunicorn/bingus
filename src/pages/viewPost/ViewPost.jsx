@@ -22,13 +22,14 @@ const ViewPost = () => {
     //TODO fi
 
     const {post} = postQuery.data;
-    console.log(post)
+    console.log(post._count) //
     return (
         <div className="content view-post">
             <div>
                 <BackNav label="Post"/>
                 <PostCard
                     post={post}
+                    pageQueryKey={["post",postId]}
                 />
                 <CreateComment
                     postId={post.id}

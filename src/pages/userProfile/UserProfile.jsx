@@ -25,14 +25,15 @@ const UserProfile = () => {
         isError,
         isPending
     } = useQuery({
-        queryKey: ['user', userId],
+        queryKey: ['user', userId,"post"], //Post for invalidate Liking
         queryFn: getUser
     })
 
     if (isPending) return (<>hi</>);
     console.log("data is",data);
+    //TODO 
     const { user } = data; //for easier 
-    console.log(user)
+    console.log("user prof",user)
     // const {user} =test;
 
 
@@ -97,6 +98,7 @@ const UserProfile = () => {
                                     key={post.id}
                                     post={post}
                                     handleClick={() => (navigate(`/p/posts/${post.id}`))}
+                                    pageQueryKey={['user', userId,"post"]}
                                 />
                             ))}
                         </div>
