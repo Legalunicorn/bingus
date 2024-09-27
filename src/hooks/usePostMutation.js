@@ -19,7 +19,6 @@ const usePostMutation = (post,queryKey) =>{
             console.log("No prev");
             return;
         }
-        //this is slightly complicated. how about i use the querykey to directly call the update function 
         //############### Home Feed ###############
         if (prev.new_post && prev.new_follower_posts) {
             return {
@@ -28,7 +27,7 @@ const usePostMutation = (post,queryKey) =>{
                 new_follower_posts: prev.new_follower_posts.map(updatePost)
             }
         }
-        //############### Profile feed || Edit Profile (same structure) ###############
+        //############### Profile feed || Edit Profile  ############### (same structure)
         if (prev.user && prev.user.posts){ //Profile Feed
             return {
                 ...prev,
@@ -66,39 +65,55 @@ const usePostMutation = (post,queryKey) =>{
             //roll back if needed
 
         },
-        onSettled:()=>{
+        onSettled:  ()=>{
             //invalidate all queries with posts using the 'post' key word
-            console.log("INvaliding : ",queryKey)
+            // console.log("Invalidating : ",queryKey)
             //I have no idea why this works
             //just dont touch it i guess? for some reason both invalite and refetch is needed
             //very messgyt
-            
-            queryClient.invalidateQueries(queryKey); //
+            // queryClient.invalidateQueries(queryKey); //
+            console.log(queryKey)
+            // setTimeout(()=>{
+            //     queryClient.invalidateQueries(queryKey)
+            // },5)
             queryClient.refetchQueries(queryKey); //
+            console.log("First refetch",queryClient.getQueryData(queryKey))
+            // queryClient.refetchQueries(queryKey); //
+            // console.log("Second refetch",queryClient.getQueryData(queryKey))
         }
+
+        /**
+         * click on like button
+         * - cache munually updated
+         * 
+         * what is going on? som
+         */
         
     })
 
     // #1 layer being called 
     const likePost  = createMutation( //takes in mutationFn, updateFn
-        ()=>{myFetch(`/posts/${post.id}/like`,{method:"POST"})},
+        //README massive bug that took me 2 days to solve
+        // i wrapped my myFetch in curly braces, and so it was NOT RETURNED
+        //For some reason this caused the onSettled to run even when the mutation is NOT DONE
+        // because the return is void, and return is immediately undefined
+        // useMutation calls onSettled 
+        // query get refetches
+        ()=>myFetch(`/posts/${post.id}/like`,{method:"POST"}),
         (post)=>({
             ...post,
             likes:[true],
-            _count:{...post._count,likes:post._count.likes+1}
+            _count:{...post._count,likes:post._count.likes+11}
         })
 
     )
 
     const unlikePost  = createMutation( //takes in mutationFn, updateFn
-        ()=>{
-            
-            myFetch(`/posts/${post.id}/unlike`,{method:"POST"})
-        },
+        ()=> myFetch(`/posts/${post.id}/unlike`,{method:"POST"}),
         (post)=>({
             ...post,
             likes:[],
-            _count:{...post._count,likes:post._count.likes-1}
+            _count:{...post._count,likes:post._count.likes-11}
         })
 
     )
