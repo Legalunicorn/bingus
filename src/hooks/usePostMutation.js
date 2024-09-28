@@ -6,6 +6,9 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import {useFetch} from "./useFetch"
 
 const usePostMutation = (post,queryKey) =>{
+
+    //Todo -> Update Post Mutation, delet epost mutation
+
     //both are passed from the post card
 
 
@@ -66,18 +69,8 @@ const usePostMutation = (post,queryKey) =>{
 
         },
         onSettled:  ()=>{
-            //invalidate all queries with posts using the 'post' key word
-            // console.log("Invalidating : ",queryKey)
-            //I have no idea why this works
-            //just dont touch it i guess? for some reason both invalite and refetch is needed
-            //very messgyt
-            // queryClient.invalidateQueries(queryKey); //
-            console.log(queryKey)
-            // setTimeout(()=>{
-            //     queryClient.invalidateQueries(queryKey)
-            // },5)
-            queryClient.refetchQueries(queryKey); //
-            console.log("First refetch",queryClient.getQueryData(queryKey))
+            queryClient.invalidateQueries(queryKey); //
+            // console.log("First refetch",queryClient.getQueryData(queryKey))
             // queryClient.refetchQueries(queryKey); //
             // console.log("Second refetch",queryClient.getQueryData(queryKey))
         }
@@ -103,7 +96,7 @@ const usePostMutation = (post,queryKey) =>{
         (post)=>({
             ...post,
             likes:[true],
-            _count:{...post._count,likes:post._count.likes+11}
+            _count:{...post._count,likes:post._count.likes+1}
         })
 
     )
@@ -113,7 +106,7 @@ const usePostMutation = (post,queryKey) =>{
         (post)=>({
             ...post,
             likes:[],
-            _count:{...post._count,likes:post._count.likes-11}
+            _count:{...post._count,likes:post._count.likes-1}
         })
 
     )

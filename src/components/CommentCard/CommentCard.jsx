@@ -1,14 +1,14 @@
 import { formatDistanceToNowStrict } from "date-fns";
 import "./commentCard.scss"
-import { IconHeart, IconMessage, IconMessages } from "@tabler/icons-react";
+import { IconHeart, IconHeartFilled, IconMessage, IconMessages } from "@tabler/icons-react";
 import { useState,Fragment } from "react";
 import { useFetch } from "../../hooks/useFetch";
 import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import ReplyCard from "../ReplyCard/ReplyCard";
 const VITE_DEFAULT_PFP = import.meta.env.VITE_DEFAULT_PFP;
 import { Form } from "react-router-dom";
-import { useAuthContext } from "../../hooks/useAuthContext";
 import TextareaAutosize from "react-textarea-autosize";
+import useCommentMutation from "../../hooks/useCommentMutation";
 
 
 /*
@@ -26,6 +26,7 @@ const CommentCard = ({comment,postId}) => {
     const [showInput,setShowInput] = useState(false);
     const [input,setInput] = useState('');
     const queryClient = useQueryClient();
+    const {likeComment,unlikeComment} = useCommentMutation(comment,postId);
     //TODO differentiate between show replies and show more
 
     const myFetch = useFetch();
@@ -104,9 +105,30 @@ const CommentCard = ({comment,postId}) => {
             </div>
             <p className="comment-body">{comment.body}</p>
             <div className="comment-buttons">
-                <p>
-                    <IconHeart/> {comment._count.likes}
-                </p>
+                {comment.likes.length>0?
+                    <p>
+                        <IconHeartFilled
+                            className="red-heart"
+                            onClick={(e)=>{
+                                e.stopPropagation();
+                                unlikeComment.mutate();
+
+                            }}
+                        />
+                        {comment._count.likes}
+                    </p>:
+                    <p>
+                        <IconHeart
+                            
+                            onClick={(e)=>{
+                                e.stopPropagation();
+                                likeComment.mutate();
+
+                            }}
+                        />
+                        {comment._count.likes}
+                    </p>                  
+                }
 
                 {comment.childComment.length>0? 
                     showReplies?
