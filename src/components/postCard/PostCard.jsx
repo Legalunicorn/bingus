@@ -10,9 +10,7 @@ const PostCard = ({
     pageQueryKey,
 }) => {
     const written_time = formatDistanceToNowStrict(new Date(post.createdAt));
-    // const queryClient = useQueryClient();
     const queryKey = pageQueryKey || ['feed'];
-    // const myFetch = useFetch();
     const {likePost,unlikePost} = usePostMutation(post,queryKey);
     const navigate = useNavigate(); //BUG go external pages
     return (

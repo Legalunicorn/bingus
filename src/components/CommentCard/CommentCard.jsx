@@ -26,7 +26,7 @@ const CommentCard = ({comment,postId}) => {
     const [showInput,setShowInput] = useState(false);
     const [input,setInput] = useState('');
     const queryClient = useQueryClient();
-    const {likeComment,unlikeComment} = useCommentMutation(comment,postId);
+    // const {likeComment,unlikeComment} = useCommentMutation(comment,postId);
     //TODO differentiate between show replies and show more
 
     const myFetch = useFetch();
@@ -81,12 +81,14 @@ const CommentCard = ({comment,postId}) => {
         status,
         refetch
     } = useInfiniteQuery({
-        queryKey:['replies',comment.id],
+        queryKey:['replies',comment.id], //this is PARENt COMMENT ID
         queryFn: fetchReplies,
         initialPageParam: -1,
         getNextPageParam: (prevData)=>prevData.cursorId,
-        enabled:false
+        enabled:false,
     })
+    // console.log("type",typeof refetch);
+    const {likeComment,unlikeComment} = useCommentMutation(comment,postId);
     if (status=='error') console.log(error); //TODO clean up
     if (status=='error') return (<p>{error.message}</p>)
 
@@ -175,6 +177,7 @@ const CommentCard = ({comment,postId}) => {
                                 <ReplyCard
                                     comment={reply}
                                     key={reply.id}
+                                    refetch={refetch}
                                 />
                             ))}
                         </Fragment>

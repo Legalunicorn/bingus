@@ -3,42 +3,44 @@
 import {useMutation, useQueryClient} from "@tanstack/react-query"
 import { useFetch } from "./useFetch"
 
-
-//Comments wuery only exist in one query for now
-//this is within the post
-
-/**
- * Strictly for comment cards, reply cards will have their seperate functions 
- * @param {*} comment -> props from comment card
- * @param {*} postId 
- * @returns 
- */
-const useCommentMutation = (comment,postId) =>{ //postId sufficient to get QueryKey
+const useCommentMutation = (comment,postId,refetch) =>{ //postId sufficient to get QueryKey
     const queryClient = useQueryClient();
     const myFetch = useFetch();
-    const queryKey = ['post',postId.toString()] //All comments live inside the post page query
-    // console.log(queryKey)
-    
+    const queryKey = comment.parentCommentId!==null? ["replies",comment.parentCommentId] : ['post',postId.toString()]
 
+
+    const updateCommentCache = (prev,updateFn)=>{
+        //Check if there is a parent comment ID 
+        if (comment.parentCommentId===null){
+            return { 
+                post:{
+                    ...prev.post,
+                    comments:prev.post.comments.map(c=>c.id===comment.id?updateFn(c):c)
+                }
+            }
+        } else { //Reply //README, i mightve wasted my time on this..LOL. replies are inside their 
+            return{
+                pages: prev.pages.map(page=>
+                    ({...page,
+                        replies:page.replies.map(reply=>reply.id===comment.id?updateFn(reply):reply)
+                    })
+                ),
+                pageParams:prev.pageParams   
+            }
+
+        }
+
+    };
 
     const createMutation = (mutationFn,updateFn) => useMutation({
         mutationFn,
         onMutate:async()=>{
             //same as post. 
-            //1. cancel related queries 
+            console.log("mutation key: ",queryKey)
             await queryClient.cancelQueries(queryKey);
-            //2. get the data before optimistic update
             const rollback = queryClient.getQueryData(queryKey);
-            //3. manually update cache before mutation function
-            console.log("sss",queryClient.getQueryData(queryKey))
-            queryClient.setQueryData(queryKey,(prev)=>{ //we dont need a function to find the specific query because comments only live in one query
-                return {
-                    post:{
-                        ...prev.post,
-                        comments: prev.post.comments.map(c=>c.id===comment.id?updateFn(c):c) //update the comment if needed
-                    }
-                }
-            })
+            queryClient.setQueryData(queryKey,(prev)=>updateCommentCache(prev,updateFn))
+
             return {rollback}
 
         },
@@ -51,8 +53,12 @@ const useCommentMutation = (comment,postId) =>{ //postId sufficient to get Query
         
         },
         onSettled:()=>{
-            queryClient.invalidateQueries(queryKey,{exact:true});
-
+            //Infinite queries cannot be invalidated, so we must refetch
+            if (queryKey[0]==='post'){
+                queryClient.invalidateQueries(queryKey)
+            } else{
+                refetch();
+            }
         },
     })
 
@@ -77,10 +83,6 @@ const useCommentMutation = (comment,postId) =>{ //postId sufficient to get Query
             }
         }
     )
-
-
-
-
     return {likeComment,unlikeComment}
 
 }
