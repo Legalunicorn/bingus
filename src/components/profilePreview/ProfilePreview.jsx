@@ -1,12 +1,14 @@
 import "./profilePreview.scss";
+import useFollowMutation from "../../hooks/useFollowMutation";
 
-const pfp = import.meta.env.VITE_DEFAULT_PFP;
 
 const ProfilePreview = ({
     user 
 }) => {
     //TODO onclick for follow unfollow users
     // console.log(user)
+
+    const {follow,unfollow} = useFollowMutation(user,['feed']);
     return (
         <div className="profile-preview-card">
             {user.profile && user.profile?.profilePicture ?
@@ -19,9 +21,17 @@ const ProfilePreview = ({
                 <p>{user.username}</p>
                 <p>{user.displayName}</p>             
             </div>
-            {user._count.followers==0?
-            <button className="filled">Follow</button>:
-            <button>Unfollow</button>
+            {user.followers.length==0?
+            <button className="filled"
+                onClick={()=>follow.mutate()}
+            >
+                Follow
+            </button>:
+            <button
+                onClick={()=>unfollow.mutate()}
+            >
+                Unfollow
+            </button>
             }
 
         </div>

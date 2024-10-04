@@ -6,34 +6,42 @@ import { IconBrandGithub, IconWorld } from "@tabler/icons-react";
 import PostCard from "../../components/postCard/PostCard";
 import BackNav from "../../components/backNav/BackNav"
 import ProfileStats from "../../components/profileStats/ProfileStats";
+import useFollowMutation from "../../hooks/useFollowMutation";
 const VITE_DEFAULT_PFP = import.meta.env.VITE_DEFAULT_PFP;
+
+
+//user.isBeingFollowed
 
 const UserProfile = () => {
 
     //TODO implement infinite scroll after its implemented for home page
     //TODO must fetch whether the user is following this profile or not!
+    
     const navigate = useNavigate();
     const { userId } = useParams();
+    
     const myFetch = useFetch();
     const getUser = async ({ queryKey }) => {
         console.log("Passing ID:", queryKey)
         return await myFetch(`/users/${queryKey[1]}`);
     }
-
+    const queryKey = ['user', userId,"post"]
+    const {unfollow,follow} = useFollowMutation({id:userId},queryKey)
     const {
         data,
         isError,
         isPending
     } = useQuery({
-        queryKey: ['user', userId,"post"], //Post for invalidate Liking
+        queryKey, //Post for invalidate Liking
         queryFn: getUser
     })
 
     if (isPending) return (<>hi</>);
-    console.log("data is",data);
+    // console.log("data is",data.user.followers);
     //TODO 
     const { user } = data; //for easier 
-    console.log("user prof",user)
+    
+    // console.log("user prof",user)
     // const {user} =test;
 
 
@@ -61,9 +69,9 @@ const UserProfile = () => {
                                     following={user._count.following}
                                     posts={user._count.posts}
                                 />
-                                {user.isBeingFollowed?
-                                    <button >Unfollow</button>:
-                                    <button >Follow</button>
+                                {user.followers.length>0?
+                                    <button onClick={()=>unfollow.mutate()} >Unfollow</button>:
+                                    <button onClick={()=>follow.mutate()}>Follow</button>
                                 }
                             </div>
                         </div>

@@ -31,8 +31,9 @@ const Home = () => {
     // if (feedQuery.error) return ("error") //TODO proper error
 
     const {new_post,new_follower_posts,new_users,top_users} = feedQuery.data;
+
     
-    console.log("?",feedQuery.data.new_post[0]._count)
+    console.log("?",feedQuery.data.new_users);
 
     return (
         <div className="content" id="home-page">
@@ -68,7 +69,6 @@ const Home = () => {
                 <div className="side-content-box">
                     <p>Latest users</p>
                         {new_users.map(user=>(
-                            
                             <ProfilePreview  key={user.id} user={user}/>
                         ))}
                 </div>

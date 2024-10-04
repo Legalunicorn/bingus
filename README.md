@@ -1,3 +1,17 @@
+Struture following or not 
+user.followers.length?
+
+Queries involving when follow unfollow
+-> view profile
+-> Home page
+-> (TBC) view Follower List
+-> (TBC) view FOllowing list
+
+
+
+
+
+
 //TODO
 1. Clear all the boiler plate nonsense //DONE
 2. Set up structure of folders as i like //DONE
@@ -28,7 +42,7 @@
 
 important pages:
 - profile
-- create post
+- create post //DONE
 
     ? modal or page or part of the feed -> part of feed.
     - basically a big form
@@ -36,7 +50,7 @@ important pages:
     - react query usemutation (!update feed)
 
 
-- view post 
+- view post  //DONE
     - show all comments
     - creat a comment
     - reply to a comment
