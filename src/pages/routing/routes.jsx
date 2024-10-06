@@ -10,6 +10,8 @@ import CreatePost from "../createPost/CreatePost"
 import ViewPost from "../viewPost/ViewPost"
 import UserProfile from "../userProfile/UserProfile"
 import EditProfile from "../EditProfile/EditProfile"
+import SearchUsers from "../SearchUsers/SearchUsers"
+import LikeFeed from "../LikeFeed/LikeFeed"
 // import
 
 
@@ -86,12 +88,20 @@ const router = createBrowserRouter([
                         element: <ViewPost/>
                     },
                     {
+                        path:"search",
+                        element:<SearchUsers/>
+                    },
+                    {
                         path:"users/:userId",
                         element:<UserProfile/>
                     },
                     {
                         path:"view-profile",
                         element: <EditProfile/>
+                    },
+                    {  
+                        path:"likes",
+                        element:<LikeFeed/>
                     },
                     {
                         path:"create",

@@ -1,12 +1,17 @@
 import "./profilePreview.scss";
 import useFollowMutation from "../../hooks/useFollowMutation";
+import { useNavigate } from "react-router-dom";
+
 
 
 const ProfilePreview = ({
-    user 
+    user ,
+    showFollow=true
 }) => {
     //TODO onclick for follow unfollow users
     // console.log(user)
+    const navigate = useNavigate();
+
 
     const {follow,unfollow} = useFollowMutation(user,['feed']);
     return (
@@ -18,20 +23,25 @@ const ProfilePreview = ({
             }
             
             <div>
-                <p>{user.username}</p>
+                <p
+                    onClick={()=>navigate(`/p/users/${user.id}`)}
+                >{user.username}</p>
                 <p>{user.displayName}</p>             
             </div>
-            {user.followers.length==0?
-            <button className="filled"
-                onClick={()=>follow.mutate()}
-            >
-                Follow
-            </button>:
-            <button
-                onClick={()=>unfollow.mutate()}
-            >
-                Unfollow
-            </button>
+            {showFollow
+                ?(user.followers.length==0
+                    ?<button className="filled"
+                        onClick={()=>follow.mutate()}
+                    >
+                        Follow
+                    </button>:
+                    <button
+                        onClick={()=>unfollow.mutate()}
+                    >
+                        Unfollow
+                    </button>
+                )
+                :<></>
             }
 
         </div>

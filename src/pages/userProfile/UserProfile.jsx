@@ -7,6 +7,7 @@ import PostCard from "../../components/postCard/PostCard";
 import BackNav from "../../components/backNav/BackNav"
 import ProfileStats from "../../components/profileStats/ProfileStats";
 import useFollowMutation from "../../hooks/useFollowMutation";
+import { useAuthContext } from "../../hooks/useAuthContext";
 const VITE_DEFAULT_PFP = import.meta.env.VITE_DEFAULT_PFP;
 
 
@@ -26,6 +27,7 @@ const UserProfile = () => {
         return await myFetch(`/users/${queryKey[1]}`);
     }
     const queryKey = ['user', userId,"post"]
+    const authContext = useAuthContext();
     const {unfollow,follow} = useFollowMutation({id:userId},queryKey)
     const {
         data,
@@ -69,10 +71,9 @@ const UserProfile = () => {
                                     following={user._count.following}
                                     posts={user._count.posts}
                                 />
-                                {user.followers.length>0?
-                                    <button onClick={()=>unfollow.mutate()} >Unfollow</button>:
-                                    <button onClick={()=>follow.mutate()}>Follow</button>
-                                }
+
+                                {user.id!==authContext.user.id && user.followers.length>0 && <button onClick={()=>unfollow.mutate()} >Unfollow</button>}
+                                {user.id!==authContext.user.id && user.followers.length==0 && <button onClick={()=>follow.mutate()} >Follow</button>}
                             </div>
                         </div>
                         <div className="profile-details">
@@ -114,8 +115,8 @@ const UserProfile = () => {
 
                 }
             </div>
-            <div> //side
-                side_contents
+            <div> 
+                
             </div>
         </div>
     );

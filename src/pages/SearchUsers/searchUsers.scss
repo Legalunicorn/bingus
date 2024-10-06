@@ -1,0 +1,32 @@
+.search-users .search{
+    // border: 1px solid red;
+    padding: 1rem;
+    // .search{
+    //     padding: 
+    // }
+
+    form{
+        margin-left: auto;
+        margin-right:auto;
+        display:flex;
+        align-items: center;
+        width: 100%;
+        max-width: 600px;
+        padding: 1rem 0;
+        gap: 0.5rem;
+        
+        input{
+            border-radius: 0.75rem;
+            border: 1px solid var(--color-neutral-3);
+            padding: 0.5rem 0.75rem;
+            width:100%;
+            background-color:var(--color-bg);
+            color:var(--color-text);
+            &:focus{
+                outline:0;
+            }
+        }
+    }
+
+
+}

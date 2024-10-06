@@ -6,7 +6,7 @@ import usePostMutation from "../../hooks/usePostMutation";
 
 const PostCard = ({
     post, //should be an object with the following
-    handleClick,
+    handleClick, //BUG why did i even add this for 
     pageQueryKey,
 }) => {
     const written_time = formatDistanceToNowStrict(new Date(post.createdAt));
@@ -14,7 +14,7 @@ const PostCard = ({
     const {likePost,unlikePost} = usePostMutation(post,queryKey);
     const navigate = useNavigate(); //BUG go external pages
     return (
-        <div onClick={handleClick} className="postcard">
+        <div onClick={()=>navigate(`/p/posts/${post.id}`)} className="postcard">
 
 
             <div className="post-header">

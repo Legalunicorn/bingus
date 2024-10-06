@@ -48,7 +48,6 @@ const ViewPost = () => {
                 </div>
             </div>
             <div>
-                what the sigma
             </div>
 
         </div>

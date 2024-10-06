@@ -40,6 +40,13 @@ const usePostMutation = (post,queryKey) =>{
                 }
             }
         }
+        if (prev.posts){
+            console.log("SKIBIDI")
+            return {
+                ...prev,
+                posts:prev.posts.map(updatePost)
+            }
+        }
         //############### View post  ###############
         if (prev.post) return {...prev,post:updateFn(post)}
 
@@ -51,6 +58,8 @@ const usePostMutation = (post,queryKey) =>{
     const createMutation= (mutationFn,updateFn) =>useMutation({  //#2 layer being called
         mutationFn,
         onMutate: async()=>{
+            //Optimistic update segment
+
             //cancel quereies, get prev cache
             await queryClient.cancelQueries(queryKey); //cancel feed in page
             const rollback = queryClient.getQueryData(queryKey);
@@ -69,7 +78,7 @@ const usePostMutation = (post,queryKey) =>{
 
         },
         onSettled:  ()=>{
-            queryClient.invalidateQueries(queryKey); //
+            if (queryKey[0]!=='like-feed') queryClient.invalidateQueries(queryKey); //
             // console.log("First refetch",queryClient.getQueryData(queryKey))
             // queryClient.refetchQueries(queryKey); //
             // console.log("Second refetch",queryClient.getQueryData(queryKey))

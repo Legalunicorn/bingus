@@ -1,4 +1,4 @@
-import { IconHeart, IconHomeFilled,IconMessages,IconSettings,IconSquareRoundedPlus,IconUserSearch } from "@tabler/icons-react";
+import { IconHeart, IconHomeFilled,IconMessages,IconSettings,IconSquareRoundedPlus,IconUserCircle,IconUserSearch } from "@tabler/icons-react";
 
 export const sidebarData = [
     {
@@ -14,17 +14,23 @@ export const sidebarData = [
     {
         name:"Users",
         icon: IconUserSearch,
-        link:"/users"
+        link:"/search"
     },
     {
         name:"Messages",
         icon: IconMessages,
         link:"/message"
     },
-    {
+    { //i didnt want to deal with this yet so removed it
+    // there was a big pain point of unliking post without invaliding the like feed,due to using a general hook for liking
         name:"Likes",
         icon: IconHeart,
         link:"/likes"
+    },
+    {
+        name:"profile",
+        icon: IconUserCircle,
+        link:"/view-profile"
     },
     {
         name:"Settings",
