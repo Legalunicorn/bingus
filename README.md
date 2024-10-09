@@ -1,18 +1,8 @@
-Struture following or not 
-user.followers.length?
-
-Queries involving when follow unfollow
--> view profile
--> Home page
--> (TBC) view Follower List
--> (TBC) view FOllowing list
 
 
 
 
-
-
-//TODO
+//TODO (Overal)
 1. Clear all the boiler plate nonsense //DONE
 2. Set up structure of folders as i like //DONE
 3. Set up context for auth //DONE
@@ -28,6 +18,36 @@ Queries involving when follow unfollow
     functoinal
 - set user page design
     functional
+
+//TODO (no order of sequence)
+- search bar and search results page (low priority)
+- messaging and logic
+    - UI arrangement of messaging
+    
+    - who can you message 
+    - add DM inside profile page
+    - socket programming logic, please look into messaging project
+    - loading messages
+    - 
+    - frontend send message
+    - backend
+
+
+//README settled stuff
+-> only show chats you have message with, plus button redirect to find user page
+-> display a list of chats
+-> click on chats -> redirect the chat page 
+-> side bar empty
+-> chat is a component or a page? 
+-> in the name of spa, make it a component
+-> from the list of chats 
+-> on click active chat
+-> we set the chat as props and update according ly 
+    
+- settings (auth issues, themee)
+- setting expired JWT mess,and refresh tokens logic
+
+- search user -> store the search query inside the URL (low prority)
 
 
 //BUGS

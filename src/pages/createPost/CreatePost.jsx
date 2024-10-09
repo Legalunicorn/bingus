@@ -206,9 +206,9 @@ const CreatePost = () => {
             </p>
             {/* <ToastConfig/> */}
             </div>
-            <div>
+            {/* <div>
 
-            </div>
+            </div> */}
 
         </div>
     );

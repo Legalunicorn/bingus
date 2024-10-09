@@ -27,7 +27,6 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            // gap:1.5rem;
 
             .profile-username{
                 text-align: center;
@@ -49,11 +48,10 @@
 
             .stats{
                 margin: 1rem 0;
-                // border: 1px solid orange;
                 display: flex;
-                justify-content:flex-start;
+                // justify-content:flex-start;
+                align-items: center;
                 gap: 2vw;
-                // >div>p:nth-child(2)
                 >div>p:nth-child(1){
                     font-weight: bold;
                     text-align: center;
@@ -63,15 +61,29 @@
                 }
  
             }
-            button{
+            .user-actions{
                 width: 70%;
-                // width: fit-content;
-
-                &:hover{
-                    background-color: var(--color-neutral-1);
-                    color: var(--color-bg);
+                // border: 1px solid red;
+                display: flex;
+                gap: 0.5rem;
+                justify-content: space-between;
+                button{
+                    flex:1;
+                    padding: 0.25rem 0.75rem;
+                    
+    
+                    &:hover{
+                        background-color: var(--color-neutral-1);
+                        color: var(--color-bg);
+                    }
                 }
+
+                button:nth-child(2){
+                    flex: 0;
+                }
+            
             }
+
         }
     }
 

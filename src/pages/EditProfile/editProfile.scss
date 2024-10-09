@@ -41,15 +41,10 @@
 
         &:disabled{
             opacity: 0.4;
-
-            &:hover{
-
-            }
         }
     }
 
     .edit-input{
-        // border: 1px solid red;
         display: flex;
         max-width: 100%;
         text-overflow: ellipsis;

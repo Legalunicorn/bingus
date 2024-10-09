@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import "./userProfile.scss"
 import { useQuery } from "@tanstack/react-query";
 import { useFetch } from "../../hooks/useFetch";
-import { IconBrandGithub, IconWorld } from "@tabler/icons-react";
+import { IconBrandGithub, IconMessageCircle, IconWorld } from "@tabler/icons-react";
 import PostCard from "../../components/postCard/PostCard";
 import BackNav from "../../components/backNav/BackNav"
 import ProfileStats from "../../components/profileStats/ProfileStats";
@@ -46,6 +46,22 @@ const UserProfile = () => {
     // console.log("user prof",user)
     // const {user} =test;
 
+    const handleChat = async()=>{
+        //Send an end point to retrieve (and first create if needed) a chat
+        //get the chatId from the server
+        //redirect to chage 
+        try{
+            const data = await myFetch(`/chats/user/${userId}`,{method:"PUT"})
+            console.log(data)
+            navigate(`/p/message?chat=${data.chat.id}`)
+
+        } catch(err){
+            console.log(err)//TODO handle create chat error here
+        }
+
+        
+    }
+
 
     return (
         <div className="content user-profile-page">
@@ -71,9 +87,20 @@ const UserProfile = () => {
                                     following={user._count.following}
                                     posts={user._count.posts}
                                 />
+                                {user.id!==authContext.user
+                                ? (
+                                <div className="user-actions">
+                                {user.followers.length>0 
+                                    ?<button onClick={()=>unfollow.mutate()} >Unfollow</button>
+                                    :<button onClick={()=>follow.mutate()} >Follow</button>}
+                                <button onClick={handleChat}><IconMessageCircle/></button>
+                                </div>
+                
+                                )
+                                :<></>}
 
-                                {user.id!==authContext.user.id && user.followers.length>0 && <button onClick={()=>unfollow.mutate()} >Unfollow</button>}
-                                {user.id!==authContext.user.id && user.followers.length==0 && <button onClick={()=>follow.mutate()} >Follow</button>}
+                                {/* {user.id!==authContext.user.id && user.followers.length>0 && <button onClick={()=>unfollow.mutate()} >Unfollow</button>}
+                                {user.id!==authContext.user.id && user.followers.length==0 && <button onClick={()=>follow.mutate()} >Follow</button>} */}
                             </div>
                         </div>
                         <div className="profile-details">

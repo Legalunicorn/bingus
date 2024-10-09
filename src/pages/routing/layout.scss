@@ -16,7 +16,6 @@
     display: flex;
     flex: 3 0 75%;
     max-width:75%;
-    // max-width:1000px;
 
     > div:first-child{
 
@@ -44,7 +43,6 @@
         max-width: 600px;
     }
     .content > div:nth-child(2){
-        border: 1px solid red;
         display:none !important;
 
     }
@@ -53,17 +51,21 @@
 
 @media only screen and (max-width:480px){//mobile
     #page{
-        // padding:0;
+        padding:0;
+        padding-top: var(--header-height);
+        // margin-top: var(--header-height);
         width: 100vw;
-        margin:0;
         flex-direction: column;
+        justify-content:flex-start;
+        
+        
 
 
     }
 
     .content{
+        padding: 0;
         max-width: 100%;
-        // border: 2px solid red;
         > div:first-child{
             padding-bottom: 8vh;
             border-left: 0;

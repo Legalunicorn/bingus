@@ -16,7 +16,7 @@ createRoot(document.getElementById('root')).render(
     <QueryClientProvider client={queryClient}>
       <AuthContextProvider>
           <RouterProvider router={router}/>
-          <ReactQueryDevtools/> 
+          {/* <ReactQueryDevtools/>  */}
           <ToastConfig/>
       </AuthContextProvider>
     </QueryClientProvider>

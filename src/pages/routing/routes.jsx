@@ -12,6 +12,8 @@ import UserProfile from "../userProfile/UserProfile"
 import EditProfile from "../EditProfile/EditProfile"
 import SearchUsers from "../SearchUsers/SearchUsers"
 import LikeFeed from "../LikeFeed/LikeFeed"
+import Chats from "../Chats/Chats"
+import DM from "../../components/DM/DM"
 // import
 
 
@@ -108,7 +110,19 @@ const router = createBrowserRouter([
                         element:<CreatePost/>
                     },
                     {
-                        path:"users/:username"
+                        path:"message",
+                        element: <Chats/>,
+                        // children:[
+                        //     {
+                        //         path:":ChatId",
+                        //         element:<>penis</>
+                        //         // element: <DM/>
+                        //     }
+                        // ]
+                    },
+                    {
+                        path:"message/:chatId",
+                        element: <DM/>
                     }
                 ]
             }

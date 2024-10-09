@@ -6,12 +6,19 @@ import { useNavigate } from "react-router-dom";
 
 //TODO decide if this needs any props
 //TODO , if needed, put dynamic styling as props and set the class appropriate ly
-const BackNav = ({label="Post"}) => {
+const BackNav = ({
+    label="Post",
+    customNav
+}) => {
     const navigate = useNavigate();
+    const handleClick = ()=>{
+        if (!customNav) navigate(-1); //go back a page
+        else navigate(customNav)
+    }
     return (
         <div className="nav-back">
             <IconArrowLeft
-                onClick={()=>navigate(-1)}
+                onClick={handleClick}
             />
             <p>{label}</p>
         </div>
