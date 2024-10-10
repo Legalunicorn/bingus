@@ -33,7 +33,7 @@ const CreatePost = () => {
             document.removeEventListener("keydown",handleAddTag)
         }
         }
-    ,[])
+    ,[tags])
 
     const handleAddTag = (e) =>{
         //BUG enter no longer creaates a line in textbody, consider changing or leaving it
@@ -43,10 +43,14 @@ const CreatePost = () => {
             if (document.activeElement==tagsRef.current && tagsRef.current.value!=''){
                 //first check if it exist already, dont allow duplicate tags
                 const value = tagsRef.current.value.toLowerCase(); //tags are case insensitiveS
+                console.log(tags);
+                console.log(tags.includes(value))
                 if (!tags.includes(value)){
                     setTags(prevTags=>[...prevTags,value])
-                    setTag("");
                 }
+                setTag("");
+
+
             }
         }
     }
@@ -204,11 +208,10 @@ const CreatePost = () => {
                     ""
                 }
             </p>
-            {/* <ToastConfig/> */}
             </div>
-            {/* <div>
+            <div>
 
-            </div> */}
+            </div>
 
         </div>
     );

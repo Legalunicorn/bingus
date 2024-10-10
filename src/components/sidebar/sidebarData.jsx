@@ -2,7 +2,7 @@ import { IconHeart, IconHomeFilled,IconMessages,IconSettings,IconSquareRoundedPl
 
 export const sidebarData = [
     {
-        name:"Home",
+        name:"Home", //display name 
         icon: IconHomeFilled,
         link:"/home"
     },
@@ -17,7 +17,7 @@ export const sidebarData = [
         link:"/search"
     },
     {
-        name:"Messages",
+        name:"Message",
         icon: IconMessages,
         link:"/message"
     },
@@ -34,6 +34,7 @@ export const sidebarData = [
     },
     {
         name:"Settings",
-        icon:IconSettings
+        icon:IconSettings,
+        link:"/settings"
     }
 ]

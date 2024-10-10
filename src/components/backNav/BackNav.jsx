@@ -12,7 +12,10 @@ const BackNav = ({
 }) => {
     const navigate = useNavigate();
     const handleClick = ()=>{
-        if (!customNav) navigate(-1); //go back a page
+        if (!customNav ){
+            if (window.history.state) navigate(-1)
+            else console.log("Cannot back nav outside")
+        } //go back a page
         else navigate(customNav)
     }
     return (

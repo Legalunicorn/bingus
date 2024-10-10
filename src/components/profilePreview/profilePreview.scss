@@ -60,3 +60,12 @@
 
 
 }
+
+.chat-preview{
+    margin:0 !important;
+    padding: 0.75rem;
+    padding-left: 1rem;
+    &:hover{
+        background-color: var(--color-neutral-bg);
+    }
+}

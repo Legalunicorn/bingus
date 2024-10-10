@@ -29,6 +29,7 @@
     }
 
     .save-changes{
+        height: fit-content;
         font-family: Alata;
         font-weight: bold;
         margin: 0.5rem 1rem;
@@ -42,6 +43,17 @@
         &:disabled{
             opacity: 0.4;
         }
+    }
+
+    .save{
+        // border: 1px solid red;
+        display: flex;
+        align-items: center;
+        
+        span{
+            margin: 0;
+        }
+        
     }
 
     .edit-input{

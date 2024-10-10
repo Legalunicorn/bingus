@@ -36,7 +36,7 @@ const useCommentMutation = (comment,postId,refetch) =>{ //postId sufficient to g
         mutationFn,
         onMutate:async()=>{
             //same as post. 
-            console.log("mutation key: ",queryKey)
+            // console.log("mutation key: ",queryKey)
             await queryClient.cancelQueries(queryKey);
             const rollback = queryClient.getQueryData(queryKey);
             queryClient.setQueryData(queryKey,(prev)=>updateCommentCache(prev,updateFn))

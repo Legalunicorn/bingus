@@ -7,11 +7,6 @@ import {useFetch} from "./useFetch"
 
 const usePostMutation = (post,queryKey) =>{
 
-    //Todo -> Update Post Mutation, delet epost mutation
-
-    //both are passed from the post card
-
-
     const queryClient = useQueryClient();
     const myFetch = useFetch();
     const updatePostInCache = (prev,updateFn)=>{ //#3 layer being called 
@@ -65,7 +60,6 @@ const usePostMutation = (post,queryKey) =>{
             const rollback = queryClient.getQueryData(queryKey);
             //update cache munually
             queryClient.setQueryData(queryKey,(prev)=>updatePostInCache(prev,updateFn))
-            console.log("updated cache")
             //return rollback
             return {rollback}
 
@@ -79,17 +73,9 @@ const usePostMutation = (post,queryKey) =>{
         },
         onSettled:  ()=>{
             if (queryKey[0]!=='like-feed') queryClient.invalidateQueries(queryKey); //
-            // console.log("First refetch",queryClient.getQueryData(queryKey))
-            // queryClient.refetchQueries(queryKey); //
-            // console.log("Second refetch",queryClient.getQueryData(queryKey))
         }
 
-        /**
-         * click on like button
-         * - cache munually updated
-         * 
-         * what is going on? som
-         */
+
         
     })
 

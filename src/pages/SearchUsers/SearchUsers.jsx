@@ -4,10 +4,11 @@ import { IconSearch } from "@tabler/icons-react";
 import { useFetch } from "../../hooks/useFetch";
 import { useEffect, useRef, useState } from "react";
 import ProfilePreview from "../../components/profilePreview/ProfilePreview";
+import Loader from "../../components/Loaders/Loader";
+import { toast } from "react-toastify";
 const SearchUsers = () => {
 
     const myFetch = useFetch(); //useFetch returns a promise, json is already process. if error just 
-    const [error,setError] = useState();
     const [loading,setLoading] = useState(false);
     const [userList,setUserList] = useState([]);
     const queryRef = useRef();
@@ -34,9 +35,9 @@ const SearchUsers = () => {
             setLoading(false);
 
         } catch(err){
-            console.log(err);
+            console.log(err,'----------');
             setLoading(false);
-            setError(err.msg)
+            toast.warn("An Error has occured. Try again later.");
         }
         
     }
@@ -50,22 +51,20 @@ const SearchUsers = () => {
                         type="search"
                         placeholder={"Enter a username"}
                         ref={queryRef}
-                        // onChange={(e)=>{setQuery(e.target.value);console.log("?",query)}}
                     />
                 </Form>
                 <div className="results">
-                    {loading && <p>Loading</p>}
-                    {userList.length>0
-                    ? userList.map(user=>(
+                    {loading
+                    ? <Loader loading={loading}/>
+                    :userList.length>0
+                        ? userList.map(user=>(
                         <ProfilePreview
                             user={user}
                             showFollow={false}
                         />
-                    ))
-                    :
-                    <>
-                        No results
-                    </>
+                        ))
+                        :
+                        <p className="no-results">No results</p>
                     }
                 </div>
             </div>
@@ -76,16 +75,3 @@ const SearchUsers = () => {
 }
  
 export default SearchUsers;
-
-
-/*
-frontend logic
--> i dont see a need to cache results
--> react query is overkill in this case
-
-process
-onSubmit -> send get request -> updating loading state
--> get results
-pass: throw results inside a user state: each renderd inside a userPreview component 
-fail; show error messasge 
-*/

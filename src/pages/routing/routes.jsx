@@ -1,4 +1,4 @@
-import { createBrowserRouter,Outlet } from "react-router-dom"
+import { createBrowserRouter,Navigate,Outlet } from "react-router-dom"
 import { ProtectedRoute } from "./ProtectedRoutes"
 import Layout from "./Layout"
 import Home from "../home/Home"
@@ -14,6 +14,7 @@ import SearchUsers from "../SearchUsers/SearchUsers"
 import LikeFeed from "../LikeFeed/LikeFeed"
 import Chats from "../Chats/Chats"
 import DM from "../../components/DM/DM"
+import NotFound from "../Error/NotFound"
 // import
 
 
@@ -47,16 +48,15 @@ const router = createBrowserRouter([
             },
             {
                 element:
-                // (<ProtectedRoute> //BUG this cannot be protected because token is not yet in the context
                     <AuthPage>
                         <SetUsername/>
                     </AuthPage>
-                // </ProtectedRoute>),
                 ,
                 path: "oauth/setusername"
             }
         ],
-    },{
+    },
+    {
         path:"/",
         element:<Layout/>,
         children:[
@@ -65,7 +65,7 @@ const router = createBrowserRouter([
              */
             {
                 path:"",
-                element:<p>penis</p>//create the UI for the feed page
+                element:<Navigate to="/p/home"/>//create the UI for the feed page
             },
 
             {
@@ -112,13 +112,6 @@ const router = createBrowserRouter([
                     {
                         path:"message",
                         element: <Chats/>,
-                        // children:[
-                        //     {
-                        //         path:":ChatId",
-                        //         element:<>penis</>
-                        //         // element: <DM/>
-                        //     }
-                        // ]
                     },
                     {
                         path:"message/:chatId",
@@ -126,7 +119,9 @@ const router = createBrowserRouter([
                     }
                 ]
             }
-        ]   
+        ],
+        errorElement: <Layout/>
+    
     }
 ])
 

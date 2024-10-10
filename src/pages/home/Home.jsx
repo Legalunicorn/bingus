@@ -7,6 +7,8 @@ import { useQuery } from "@tanstack/react-query";
 import { myFetch } from "../../utils/myFetch";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
+import Loader from "../../components/Loaders/Loader";
+import BadRequest from "../Error/BadRequest";
 
 const Home = () => {
     const navigate = useNavigate();
@@ -24,26 +26,24 @@ const Home = () => {
         queryKey:['feed','post'],
         queryFn: ()=>myFetch("/init",{},user) //
     })
-    
-    if (feedQuery.isLoading) return (
-        <div className="content"><p>loading</p></div> //TODO fix the loading page widths and stuff 
-    )
-    // if (feedQuery.error) return ("error") //TODO proper error
 
-    const {new_post,new_follower_posts,new_users,top_users} = feedQuery.data;
+    const {new_post=[],new_follower_posts=[],new_users=[],top_users=[]} = feedQuery.data || {};
 
     
-    console.log("?",feedQuery.data.new_users);
 
     return (
         <div className="content" id="home-page">
-            
             <div className="content-main">
                 <div className="feed-options">
                     <span onClick={()=>setFeedSort('recent')} className={feedSort=='recent'?'selected':''}>Recent</span>
                     <span onClick={()=>setFeedSort('following')}  className={feedSort=='following'?'selected':''}>Following</span>
                 </div>
-                {feedSort=='recent'?
+                {feedQuery.isLoading
+                ? <Loader loading={feedQuery.isLoading}/>
+                :feedQuery.isError
+                ? <BadRequest/>
+                :
+                feedSort=='recent'?
                 new_post.map(post=>(
                     <PostCard
                         key={post.id}
@@ -55,7 +55,9 @@ const Home = () => {
                     />
                 ))
                 :
-                new_follower_posts.map(post=>(
+                new_follower_posts.length===0
+                ? <p className="no-results">No following posts</p>
+                :new_follower_posts.map(post=>(
                     <PostCard
                         key={post.id}
                         post={post}
@@ -66,6 +68,9 @@ const Home = () => {
                 }
             </div>
             <div className="content-side">
+                {feedQuery.isLoading
+                ? <Loader loading={feedQuery.isLoading}/>
+                :<>
                 <div className="side-content-box">
                     <p>Latest users</p>
                         {new_users.map(user=>(
@@ -79,6 +84,8 @@ const Home = () => {
                             <ProfilePreview key={user.id} user={user}/>
                         ))}
                 </div>
+                </>
+                }
              
                 Data loaders from data.side_contents 
                 which //TODO api fetch to determine if these people have been followed or not
@@ -92,7 +99,10 @@ const Home = () => {
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo vero magni, modi impedit, maxime amet consequatur porro quas accusamus harum quo ea? Totam aut sapiente sequi incidunt necessitatibus nemo nostrum.
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, sit cupiditate eligendi hic neque, dolorum, incidunt consectetur perferendis saepe ipsa voluptatibus quaerat harum iure dicta rem maxime aperiam sapiente inventore! Ad corrupti atque hic incidunt, eligendi expedita laudantium ex odit nesciunt nisi voluptatem veritatis similique praesentium non quam sint error ut fugiat totam, quod quis, impedit corporis at eaque. Ratione quis amet illum aliquid neque tempora molestias, a rerum, perspiciatis laudantium eius, nesciunt recusandae numquam iure! Quo commodi deserunt minus ullam. Quaerat tenetur, quasi eaque voluptates officia incidunt. Necessitatibus, vel asperiores ipsum enim obcaecati vero iste cum. Reiciendis, repellendus fuga?
                 
+
             </div>
+            
+            
         </div>
 
 

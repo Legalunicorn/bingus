@@ -2,6 +2,7 @@ import { IconBell } from "@tabler/icons-react";
 import { useAuthContext } from "../../../hooks/useAuthContext";
 import "./header.scss"
 import Logo from "../../../assets/images/bingus_logo.svg"
+import { useNavigate } from "react-router-dom";
 const VITE_DEFAULT_PFP = import.meta.env.VITE_DEFAULT_PFP;
 
 
@@ -9,21 +10,24 @@ const VITE_DEFAULT_PFP = import.meta.env.VITE_DEFAULT_PFP;
 const Header = () => {
     //user AuthContext and load the user for now user a fake user 
     const {user} = useAuthContext();
+    const navigate = useNavigate()
+    
     return (
         <div id="header">
+
             <img className="logo" src={Logo} alt="" />
-            <p className="brand">Bingus</p>
+            <p onClick={()=>{navigate("/p/home")}} className="brand">Bingus</p>
             
 
             <div className="notif">
-                <IconBell 
+                {/* <IconBell 
                 // className="notif"
                 size="30"
                 />
-                <span className="test">10</span>
+                <span className="test">10</span> */}
 
             </div>
-            {user?
+            {user && user.profilePicture?
             <img src={user.profilePicture} alt="profile_picture" />:
             <img src={VITE_DEFAULT_PFP} alt="profile_picture" />
             }

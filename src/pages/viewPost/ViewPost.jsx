@@ -6,6 +6,8 @@ import PostCard from "../../components/postCard/PostCard";
 import CommentCard from "../../components/CommentCard/CommentCard";
 import BackNav from "../../components/backNav/BackNav";
 import CreateComment from "../../components/createComment/CreateComment";
+import Loader from "../../components/Loaders/Loader"
+import BadRequest from "../Error/BadRequest";
 
 const ViewPost = () => {
     const {postId} = useParams();
@@ -14,19 +16,18 @@ const ViewPost = () => {
         queryKey: ["post",postId],
         queryFn: ()=>getPost(`/posts/single/${postId}`)
     })
-
-    if (postQuery.isLoading) return ("Loading") //TODO proper loading
-    if (postQuery.isError) return (<p>{postQuery.error.message}</p>
-    ) //TODO proper error
-
-    //TODO fi
-
-    const {post} = postQuery.data;
-    console.log(post._count) //
+    const {post} = postQuery?.data ||{};
     return (
         <div className="content view-post">
             <div>
                 <BackNav label="Post"/>
+                {postQuery.isLoading
+                ?<Loader loading={postQuery.isLoading}/>
+                :postQuery.isError
+                ? <BadRequest/>
+                :
+                (
+                    <>
                 <PostCard
                     post={post}
                     pageQueryKey={["post",postId]}
@@ -46,6 +47,8 @@ const ViewPost = () => {
                         />
                     ))}
                 </div>
+                </>)
+                }
             </div>
             <div>
             </div>

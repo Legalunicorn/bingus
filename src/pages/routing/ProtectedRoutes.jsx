@@ -8,6 +8,6 @@ export const ProtectedRoute = ()=>{
     ) : user ?
         <Outlet/>
      : (
-        <Navigate to="/login"/>
+        <Navigate to="/auth/login"/>
     )
 }

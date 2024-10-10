@@ -5,9 +5,7 @@ const ChatPreview = ({chat}) => {
     const navigate = useNavigate()
 
     const handleClick=() =>{
-        console.log('[')
         navigate(`${chat.id}`)
-        // setActiveChat(chat.id)
     }
     return (
         <div onClick={handleClick} className="profile-preview-card chat-preview">

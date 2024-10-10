@@ -66,7 +66,7 @@ const PostCard = ({
                 </p>
 
                 {post.repoLink && <IconLink />}
-                {post.gitLink && <IconBrandGithub />}
+                {post.gitLink && <IconBrandGithub onClick={()=>{window.open(`https://${post.gitLink}`,"_blank",'noopener,noreferrer')}}/>}
 
             </div>
 

@@ -31,7 +31,7 @@ const CommentCard = ({comment,postId}) => {
 
     const myFetch = useFetch();
     const fetchReplies = async({pageParam})=>{
-        console.log("FETCH REPLIES CID::",pageParam)
+        // console.log("FETCH REPLIES CID::",pageParam)
         return await myFetch(`/comments/${comment.id}?cursorId=${pageParam}`)
     }
     const fetchPostReply = async()=>{
@@ -48,18 +48,13 @@ const CommentCard = ({comment,postId}) => {
     const createReplyMutation = useMutation({
         mutationFn: fetchPostReply,
         onSuccess: ()=>{
-            console.log("comment id : ",comment.id)
             refetch();
-            // queryClient.refetchQueries(['replies',comment.id])
             queryClient.invalidateQueries(['post',postId])
-            // queryClient.fetchInfiniteQuery(['replies',comment.id])
             setShowInput(false);
-            console.log("Sucess reply posted");
             setInput('');
         },
         onError:(error)=>{
             toast.error(error.message);
-            console.log(error);
         }
     })
 

@@ -38,10 +38,10 @@ const UserProfile = () => {
         queryFn: getUser
     })
 
-    if (isPending) return (<>hi</>);
+    // if (isPending) return (<>hi</>);
     // console.log("data is",data.user.followers);
     //TODO 
-    const { user } = data; //for easier 
+    const { user } = data || {} ; //for easier 
     
     // console.log("user prof",user)
     // const {user} =test;
@@ -87,7 +87,7 @@ const UserProfile = () => {
                                     following={user._count.following}
                                     posts={user._count.posts}
                                 />
-                                {user.id!==authContext.user
+                                {user.id!==Number(authContext.user.id)
                                 ? (
                                 <div className="user-actions">
                                 {user.followers.length>0 

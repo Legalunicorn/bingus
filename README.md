@@ -20,18 +20,13 @@
     functional
 
 //TODO (no order of sequence)
-- search bar and search results page (low priority)
-- messaging and logic
-    - UI arrangement of messaging
-    
-    - who can you message 
-    - add DM inside profile page
-    - socket programming logic, please look into messaging project
-    - loading messages
-    - 
-    - frontend send message
-    - backend
-
+- settings options 
+    -> Logout 
+- Mobile UI adaptation
+- Filling of "sidebar"
+- Editing Post
+- Deleting Post 
+- Deleting Comment, Deleting Replies
 
 //README settled stuff
 -> only show chats you have message with, plus button redirect to find user page

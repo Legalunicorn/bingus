@@ -11,6 +11,8 @@ import TextareaAutosize from "react-textarea-autosize";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { format } from "date-fns";
 import { toast } from "react-toastify";
+import Loader from "../Loaders/Loader";
+import BadRequest from "../../pages/Error/BadRequest";
 
 const VITE_SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
@@ -31,6 +33,7 @@ const DM = () => {
         queryFn: ()=>myFetch(`/chats/${chatId}`), //Backend verfies user is part of the chart so no issue
         queryKey:['DM',chatId]
     })
+
 
     useEffect(()=>{
         if (bottomChatRef.current) bottomChatRef.current.scrollIntoView({behavior:"smooth"});
@@ -70,16 +73,13 @@ const DM = () => {
     // send message mutation
     const sendMessageMutation = useMutation({
         mutationFn: async(input)=>{
-            console.log("emiting:",chatId,input,currUserId)
+            // console.log("emiting:",chatId,input,currUserId)
             socketRef.current.emit("send message",{chatId,input,senderId:currUserId})
         },
         onSuccess: ()=>{
-            console.log("Sucess!")
-            // queryClient.invalidateQueries(['DM',chatId]) //Do I really need to do this ?
             queryClient.setQueryData(['DM',chatId],(old)=>({
                 ...old,
                 messages:[...old.messages,{
-                    //NO data
                     content:inputRef.current.value,
                     createdAt: new Date().toISOString(),
                     senderId: user.id,
@@ -99,7 +99,6 @@ const DM = () => {
     const handleSubmit = (e)=>{
         e.preventDefault();
         if (inputRef.current.value.trim()) {
-            // console.log("mutating--")
             sendMessageMutation.mutate(inputRef.current.value)
         }
     }
@@ -109,8 +108,11 @@ const DM = () => {
             <div>
                 <BackNav label={(data &&data.otherUser.username) || ''} customNav='/p/message'/>
                 {isPending
-                ? <div>...</div>
-                :<div className="chat-messages">
+                ? <div><Loader loading={isPending}/></div>
+                : isError 
+                ? <BadRequest/>
+                :
+                <div className="chat-messages">
                 {data.messages.map((msg,i)=>
                 <>
                 {i>1 && data.messages[i].createdAt.substring(0,10)!=data.messages[i-1].createdAt.substring(0,10)
@@ -131,6 +133,7 @@ const DM = () => {
                             maxRows={3}
                             value={input}
                             onChange={(e)=>{setInput(e.target.value)}}
+                            placeholder={"Enter a message..."}
                         />
                         <button type="submit">
                             <IconSend size={16}/>

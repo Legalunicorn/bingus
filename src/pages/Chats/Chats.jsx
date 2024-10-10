@@ -10,33 +10,19 @@
 import "./chats.scss"
 import { useQuery } from "@tanstack/react-query";
 import { useFetch } from "../../hooks/useFetch";
-import { useSearchParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import DM from "../../components/DM/DM";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import ChatPreview from "../../components/profilePreview/ChatPreview";
 import BackNav from "../../components/backNav/BackNav";
+import Loader from "../../components/Loaders/Loader";
+import BadRequest from "../Error/BadRequest";
 
 const Chats = () => {
-    //TODO check URL params such to set the activeChat if needed
-    const {user} = useAuthContext();
-    const [searchParams] = useSearchParams();
 
-    //might need to rework this
-    //instead of active chat, we just have a params s oits actually useless
 
     //README phase out
-    const [activeChat,setActiveChat] = useState(null); //null means chatlist page
     const myFetch = useFetch();
-
-    //README moved dm to its own page 
-    // useEffect(()=>{
-    //     //check the search params
-    //     const chatParam = searchParams.get("chat")
-    //     if (chatParam){
-    //         setActiveChat(Number(chatParam));
-    //     }
-    // },[activeChat])
+    const navigate = useNavigate();
 
     const {data,isPending,isError} = useQuery({
         queryFn: ()=>myFetch('/chats'),
@@ -44,26 +30,27 @@ const Chats = () => {
 
     })
 
-    if (isPending) return <>f</>
-
-    console.log("---",data)
-
     return (
         <div className="content chats">
             <div>
                 <BackNav label="Messages"/>
-                {!isPending && data.chats.length &&
-                    <div className="chat-list">
+                {isPending 
+                ?<Loader loading={isPending}/>
+                :isError
+                ?<BadRequest/>
+                :
+                data.chats.length>0
+                    ?<div className="chat-list">
                         {data.chats.map(chat=>(
                             <ChatPreview
                                 chat={chat}
                             />))}
                     </div>
+                    :<p className="grey">No Chats. Send a message to other <a className="redirect" onClick={()=>{navigate("/p/search")}}>users</a> to create a chat.</p>
                 }
                 
             </div>
             <div>
-                empty side bar to delete
             </div>
         </div>
 

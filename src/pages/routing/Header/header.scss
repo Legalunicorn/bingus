@@ -61,3 +61,22 @@
 
 
 }
+
+
+@media only screen and (max-width:480px){
+    #header{
+        // padding:  0;
+        // border: 1px solid red;
+        max-height: 8vh;
+        .brand{
+            font-size: 1.25rem;
+            
+        }
+
+        img{
+            max-height: 60% !important;
+        }
+    }
+
+
+}

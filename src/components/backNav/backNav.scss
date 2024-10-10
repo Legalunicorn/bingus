@@ -11,6 +11,8 @@
     p{
         font-weight: bold;
         font-size: 1.25rem;
+        width: 100%;
+        padding-right: 3rem;
     }
     
     svg{
@@ -24,4 +26,21 @@
             
         }
     }
+}
+
+
+@media only screen and (max-width:480px){
+    .nav-back{
+        padding: 0.5rem 0.75rem;
+        border:0;
+
+        p{
+            font-size: 1.1rem;
+            // border: 1px solid red;
+            text-align: center;
+        }
+        
+    }
+
+
 }

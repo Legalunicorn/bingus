@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import TextareaAutosize from "react-textarea-autosize";
 import ProfileInput from "./ProfileInput";
 import ProfileStats from "../../components/profileStats/ProfileStats";
+import Loader from "../../components/Loaders/Loader";
 
 const EditProfile = () => {
     const MAX_FILE_SIZE = 1024*1024*6;
@@ -114,8 +115,8 @@ const EditProfile = () => {
 
 
     // Render 
-    if (isPending) return(<>hi</>);
-    const currUser = data.user;
+    // if (isPending) return(<>hi</>);
+    const currUser =  (data && data.user)|| {};
     // console.log("Random check:");
     // console.log(attachment)
     // console.log(currUser.profile.profilePicture)
@@ -123,11 +124,12 @@ const EditProfile = () => {
     return (
         <div className="content user-profile-page self-profile">
             <div> 
-                {isPending ? <p>Loading profile</p> :
+                <BackNav label="Profile"/>
+                {isPending 
+                ? <Loader loading={isPending}/>
+                :
                     <>
-                        <BackNav
-                            label="Profile"
-                        />
+        
                         <div className="profile-main">
                         
                             <div className="editable-pfp">
@@ -204,6 +206,8 @@ const EditProfile = () => {
                             />
                             
                         </div>
+                        
+                        <div className="save">
                         <button 
                             disabled={updateUserMutation.isPending}
                             className="save-changes"
@@ -211,6 +215,8 @@ const EditProfile = () => {
                         >
                             Save Changes
                         </button>
+                        {updateUserMutation.isPending && <Loader loading={updateUserMutation.isPending}/>}
+                        </div>
                         <div className="profile-posts">
                             <p>Posts</p>
                             {currUser.posts.map(post => (
@@ -227,7 +233,7 @@ const EditProfile = () => {
                 }
             </div>
             <div>
-                side_contents
+                {/* side_contents */}
             </div>
         </div>
     );
