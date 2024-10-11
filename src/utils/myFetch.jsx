@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 
 //handles JWT and error 
 const API_URL = import.meta.env.VITE_API_URL
@@ -16,6 +17,7 @@ export const  myFetch= async (url,options={},user={},content_type="application/j
 
     // console.log("user sent was",user)
     // console.log("OPTS",options)
+    const navigate  = useNavigate();
     const response = await fetch(API_URL+url,
         {
             headers:{
@@ -26,9 +28,13 @@ export const  myFetch= async (url,options={},user={},content_type="application/j
             ...options //for more options if i have them like method
         }
     )
-    const data = await response.json()
+    const data = await response.json();
+    console.log("the res is : ",response);
+    console.log("the data is :",data)
     if (response.ok) return data; //no errors
-    if (response.status==401 && data.msg=='TokenExpiredError'){
+    if (response.status==401 && data.error=='TokenExpiredError'){
+        console.log("OOO OOO AAA AAA ")
+        // navigate("/auth/login");
         throw new Error("Token has expired. Please login again.")
     } else {
         // console.log(data);

@@ -5,13 +5,13 @@ import { Form, useNavigate } from "react-router-dom";
 import TextareaAutosize from "react-textarea-autosize";
 import {toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"
-import ToastConfig from "../../components/toasts/ToastConfig";
 import TagPreview from "./TagPreview";
 import { IconAlertOctagon, IconBrandGithub, IconPaperclip, IconTagsFilled, IconX } from "@tabler/icons-react";
-import { myFetch } from "../../utils/myFetch";
+// import { myFetch } from "../../utils/myFetch";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import { useFetch } from "../../hooks/useFetch";
 const CreatePost = () => {
-    const {user} = useAuthContext();
+    // const {user} = useAuthContext();
     const queryClient = useQueryClient();
     const navigate = useNavigate();
     const [disabled, setDisabled] = useState(false);
@@ -92,14 +92,16 @@ const CreatePost = () => {
 
         createPostMutation.mutate(data)
     }
+    const myF = useFetch();
 
     const createPostMutation = useMutation({
-        mutationFn: (variables) =>{
-            return myFetch("/posts",{
-                method:"POST",
-                body:variables
-            },user,null) //dont set the content type 
-        },
+        // mutationFn: (variables) =>{
+        //     return myFetch("/posts",{
+        //         method:"POST",
+        //         body:variables
+        //     },user,null) //dont set the content type 
+        // },
+        mutationFn:(variables)=>myF('/posts',{method:"POST",body:variables},false),
         onSuccess: ()=>{
             toast.success("Post created")
             queryClient.invalidateQueries(["feed"]) //refresh the feed

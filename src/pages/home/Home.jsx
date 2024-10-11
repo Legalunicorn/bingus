@@ -4,13 +4,15 @@ import "./home.scss"
 import PostCard from "../../components/postCard/PostCard";
 import ProfilePreview from "../../components/profilePreview/ProfilePreview";
 import { useQuery } from "@tanstack/react-query";
-import { myFetch } from "../../utils/myFetch";
+// import { myFetch } from "../../utils/myFetch";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../components/Loaders/Loader";
 import BadRequest from "../Error/BadRequest";
+import { useFetch } from "../../hooks/useFetch";
 
 const Home = () => {
+    const myFetch = useFetch();
     const navigate = useNavigate();
     const {user} = useAuthContext();
     const [feedSort,setFeedSort] = useState('recent') //or following
@@ -23,7 +25,8 @@ const Home = () => {
 
     const feedQuery = useQuery({
         queryKey:['feed','post'],
-        queryFn: ()=>myFetch("/init",{},user) //
+        queryFn:()=>myFetch("/init")
+        // queryFn: ()=>myFetch("/init",{},user) //
     })
 
     const {new_post=[],new_follower_posts=[],new_users=[],top_users=[]} = feedQuery.data || {};

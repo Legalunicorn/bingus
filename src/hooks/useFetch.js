@@ -1,9 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "./useAuthContext"
 const API_URL = import.meta.env.VITE_API_URL;
 
 // import { useAuthContext } from "./useAuthContext"
-export function useFetch(url,options={},content_type="application/json"){
+export function useFetch(){
     const {user} = useAuthContext();
+    const navigate = useNavigate();
 
     const handleFetch = async (url,options={},content_type=true) =>{
         // console.log("INSIDE ARE: ",options);
@@ -26,6 +28,8 @@ export function useFetch(url,options={},content_type="application/json"){
         // console.log("The data response IS:",data);
         if (response.ok) return data;
         if (response.status==401 && data.error=='TokenExpiredError'){
+            console.log("Oheheheeheheheh")
+            navigate("/auth/login")
             throw new Error("Token has expired. Please login again")
         } else{
             console.log("$err",data);
