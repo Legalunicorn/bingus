@@ -23,7 +23,7 @@
         padding-top: 1rem;
         display:flex;
         flex-direction: column;
-        gap: clamp(0.5rem, 3dvh,4dvh);
+        gap: clamp(0.5rem, 3vh,4vh);
         opacity: 1.0;
 
         li{
@@ -97,16 +97,19 @@
     .sidebar{
         padding:0rem;
         margin:0;
-        width: 100vw;
+        width: 100%;
         max-width: 100vw;
         position: fixed;
-        height: 8dvh;
+        height: 8vh;
         min-height: 60px;
         left:0;
         margin-top: auto;
         bottom:0;
         justify-content: space-around;
         z-index: 9999;
+
+        //test
+        overflow: hidden;
 
 
 

@@ -6,7 +6,7 @@
     display:flex;
     background-color: var(--color-bg);
 
-    min-height: 100dvh;
+    min-height: 100vh;
 
     > div:first-child{ //AKA form-side
         display: flex;
@@ -14,7 +14,7 @@
         align-items: center;
         padding: 2.5rem 3rem;
         // justify-content: center;
-        padding-top: 15dvh;
+        padding-top: 15vh;
 
         color: var(--color-bg);
         background-color: var(--color-text);
