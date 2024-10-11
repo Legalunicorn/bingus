@@ -1,8 +1,8 @@
 .DM{
     // height: 85vh;
-    height: 100% I !important;
+    // height: 100% I !important;
     padding-bottom: 5rem;
-    // max-height: 85vh !important;
+    max-height: 85vh !important;
     position: relative;
     overflow:hidden;
     // border: 1px solid cyan;
@@ -84,8 +84,7 @@
     .DM{
         
         position:static;
-        max-height: calc(100dvh - var(--header-height) );
-        // max-height: 100%;
+        max-height: calc(100vh - var(--header-height)) !important;
         
         
     }
