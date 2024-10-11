@@ -1,20 +1,24 @@
 .DM{
     // height: 85vh;
-    height: 100%;
-    max-height: 85vh;
+    height: 100% I !important;
+    padding-bottom: 5rem;
+    // max-height: 85vh !important;
     position: relative;
     overflow:hidden;
+    // border: 1px solid cyan;
 
 
 }
 
 .chat-messages{
+    // border: 2px solid GREEN;
     flex: 1;
     display: flex;
     flex-direction: column;
     padding: 1.5rem 1rem;
     overflow-y: auto;
-    max-height: 85%;
+    height: 100%;
+    max-height: 100%;
 
 }
 
@@ -23,8 +27,12 @@
     color: var(--color-neutral-2);
     margin: 0.5rem 0;
 }
+// .chat-input{
+//     border: 10px solid yellow;
+// }
 
 .chat-input> form{
+    // opacity: 0;
     // border: 1px solid red;
     background-color: var(--color-bg);
       
@@ -82,8 +90,8 @@
         
     }
     .chat-input> form{
-        margin-bottom: 8vh;
-        z-index: 100000;  
+        margin-bottom: 3rem;
+        // z-index: 100000;  
     }
 
 }

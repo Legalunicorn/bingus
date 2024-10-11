@@ -95,34 +95,36 @@
 
 @media only screen and (max-width: 480px){
     .sidebar{
+        // opacity: 0;
+        // border: 2px solid red;
         padding:0rem;
         margin:0;
         width: 100%;
         max-width: 100%;
         position: fixed;
-        height: 8vh;
-        min-height: 60px;
+        height: 3rem;
+        min-height: fit-content;
+        // min-height: 60px;
         left:0;
         margin-top: auto;
         bottom:0;
         justify-content: space-around;
+        
         z-index: 9999;
 
-        //test
-        -webkit-backface-visibility: hidden;
 
 
 
         ul{
             // border: 1px solid red;
             width: 100%;
+            max-width:100vw;
             padding: 0.5rem 1.5rem;
             opacity: 1;
             margin-top: auto;
             flex-direction: row;
-            // gap:5px;
             align-items: center;
-            justify-content: center;
+            justify-content: space-around;
         }
         li{
             // border: 1px solid red;
