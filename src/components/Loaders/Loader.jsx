@@ -1,7 +1,7 @@
 import { DotLoader, RotateLoader } from "react-spinners";
 import "./loader.scss"
 
-const Loader = ({loading, loaderType="dot"}) => {
+const Loader = ({loading, loaderType="dot",color="white"}) => {
     
     
     if (loaderType=="rotate")return ( 
@@ -22,7 +22,7 @@ const Loader = ({loading, loaderType="dot"}) => {
         className="loader"
         aria-label="Loading spinner"
         loading={loading || false}
-        color={"white"}
+        color={color}
         size={25}
 
     />

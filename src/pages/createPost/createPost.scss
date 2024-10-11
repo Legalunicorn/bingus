@@ -101,7 +101,6 @@
             // transition: 0.25s ease-in-out;
         }
         .form-options{
-            // border: 1px solid lime;
             display:flex;
             align-items: center;
             gap: 0.75rem;
@@ -135,6 +134,10 @@
                     opacity: 0.5;
                 }
             }
+
+            span{
+                margin:0;
+            }
         }
 
         .attachment-container{
@@ -150,4 +153,9 @@
             }
         }
     }
+}
+
+.submit-post{
+    border:1 px solid red;
+    // display: flex;
 }

@@ -10,5 +10,9 @@
 
 .redirect{
     color: rgb(100, 18, 231);
+
+    &:hover{
+        text-decoration: underline;
+    }
     
 }

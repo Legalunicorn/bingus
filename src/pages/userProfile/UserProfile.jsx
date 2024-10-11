@@ -8,6 +8,7 @@ import BackNav from "../../components/backNav/BackNav"
 import ProfileStats from "../../components/profileStats/ProfileStats";
 import useFollowMutation from "../../hooks/useFollowMutation";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import Loader from "../../components/Loaders/Loader";
 const VITE_DEFAULT_PFP = import.meta.env.VITE_DEFAULT_PFP;
 
 
@@ -60,7 +61,7 @@ const UserProfile = () => {
         <div className="content user-profile-page">
 
             <div> 
-                {isPending ? <p>Loading profile</p> :
+                {isPending ? <Loader loading={isPending}/>:
                     <>
                         <BackNav
                             label="User"

@@ -14,7 +14,7 @@ const Login = () => {
     const navigate = useNavigate();
     const [error,setError] = useState();
     const [disabled,setDisabled] = useState(false);
-    const {user,dispatch} = useAuthContext();
+    const {dispatch} = useAuthContext();
     const [searchParams] = useSearchParams(); //Auth redirect here, redirect to home page
 
     useEffect(()=>{

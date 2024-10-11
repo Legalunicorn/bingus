@@ -10,6 +10,7 @@ import { IconAlertOctagon, IconBrandGithub, IconPaperclip, IconTagsFilled, IconX
 // import { myFetch } from "../../utils/myFetch";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useFetch } from "../../hooks/useFetch";
+import Loader from "../../components/Loaders/Loader";
 const CreatePost = () => {
     // const {user} = useAuthContext();
     const queryClient = useQueryClient();
@@ -95,12 +96,7 @@ const CreatePost = () => {
     const myF = useFetch();
 
     const createPostMutation = useMutation({
-        // mutationFn: (variables) =>{
-        //     return myFetch("/posts",{
-        //         method:"POST",
-        //         body:variables
-        //     },user,null) //dont set the content type 
-        // },
+
         mutationFn:(variables)=>myF('/posts',{method:"POST",body:variables},false),
         onSuccess: ()=>{
             toast.success("Post created")
@@ -108,7 +104,6 @@ const CreatePost = () => {
             navigate("/p/home")
         },
         onError:(error,variables,context)=>{
-            // console.log(error.message)
             toast.error(error.message)
 
         }
@@ -170,8 +165,13 @@ const CreatePost = () => {
                             className={options=="git"?"selected":''}
                             onClick={()=>{setOptions("git")}}
                         />
+                        
                         <p>{text.length}/2000</p>
+                        <Loader loading={createPostMutation.isPending}/>
                         <button disabled={createPostMutation.isPending} type="submit">Post</button>
+                        
+
+
                     </div>
                     {options=="tags" ?
                         <>

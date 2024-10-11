@@ -9,6 +9,7 @@ const VITE_DEFAULT_PFP = import.meta.env.VITE_DEFAULT_PFP;
 import { Form } from "react-router-dom";
 import TextareaAutosize from "react-textarea-autosize";
 import useCommentMutation from "../../hooks/useCommentMutation";
+import Loader from "../Loaders/Loader";
 
 
 /*
@@ -175,7 +176,7 @@ const CommentCard = ({comment,postId}) => {
             }
 
             {isFetchingNextPage? 
-                <p className="loadmore">Loading..</p>:
+                <Loader loading={isFetchingNextPage}/>:
             hasNextPage &&  showReplies && <p className="loadmore"onClick={()=>fetchNextPage()}>Load more</p>
             }
 

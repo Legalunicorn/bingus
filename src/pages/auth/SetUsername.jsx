@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { IconAlertOctagon } from "@tabler/icons-react";
 import { myFetch } from "../../utils/myFetch";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import Loader from "../../components/Loaders/Loader";
 
 const SetUsername = () => {
     const {user,dispatch} = useAuthContext();
@@ -100,8 +101,12 @@ const SetUsername = () => {
                     maxLength="35"
                     placeholder="Eg. JohnDoe"
                 />
-                <button type="submit">Submit</button>
+                <button disabled={disabled}type="submit">Submit</button>
+                <Loader loading={disabled} color={"black"}/>
+                
             </Form>
+
+            <p>Back to login page <a className="redirect" onClick={()=>navigate("/auth/login")}>here</a></p>
 {/* 
             <ul>
                 <li>At least 2 characters</li>
