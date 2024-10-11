@@ -17,7 +17,6 @@ export const  myFetch= async (url,options={},user={},content_type="application/j
 
     // console.log("user sent was",user)
     // console.log("OPTS",options)
-    const navigate  = useNavigate();
     const response = await fetch(API_URL+url,
         {
             headers:{
