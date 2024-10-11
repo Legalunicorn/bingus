@@ -74,9 +74,10 @@
 
 @media only screen and (max-width: 480px){
     .DM{
-        max-height: 100%;
+        
         position:static;
-        max-height: calc(100vh - var(--header-height) );
+        max-height: calc(100dvh - var(--header-height) );
+        // max-height: 100%;
         
         
     }
