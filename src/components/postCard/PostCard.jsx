@@ -14,6 +14,10 @@ const PostCard = ({
     const {likePost,unlikePost,deletePost} = usePostMutation(post,queryKey);
     const navigate = useNavigate(); 
     const currUserId = Number(useAuthContext().user.id)
+    if (post && post.gitLink){
+        post.gitLink ="www.github.com"
+        if (post.gitLink.startsWith("www")) post.gitLink= `https://${post.gitLink}`
+    }
 
     return (
         <div onClick={()=>navigate(`/p/posts/${post.id}`)} className="postcard">
@@ -69,8 +73,8 @@ const PostCard = ({
                     <IconMessageCircle /> {post._count.comments}
                 </p>
 
-                {post.repoLink && <IconLink />}
-                {post.gitLink && <IconBrandGithub onClick={()=>{window.open(`https://${post.gitLink}`,"_blank",'noopener,noreferrer')}}/>}
+                {/* {post.repoLink && <IconLink />} */}
+                {post.gitLink && <IconBrandGithub onClick={()=>{window.open(`${post.gitLink}`,"_blank",'noopener,noreferrer')}}/>}
 
             </div>
 
