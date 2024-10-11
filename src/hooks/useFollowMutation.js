@@ -36,6 +36,7 @@ const useFollowMutation = (user,queryKey)=>{
     const createMutation = (mutationFn,updateFn)=>useMutation({
         mutationFn,
         onMutate:async()=>{
+            
             //cancel queries 
             await queryClient.cancelQueries(queryKey)
             //get rollback

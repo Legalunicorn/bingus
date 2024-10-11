@@ -5,47 +5,47 @@ import { useNavigate } from "react-router-dom";
 
 
 const ProfilePreview = ({
-    user ,
-    showFollow=true
+    user,
+    showFollow = true
 }) => {
     const navigate = useNavigate();
 
 
-    const {follow,unfollow} = useFollowMutation(user,['feed']);
+    const { follow, unfollow } = useFollowMutation(user, ['feed', 'post']);
     return (
         <div className="profile-preview-card">
             {user.profile && user.profile?.profilePicture ?
-            <img src={user.profile.profilePicture} alt="" />
-            :
-            <img src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg" alt=""/>
+                <img src={user.profile.profilePicture} alt="" />
+                :
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg" alt="" />
             }
-            
+
             <div>
                 <p
-                    onClick={()=>navigate(`/p/users/${user.id}`)}
+                    onClick={() => navigate(`/p/users/${user.id}`)}
                 >{user.username}</p>
-                <p>{user.displayName}</p>             
+                <p>{user.displayName}</p>
             </div>
             {showFollow
-                ?(user.followers.length==0
-                    ?<button className="filled"
-                        onClick={()=>follow.mutate()}
+                ? (user.followers.length == 0
+                    ? <button className="filled"
+                        onClick={() => follow.mutate()}
                     >
                         Follow
-                    </button>:
+                    </button> :
                     <button
-                        onClick={()=>unfollow.mutate()}
+                        onClick={() => unfollow.mutate()}
                     >
                         Unfollow
                     </button>
                 )
-                :<></>
+                : <></>
             }
 
         </div>
     );
 }
- 
+
 
 export default ProfilePreview;
 

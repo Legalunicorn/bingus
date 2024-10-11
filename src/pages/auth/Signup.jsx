@@ -44,10 +44,7 @@ const Signup = () => {
                     confirm_password: confirm_password.value
                 })
             })
-            console.log(data);
-            // let {token,username} = data;
-            // dispatch({type:"LOGIN",payload:{token,username}})
-            // localStorage.setItem("user",JSON.stringify({token,username}))
+            // console.log(data);
             //DONE
             dispatch({type:"LOGIN",payload:data})
             localStorage.setItem("user",JSON.stringify(data))

@@ -28,7 +28,7 @@ export function useFetch(){
         // console.log("The data response IS:",data);
         if (response.ok) return data;
         if (response.status==401 && data.error=='TokenExpiredError'){
-            console.log("Oheheheeheheheh")
+            // console.log("Oheheheeheheheh")
             navigate("/auth/login")
             throw new Error("Token has expired. Please login again")
         } else{

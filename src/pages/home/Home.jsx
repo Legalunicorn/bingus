@@ -32,7 +32,7 @@ const Home = () => {
     const {new_post=[],new_follower_posts=[],new_users=[],top_users=[]} = feedQuery.data || {};
 
 
-    
+    // console.log(new_users,"====")
 
     return (
         <div className="content" id="home-page">
