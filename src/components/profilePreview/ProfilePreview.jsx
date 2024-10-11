@@ -8,8 +8,6 @@ const ProfilePreview = ({
     user ,
     showFollow=true
 }) => {
-    //TODO onclick for follow unfollow users
-    // console.log(user)
     const navigate = useNavigate();
 
 

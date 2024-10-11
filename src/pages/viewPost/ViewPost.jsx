@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./viewPost.scss"
 import { useQuery } from "@tanstack/react-query";
 import { useFetch } from "../../hooks/useFetch";
@@ -12,11 +12,13 @@ import BadRequest from "../Error/BadRequest";
 const ViewPost = () => {
     const {postId} = useParams();
     const getPost = useFetch()
+    const navigate = useNavigate()
     const postQuery = useQuery({
         queryKey: ["post",postId],
         queryFn: ()=>getPost(`/posts/single/${postId}`)
     })
     const {post} = postQuery?.data ||{};
+    if (post===null) navigate("/p/home");
     return (
         <div className="content view-post">
             <div>

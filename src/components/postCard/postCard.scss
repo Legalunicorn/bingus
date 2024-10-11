@@ -33,6 +33,20 @@
             height: 2rem;
             margin-right: 0.75rem;
         }
+
+        svg{
+            color: var(--color-neutral-2);
+            margin-left:auto;
+            opacity: 0.5;
+            // border: 1px solid red;
+            min-height: 20px;
+            min-width: 20px;
+
+            &:hover{
+                color: rgb(192, 36, 36);
+                opacity: 1.0;
+            }
+        }
     }
 
     .post-body{

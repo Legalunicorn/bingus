@@ -38,4 +38,3 @@ export function useFetch(url,options={},content_type="application/json"){
 
 }
 
-//TODO , make fetching more convinient so that you dont need to pass in user to myFetch.jsx

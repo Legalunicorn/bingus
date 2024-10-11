@@ -1,18 +1,20 @@
 import { formatDistanceToNowStrict } from "date-fns";
 import "./postCard.scss"
-import { IconBrandGithub, IconHeart, IconHeartFilled, IconLink, IconMessageCircle } from "@tabler/icons-react";
+import { IconBrandGithub, IconHeart, IconHeartFilled, IconLink, IconMessageCircle, IconTrack, IconTrash } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 import usePostMutation from "../../hooks/usePostMutation";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 const PostCard = ({
     post, //should be an object with the following
-    handleClick, //BUG why did i even add this for 
     pageQueryKey,
 }) => {
     const written_time = formatDistanceToNowStrict(new Date(post.createdAt));
     const queryKey = pageQueryKey || ['feed'];
-    const {likePost,unlikePost} = usePostMutation(post,queryKey);
-    const navigate = useNavigate(); //BUG go external pages
+    const {likePost,unlikePost,deletePost} = usePostMutation(post,queryKey);
+    const navigate = useNavigate(); 
+    const currUserId = Number(useAuthContext().user.id)
+
     return (
         <div onClick={()=>navigate(`/p/posts/${post.id}`)} className="postcard">
 
@@ -26,6 +28,8 @@ const PostCard = ({
                 <span onClick={(e) => { e.stopPropagation(); navigate(`/p/users/${post.author.id}`) }}>{post.author.username}</span>
                 <span>•</span>
                 <span>{written_time} ago</span>
+                {post.userId===currUserId && <IconTrash onClick={(e)=>{e.stopPropagation();deletePost.mutate()}}/>}
+
             </div>
             <div className="post-body">
                 <p>{post.body}</p>

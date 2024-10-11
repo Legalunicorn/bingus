@@ -27,11 +27,9 @@ const CommentCard = ({comment,postId}) => {
     const [input,setInput] = useState('');
     const queryClient = useQueryClient();
     // const {likeComment,unlikeComment} = useCommentMutation(comment,postId);
-    //TODO differentiate between show replies and show more
 
     const myFetch = useFetch();
     const fetchReplies = async({pageParam})=>{
-        // console.log("FETCH REPLIES CID::",pageParam)
         return await myFetch(`/comments/${comment.id}?cursorId=${pageParam}`)
     }
     const fetchPostReply = async()=>{
@@ -63,9 +61,6 @@ const CommentCard = ({comment,postId}) => {
         createReplyMutation.mutate();
     }
 
-
-    
-
     const {
         data,
         error,
@@ -84,8 +79,7 @@ const CommentCard = ({comment,postId}) => {
     })
     // console.log("type",typeof refetch);
     const {likeComment,unlikeComment} = useCommentMutation(comment,postId);
-    if (status=='error') console.log(error); //TODO clean up
-    if (status=='error') return (<p>{error.message}</p>)
+    if (status=='error') return (<p>{error.message}</p>) //TODO clean up?
 
     return (
 
@@ -185,50 +179,8 @@ const CommentCard = ({comment,postId}) => {
             hasNextPage &&  showReplies && <p className="loadmore"onClick={()=>fetchNextPage()}>Load more</p>
             }
 
-
-
         </div>
     );
 }
  
 export default CommentCard;
-
-
-//Sample data 
-let x = {  "comments": [
-    //
-            {
-                "id": 2, 
-                "body": "Second comment under post 11", //DONE
-                "createdAt": "2024-08-20T13:01:20.922Z", //DONE
-                "parentCommentId": null,
-                "_count": {
-                    "likes": 0
-                },
-                "user": {
-                    "id": 1,
-                    "username": "Hm",
-                    "displayName": "User 0",
-                    "profile": null
-                },
-                "childComment": []
-            },
-    //            
-            {
-                "id": 1,
-                "body": "First commet under post 11",
-                "createdAt": "2024-08-20T13:00:51.142Z",
-                "parentCommentId": null,
-                "_count": {
-                    "likes": 1
-                },
-                "user": {
-                    "id": 1,
-                    "username": "Hm",
-                    "displayName": "User 0",
-                    "profile": null
-                },
-                "childComment": []
-            }
-        ]
-}

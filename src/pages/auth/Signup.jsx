@@ -85,7 +85,6 @@ const Signup = () => {
                     required
                     minLength="2" maxLength="35"
                 />
-                {/* //Make the input with icon its own component//TODO */}
                 <div className="input-container">
                     <input 
                         value={pass}

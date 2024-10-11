@@ -17,18 +17,11 @@ const Login = () => {
     const {user,dispatch} = useAuthContext();
     const [searchParams] = useSearchParams(); //Auth redirect here, redirect to home page
 
-    // TODO uncomment this after testing login properly
     useEffect(()=>{
-        //TODO uncomment this after testing login functionality fully
-        // if (user){
-        //     console.log("Already Logged in. Redirecting..")
-        //     navigate("/p/home")
-        // }
         const tokenParam = searchParams.get("token");
         const userParam = searchParams.get("username")
         const idParam = searchParams.get("id");
         const profilePictureParam = searchParams.get("profilePicture")
-        console.log(tokenParam,userParam,"hi")
         if (tokenParam && userParam && idParam && profilePictureParam){ //as long as one is present we can do this
             const payload = {
                 token:tokenParam,
@@ -36,11 +29,8 @@ const Login = () => {
                 id:idParam,
                 profilePicture: profilePictureParam
             }
-            //DONE
             dispatch({type:"LOGIN",payload:payload})
             localStorage.setItem("user",JSON.stringify(payload))
-
-            //localStorage -> auth persistence, 
             navigate("/p/home")
 
         }
@@ -58,12 +48,6 @@ const Login = () => {
                     password:e.target.password.value
                 })
             })
-
-            //DONE
-            // const {token,username,id,profilePicture} = data; //from the server
-            // data will have 1.token,2.username,3.id, 4.profilepciue
-            // dispatch({type:"LOGIN",payload:{token,username}})
-            // localStorage.setItem('user',JSON.stringify({token,username}))
             dispatch({type:'LOGIN',payload:data}) //username, id , profilepicture, token
             localStorage.setItem('user',JSON.stringify(data))
             navigate("/p/home")
@@ -95,7 +79,6 @@ const Login = () => {
                 <input
                     type="password"
                     name="password"
-                    // ref={password}
                     autoComplete="new-password"
                     placeholder='Password'
                     minLength="2"
@@ -105,7 +88,6 @@ const Login = () => {
             </Form>
 
             <p  className='signup'>Don't have an account? <span onClick={()=>navigate("../signup")}>Sign up</span></p>
-            {/* <p className="error-box">{error && <IconAlertOctagon/>}}</p> */}
             <p className="error-box">{
                 error ? 
                     <>

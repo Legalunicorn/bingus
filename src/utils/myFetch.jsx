@@ -31,7 +31,7 @@ export const  myFetch= async (url,options={},user={},content_type="application/j
     if (response.status==401 && data.msg=='TokenExpiredError'){
         throw new Error("Token has expired. Please login again.")
     } else {
-        console.log(data);
+        // console.log(data);
         throw new Error(data.error  || 'Failied to fetch data')
     }
 

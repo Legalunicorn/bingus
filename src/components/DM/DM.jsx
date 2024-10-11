@@ -92,7 +92,6 @@ const DM = () => {
         onError: (error,variables,context)=>{
             console.log("Error sending message: ",error)
             toast.warn("Error sending message. Please try again later.")
-            //TODO handle error properly
 
         }
     })

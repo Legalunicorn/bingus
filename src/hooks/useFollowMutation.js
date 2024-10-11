@@ -30,7 +30,7 @@ const useFollowMutation = (user,queryKey)=>{
                 new_users:data.new_users.map(checkBeforeUpdate),
                 top_users:data.top_users.map(checkBeforeUpdate)
             }
-        } //TODO add check for list of followers/following when this is implementined
+        } //TODO add check for list of followers/following when this is implementined. Update: will not implement list of followers
         else return data;
     }
     const createMutation = (mutationFn,updateFn)=>useMutation({
@@ -48,12 +48,10 @@ const useFollowMutation = (user,queryKey)=>{
         },
         onError:(error,variables,context)=>{
             console.log(error)
-            //TODO reset roll back
             if (context.rollback) queryClient.setQueryData(queryKey,context.rollback) 
             else console.log("Missing rollback")
         },
         onSettled:()=>{
-            //TODO invalidate queries in the page
             queryClient.invalidateQueries(queryKey)
         }
     })

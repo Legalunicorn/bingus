@@ -29,13 +29,13 @@ const SearchUsers = () => {
         if (query.length==0) return; //dont execute
         setLoading(true);
         try{
-            console.log("searching for: ",query)
+            // console.log("searching for: ",query)
             const data = await myFetch(`/users?search=${query}`);
             setUserList(data.users);
             setLoading(false);
 
         } catch(err){
-            console.log(err,'----------');
+            // console.log(err,'----------');
             setLoading(false);
             toast.warn("An Error has occured. Try again later.");
         }

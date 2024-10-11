@@ -15,8 +15,8 @@ const CreateComment = ({postId}) => {
     const queryClient = useQueryClient();
 
     const handleSubmit =(e)=>{
-        e.preventDefault(); //TODO check if i really need this
-        console.log("sending over comment:",comment);
+        e.preventDefault(); 
+        // console.log("sending over comment:",comment);
         createCommentMutation.mutate() //prom props
     }
 
@@ -30,7 +30,7 @@ const CreateComment = ({postId}) => {
     }),
         onSuccess:()=>{
             queryClient.invalidateQueries(["post",postId],{exact:true})
-            console.log("Comment created.")
+            // console.log("Comment created.")
             setComment('')
         },
         onError:(error)=>{

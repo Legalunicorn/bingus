@@ -15,6 +15,7 @@ import LikeFeed from "../LikeFeed/LikeFeed"
 import Chats from "../Chats/Chats"
 import DM from "../../components/DM/DM"
 import NotFound from "../Error/NotFound"
+import Settings from "../Settings/Settings"
 // import
 
 
@@ -116,6 +117,10 @@ const router = createBrowserRouter([
                     {
                         path:"message/:chatId",
                         element: <DM/>
+                    },
+                    {
+                        path:"/p/settings",
+                        element: <Settings/>
                     }
                 ]
             }

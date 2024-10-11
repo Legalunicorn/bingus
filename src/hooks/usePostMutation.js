@@ -14,15 +14,15 @@ const usePostMutation = (post,queryKey) =>{
         //updateFn -> update a single post
         const updatePost = (p) => p.id===post.id? updateFn(p):p
         if (!prev){
-            console.log("No prev");
+            // console.log("No prev");
             return;
         }
         //############### Home Feed ###############
         if (prev.new_post && prev.new_follower_posts) {
             return {
                 ...prev,
-                new_post: prev.new_post.map(updatePost),
-                new_follower_posts: prev.new_follower_posts.map(updatePost)
+                new_post: prev.new_post.map(updatePost).filter(p=>p!==null),
+                new_follower_posts: prev.new_follower_posts.map(updatePost).filter(p=>p!==null)
             }
         }
         //############### Profile feed || Edit Profile  ############### (same structure)
@@ -31,15 +31,14 @@ const usePostMutation = (post,queryKey) =>{
                 ...prev,
                 user:{
                     ...prev.user,
-                    posts:prev.user.posts.map(updatePost)
+                    posts:prev.user.posts.map(updatePost).filter(p=>p!==null)
                 }
             }
         }
         if (prev.posts){
-            console.log("SKIBIDI")
             return {
                 ...prev,
-                posts:prev.posts.map(updatePost)
+                posts:prev.posts.map(updatePost).filter(p=>p!==null)
             }
         }
         //############### View post  ###############
@@ -65,7 +64,7 @@ const usePostMutation = (post,queryKey) =>{
 
         },
         onError:(error,variables,context)=>{
-            console.log("Error in post mutation: ",error);
+            // console.log("Error in post mutation: ",error);
             if (context.rollback) queryClient.setQueriesData(queryKey,context.rollback)
             else console.log("No roll back!")
             //roll back if needed
@@ -103,10 +102,14 @@ const usePostMutation = (post,queryKey) =>{
             likes:[],
             _count:{...post._count,likes:post._count.likes-1}
         })
-
     )
 
-    return {likePost,unlikePost}
+    const deletePost = createMutation(
+        ()=> myFetch(`/posts/${post.id}`,{method:"DELETE"}),
+        (post)=>null //return nothing
+    )
+
+    return {likePost,unlikePost,deletePost}
 }
 
 export default usePostMutation

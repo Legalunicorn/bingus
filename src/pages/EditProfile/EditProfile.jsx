@@ -70,7 +70,6 @@ const EditProfile = () => {
             queryClient.invalidateQueries('post')
             // queryClient.invalidateQueries('posts','profile')
             // queryClient.invalidateQueries('feed')
-            //Update user context //TODO
             dispatch({type:"UPDATE",payload:{
                 username,
                 profilePicture:newData.user.profile.profilePicture

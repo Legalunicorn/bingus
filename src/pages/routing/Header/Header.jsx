@@ -20,16 +20,12 @@ const Header = () => {
             
 
             <div className="notif">
-                {/* <IconBell 
-                // className="notif"
-                size="30"
-                />
-                <span className="test">10</span> */}
+
 
             </div>
             {user && user.profilePicture?
-            <img src={user.profilePicture} alt="profile_picture" />:
-            <img src={VITE_DEFAULT_PFP} alt="profile_picture" />
+            <img src={user.profilePicture} alt="profile_picture" onClick={()=>navigate(`/p/users/${user.id}`)}/>:
+            <img src={VITE_DEFAULT_PFP} alt="profile_picture" onClick={()=>navigate(`/p/users/${user.id}`)}/>
             }
 
         </div>

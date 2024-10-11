@@ -19,15 +19,14 @@ const SetUsername = () => {
         const paramToken = searchParams.get("token");
         if (paramToken==null && user){
             setToken(user.token)
-            console.log(user.token)
+            // console.log(user.token)
         }
         else if (paramToken){
             setToken(paramToken)
-            console.log(paramToken)
+            // console.log(paramToken)
         } else{
             navigate("/auth/login")
         }
-        console.log()
 
 
 
@@ -57,8 +56,6 @@ const SetUsername = () => {
         try{
             const temp ={};
             temp.token = token;
-            console.log("bi")
-            console.log("token is",token);
             const data = await myFetch("/auth/oauth/username",{
                 method:"PATCH",
                 body:JSON.stringify({
@@ -67,11 +64,6 @@ const SetUsername = () => {
             },temp)
 
             setDisabled(false);
-            // const r_token = data.token; //have to use r_token because i used token already
-            // const username = data.username;
-            // dispatch({type:"LOGIN",payload:{token:r_token,username}});
-            // localStorage.setItem("user",JSON.stringify({token,username}))
-            //DONE
             dispatch({type:'LOGIN',payload:data})
             localStorage.setItem("user",JSON.stringify(data))
             navigate("/p/home")
@@ -80,7 +72,6 @@ const SetUsername = () => {
             //success
 
         } catch(err){
-            console.log(err);
             setDisabled(false);
             setError(err.message)
         }

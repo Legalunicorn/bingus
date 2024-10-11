@@ -36,15 +36,11 @@ const CreatePost = () => {
     ,[tags])
 
     const handleAddTag = (e) =>{
-        //BUG enter no longer creaates a line in textbody, consider changing or leaving it
-        // console.log(e.keyCode);
         if (e.keyCode===13){
             e.preventDefault();
             if (document.activeElement==tagsRef.current && tagsRef.current.value!=''){
                 //first check if it exist already, dont allow duplicate tags
                 const value = tagsRef.current.value.toLowerCase(); //tags are case insensitiveS
-                console.log(tags);
-                console.log(tags.includes(value))
                 if (!tags.includes(value)){
                     setTags(prevTags=>[...prevTags,value])
                 }
@@ -87,7 +83,7 @@ const CreatePost = () => {
         const data = new FormData();
         
         data.append("body",e.target.body.value)
-        console.log("BODY IS",e.target.body.value);
+        // console.log("BODY IS",e.target.body.value);
         if (attachment) data.append("attachment", e.target.attachment.files[0]); //attachment
         if (tags.length>0){
             tags.forEach(tag=>data.append("tags",tag))
@@ -110,7 +106,7 @@ const CreatePost = () => {
             navigate("/p/home")
         },
         onError:(error,variables,context)=>{
-            console.log(error.message)
+            // console.log(error.message)
             toast.error(error.message)
 
         }

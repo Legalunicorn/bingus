@@ -15,8 +15,6 @@ const VITE_DEFAULT_PFP = import.meta.env.VITE_DEFAULT_PFP;
 
 const UserProfile = () => {
 
-    //TODO implement infinite scroll after its implemented for home page
-    //TODO must fetch whether the user is following this profile or not!
     
     const navigate = useNavigate();
     const { userId } = useParams();
@@ -38,13 +36,8 @@ const UserProfile = () => {
         queryFn: getUser
     })
 
-    // if (isPending) return (<>hi</>);
-    // console.log("data is",data.user.followers);
-    //TODO 
     const { user } = data || {} ; //for easier 
     
-    // console.log("user prof",user)
-    // const {user} =test;
 
     const handleChat = async()=>{
         //Send an end point to retrieve (and first create if needed) a chat
