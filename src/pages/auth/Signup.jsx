@@ -7,6 +7,8 @@ import GoogleLogo from "../../assets/images/google.svg"
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { myFetch } from "../../utils/myFetch";
 import { IconAlertOctagon, IconEye, IconEyeOff } from "@tabler/icons-react";
+const API_URL = import.meta.env.VITE_API_URL;
+
 
 const Signup = () => {
     const navigate = useNavigate();
@@ -157,7 +159,7 @@ const Signup = () => {
 
             <p className="or"><span>or</span></p>
 
-            <button className="google"onClick={()=>{window.location.href=`${API_URL}/auth/oauth/google`}}>
+            <button className="google"onClick={()=>{window.location.href=`${API_URL}/auth/oauth/google`;console.log("hey")}}>
                 <img className="google-icon" src={GoogleLogo} alt="" />
                 <span>Continue with Google</span>
             </button>
