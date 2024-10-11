@@ -98,7 +98,6 @@
         padding:0rem;
         margin:0;
         width: 100%;
-        max-width: 100vw;
         position: fixed;
         height: 8vh;
         min-height: 60px;
@@ -115,7 +114,7 @@
 
         ul{
             // border: 1px solid red;
-            width: 100vw;
+            width: 100%;
             padding: 0.5rem 1.5rem;
             opacity: 1;
             margin-top: auto;
