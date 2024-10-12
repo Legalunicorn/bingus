@@ -47,7 +47,10 @@ const DM = () => {
         socketRef.current.on("receive message",(msg)=>{ //socket receive new message from other party
             queryClient.setQueryData(['DM',chatId],(old)=>({
                 ...old,
-                messages:[...old.messages,msg]
+                messages:[...old.messages,{
+                    ...msg,
+                    fromUser: msg.senderId===currUserId
+                }]
             }))
         })
 
