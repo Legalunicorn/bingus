@@ -6,14 +6,15 @@ import { useNavigate } from "react-router-dom";
 
 const ProfilePreview = ({
     user,
-    showFollow = true
+    showFollow = true,
+    clickable = false
 }) => {
     const navigate = useNavigate();
 
 
     const { follow, unfollow } = useFollowMutation(user, ['feed', 'post']);
     return (
-        <div className="profile-preview-card">
+        <div onClick={()=>{clickable && navigate(`/p/users/${user.id}`)}}className="profile-preview-card">
             {user.profile && user.profile?.profilePicture ?
                 <img src={user.profile.profilePicture} alt="" />
                 :

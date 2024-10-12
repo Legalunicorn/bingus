@@ -25,9 +25,9 @@
 
         > p:nth-of-type(1){
             padding-top: 0.5rem;
-            font-family: Alata;
-            font-size: 1.25rem;
-            font-weight: bold;
+            font-family: Inter;
+            font-size: 1.4rem;
+            font-weight: bold !important;
         }
 
         > p:nth-of-type(2){
@@ -56,6 +56,7 @@
 
                 &:hover{
                     text-decoration: underline;
+                    cursor:pointer;
                 }
             }
         }
@@ -127,6 +128,7 @@
 
             &:hover{
                 background-color: #F2F2F2;
+                cursor:pointer;
             }
 
         }
@@ -227,6 +229,7 @@
         background-color: var(--color-text);
         outline: 2px solid vaR(--color-bg);
         color:var(--color-bg);
+        cursor:pointer;
     }
     button:disabled{
         opacity: 0.6;
@@ -245,9 +248,17 @@
     font-weight: bold;
     background: rgb(199,121,41);
     background: linear-gradient(90deg, rgba(199,121,41,1) 0%, rgba(212,24,201,1) 57%, rgba(10,90,237,1) 100%); 
-
-    border: 2px solid #ffffff;
+    max-width: 340px;
+    border: 1px solid #ffffff;
     transition: 0.3s ease-in-out;
+
+    &:hover{
+        background: none;
+        background-color: white;
+        color: var(--color-bg);
+        border: 1px solid var(--color-bg);
+        cursor:pointer;
+    }
 
 
 
@@ -270,11 +281,3 @@
     }
 }
 
-// @keyframes MoveUpDown {
-//     0%, 100% {
-//       bottom: 0;
-//     }
-//     50% {
-//       bottom: 20px;
-//     }
-//   }

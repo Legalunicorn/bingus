@@ -112,6 +112,10 @@
             svg{
                 box-sizing: content-box;
                 padding-bottom: 0.25rem;
+
+                &:hover{
+                    cursor:pointer;
+                }
             }
             svg.selected{
                 
@@ -125,6 +129,7 @@
                 // margin-left: auto;
 
                 &:hover{
+                    cursor:pointer;
                     border: 1px solid var(--color-accent);
                     background-color: var(--color-accent);
                     color: var(--color-text);
@@ -155,7 +160,7 @@
     }
 }
 
-.submit-post{
-    border:1 px solid red;
-    // display: flex;
-}
+// .submit-post{
+//     // border:1 px solid red;
+//     // display: flex;
+// }

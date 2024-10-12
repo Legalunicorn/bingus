@@ -24,6 +24,7 @@
             font-weight: bold;
 
             &:hover{
+                cursor:pointer;
                 text-decoration: underline;
             }
         }
@@ -48,10 +49,13 @@
                 border: 1px solid var(--color-primary);
                 // border: 2px solid var(red);
                 background-color: var(--color-primary);
+                cursor:pointer;
             }
         }
 
         &:hover{
+            cursor:pointer;
+            
             color: var(--color-bg);
             background-color: var(--color-text);
         }

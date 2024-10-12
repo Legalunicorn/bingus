@@ -1,4 +1,4 @@
-import { Form } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import "./searchUsers.scss"
 import { IconSearch } from "@tabler/icons-react";
 import { useFetch } from "../../hooks/useFetch";
@@ -12,6 +12,7 @@ const SearchUsers = () => {
     const [loading,setLoading] = useState(false);
     const [userList,setUserList] = useState([]);
     const queryRef = useRef();
+    const navigate = useNavigate();
 
     useEffect(()=>{
         const handleKeydown = (e)=>{
@@ -59,9 +60,12 @@ const SearchUsers = () => {
                     :userList.length>0
                         ? userList.map(user=>(
                         <ProfilePreview
+                            key={user.id}
                             user={user}
                             showFollow={false}
+                            clickable={true}
                         />
+
                         ))
                         :
                         <p className="no-results">No results</p>

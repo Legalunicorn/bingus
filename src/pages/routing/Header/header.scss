@@ -39,6 +39,10 @@
         font-size: 1.5rem;
         font-family:Alata,Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         font-weight: bolder;
+
+        &:hover{
+            cursor:pointer;
+        }
     }
 
 
@@ -46,6 +50,10 @@
         max-height:100%;
         object-fit:cover;
         aspect-ratio: 1;
+
+        &:hover{
+            cursor: pointer;
+        }
         
     }
     .logo{

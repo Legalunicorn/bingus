@@ -36,11 +36,13 @@
         border-radius: 0.5rem;
 
         &:hover:enabled{
+            cursor:pointer;
             color: var(--color-bg);
             background-color: var(--color-text);
         }
 
         &:disabled{
+            cursor:not-allowed;
             opacity: 0.4;
         }
     }

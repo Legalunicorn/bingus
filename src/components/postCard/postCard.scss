@@ -21,8 +21,11 @@
 
                 &:hover{
                     text-decoration: underline;
+                    cursor:pointer;
                 }
             }
+
+      
         }
 
         img{ //pfp
@@ -94,12 +97,16 @@
             justify-content: center;
         }
         
-        svg{        
+        svg{     
             &:nth-child(n+3){
             opacity: 0.5;
                 &:hover{
                     opacity: 1;
                 }
+            }
+
+            &:hover{
+                cursor:pointer;
             }
         }
     }
