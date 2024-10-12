@@ -10,6 +10,8 @@ import {
 import { useNavigate } from "react-router-dom";
 import usePostMutation from "../../hooks/usePostMutation";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import { useEffect, useState } from "react";
+const VITE_DEFAULT_PFP = import.meta.env.VITE_DEFAULT_PFP;
 
 const PostCard = ({
   post, //should be an object with the following
@@ -20,11 +22,36 @@ const PostCard = ({
   const { likePost, unlikePost, deletePost } = usePostMutation(post, queryKey);
   const navigate = useNavigate();
   const currUserId = Number(useAuthContext().user.id);
+  const [type,setType] = useState(null); //null
+  // if (post && post.attachment){
+
+  //   if (imgExt.some(etx=>post.attachment.toLowerCase().endsWith(etx))) setIsImg(true)
+  //   else if (vidExt.some(etx=>post.attachment.toLowerCase().endsWith(etx))) setIsImg(false)
+  // }
+
+  useEffect(()=>{
+    if (post.attachment){
+      const ext = post.attachment.split(".").pop().toLowerCase();
+      const imgExt =  ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'];
+      const vidExt =  ['mp4', 'webm', 'ogg', 'mkv'];
+      if (imgExt.includes(ext)) setType("img")
+      else if (vidExt.includes(ext)) setType("video")
+    }
+
+  },[post])
+
+
+
   if (post && post.gitLink) {
     post.gitLink = "www.github.com";
     if (post.gitLink.startsWith("www"))
       post.gitLink = `https://${post.gitLink}`;
   }
+
+
+  //Find content type based on extensions bc im totally a genius
+
+  if (post && post.attachment) console.log(post.attachment)
 
   return (
     <div onClick={() => navigate(`/p/posts/${post.id}`)} className="postcard">
@@ -64,7 +91,12 @@ const PostCard = ({
             post.tags.map((tag, key) => <span key={key}>#{tag.name}</span>)}
         </p>
 
-        {post.attachment && <img src={post.attachment} alt="Post Media" />}
+        {post.attachment && type==="img" && <img src={post.attachment} alt="Post Media" />}
+        {post.attachment && type==="video" && 
+          <video  poster="https://res.cloudinary.com/ds80ayjp7/image/upload/v1728632981/bingus/wwflo3w8mq1jjphniu4f.png" controls autoPlay>
+            <source src={post.attachment} type="video/mp4"/>
+          </video>}
+
       </div>
       <div className="post-buttons">
         <p>

@@ -60,7 +60,7 @@
     .media-container {
       position: relative;
 
-      img:nth-of-type(1) {
+      img:nth-of-type(1),video:nth-of-type(1){
         max-width: 100%;
         max-height: 2000px;
         height: auto;
