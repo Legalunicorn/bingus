@@ -35,24 +35,23 @@
     margin-top: 1rem;
     display: flex;
     padding-bottom: 1rem;
-    // border-bottom: 1px solid var(--color-neutral-bg);
     gap: 2rem;
 
-    p:last-of-type {
-      &:hover {
-        border-bottom: 1px solid var(--color-neutral-2);
-        margin-bottom: -1px;
-      }
-    }
 
     p {
       padding-bottom: 0.25rem;
       display: flex;
       gap: 0.5rem;
+
+      &:hover{
+        cursor:pointer;
+      }
     }
     span {
       color: var(--color-neutral-2);
     }
+
+
   }
 
   .group-replies {
@@ -76,17 +75,36 @@
       min-height: 4rem;
       font-family: Inter;
 
-      &:focus {
-        outline: none;
-      }
+        &:focus {
+          outline: none;
+        }
+    }
+
+    span{
+      padding:0;
+      margin: 0;
+    }
+
+    .post-reply{
+      display: flex;
+      margin-left:auto;
+      align-items: center;
+      gap:0.5rem;
     }
 
     button {
-      margin-left: auto;
+      width: fit-content;
+      // margin-left: auto;
 
       &:hover {
+        cursor:pointer;
         color: var(--color-bg);
         background-color: var(--color-text);
+      }
+
+      &:disabled{
+        opacity: 0.5;
+        cursor:not-allowed;
       }
     }
   }

@@ -149,7 +149,7 @@ const CommentCard = ({ comment, postId }) => {
 
       {showInput && ( //refactor user-profile to its own component!
         <>
-          <Form onSubmit={handleSubmitReply}>
+          <Form  onSubmit={handleSubmitReply}>
             <TextareaAutosize
               required
               className="reply-comment"
@@ -159,7 +159,10 @@ const CommentCard = ({ comment, postId }) => {
               }}
               value={input}
             />
-            <button type="submit">reply</button>
+            <div className="post-reply">
+              <Loader loading={createReplyMutation.isPending}/>
+              <button disabled={createReplyMutation.isPending} type="submit">reply</button>
+            </div>
           </Form>
         </>
       )}
