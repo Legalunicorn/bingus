@@ -34,7 +34,7 @@
 .bubble {
   --r: 1em; /* the radius */
   --t: 0.75em; /* the size of the tail */
-  word-break: break-all;
+  word-break: break-word;
   margin-bottom: 0.5rem;
   display: flex;
   gap: 0.5rem;
