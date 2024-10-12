@@ -14,7 +14,8 @@ const ProfileInput = ({
     minLength,
     pattern,
     title,
-    inputType='input'
+    inputType='input',
+    fieldLabel,
 
 }) => {
     const InputComponent = inputType;
@@ -33,14 +34,17 @@ const ProfileInput = ({
                     minLength={minLength || undefined}
                     pattern={pattern || undefined}
                     title={title ||undefined} 
-                    // {maxLength && maxLength={maxLength}}
                 />
                 <IconCheck onClick={()=>setEditingField('')}/>
+                
+                 
             </>
+
             :
             <>
                 <p className={className || 'profile-bio'}>{fieldState}</p>
                 <IconEdit onClick={()=>setEditingField(fieldName)}/>
+                {fieldLabel && <p className="input-label">{fieldLabel}</p>}
             </>
             }
         </div>
@@ -49,23 +53,3 @@ const ProfileInput = ({
  
 export default ProfileInput;
 
-
-{/* <div className="edit-input">
-<IconBrandGithub />
-{editingField==="github"?
-<>
-    <input
-        type="text"
-        onChange={(e)=>{setGithub(e.target.value)}}
-        value={github}
-        className="profile-github"
-    />
-    <IconCheck onClick={()=>setEditingField('')}/>
-</>
-:
-<>
-    <p className="profile-github">{github}</p>
-    <IconEdit onClick={()=>{setEditingField('github')}}/>
-</>
-}
-</div> */}

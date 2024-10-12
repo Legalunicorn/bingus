@@ -146,8 +146,9 @@ const EditProfile = () => {
                                 />
                             </div>
                             <div>
-
-                                <ProfileInput
+                                {user.username==="GuestUser"?
+                                <p className="username-label">{user.username}</p>
+                               : <ProfileInput
                                     fieldState={username}
                                     fieldName='username'
                                     editingField={editingField}
@@ -159,6 +160,7 @@ const EditProfile = () => {
                                     pattern="^[a-zA-Z0-9_.]*$"
                                     title="Username must be alphanumeric, and may contain periods, understore, and hypens"
                                 />
+                                }
                                 <ProfileInput
                                     fieldState={displayname}
                                     fieldName='displayname'
@@ -177,7 +179,6 @@ const EditProfile = () => {
 
 
                         <div className="profile-details">
-                            
                             <ProfileInput
                                 fieldState={bio}
                                 fieldName='bio'
@@ -185,8 +186,8 @@ const EditProfile = () => {
                                 setEditingField={setEditingField}
                                 setField={setBio}
                                 inputType={TextareaAutosize}
+                                fieldLabel={"bio"}
                             />  
-  
                             <ProfileInput
                                 iconName="IconWorld"
                                 fieldState={website}
@@ -194,6 +195,7 @@ const EditProfile = () => {
                                 editingField={editingField}
                                 setEditingField={setEditingField}
                                 setField={setWebsite}
+                                fieldLabel={"website"}
                             />                        
                             <ProfileInput
                                 iconName="IconBrandGithub"
@@ -202,6 +204,7 @@ const EditProfile = () => {
                                 editingField={editingField}
                                 setEditingField={setEditingField}
                                 setField={setGithub}
+                                fieldLabel={"github"}
                             />
                             
                         </div>

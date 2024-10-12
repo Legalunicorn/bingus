@@ -7,6 +7,7 @@ import GoogleLogo from "../../assets/images/google.svg"
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { myFetch } from "../../utils/myFetch";
 import { IconAlertOctagon } from "@tabler/icons-react";
+import Loader from "../../components/Loaders/Loader";
 const API_URL = import.meta.env.VITE_API_URL;
 
 const Login = () => {
@@ -37,15 +38,19 @@ const Login = () => {
 
     },[])
 
-    const handleSubmit = async(e)=>{
+
+
+    const handleSubmit = async(e,inputUser,inputPass)=>{
         setDisabled(true);
-        e.preventDefault();
+        if (e) e.preventDefault();
         try{
+            const username = inputUser ? inputUser: e?.target.username.value;
+            const password = inputPass ? inputPass: e?.target.password.value;
             const data = await myFetch("/auth/local/login",{
                 method:"POST",
                 body:JSON.stringify({
-                    username:e.target.username.value,
-                    password:e.target.password.value
+                    username,
+                    password
                 })
             })
             dispatch({type:'LOGIN',payload:data}) //username, id , profilepicture, token
@@ -57,6 +62,7 @@ const Login = () => {
             setError(err.message);
         }
     }
+   
 
 
     return (
@@ -85,7 +91,9 @@ const Login = () => {
                     required
                     />
                 <button disabled={disabled} type="submit">Login</button>
+                
             </Form>
+            <button onClick={()=>{handleSubmit(null,'GuestUser','123123')}} id="guest-login">Guest User</button>
 
             <p  className='signup'>Don't have an account? <span onClick={()=>navigate("../signup")}>Sign up</span></p>
             <p className="error-box">{
