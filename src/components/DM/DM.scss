@@ -4,7 +4,8 @@
     padding-bottom: 5rem;
     max-height: 85vh !important;
     position: relative;
-    overflow:hidden;
+    // overflow:hidden;
+    // z-index: 99999999;
     // border: 1px solid cyan;
 
 
@@ -27,18 +28,15 @@
     color: var(--color-neutral-2);
     margin: 0.5rem 0;
 }
-// .chat-input{
-//     border: 10px solid yellow;
-// }
+
 
 .chat-input> form{
     // opacity: 0;
-    // border: 1px solid red;
     background-color: var(--color-bg);
       
     display: flex;
     gap: 0.5rem;
-    position: absolute;
+    // position: fixed;
     bottom:0;
     width: 100%;
     padding: 0.5rem;
@@ -89,6 +87,7 @@
         
     }
     .chat-input> form{
+        position: fixed;
         margin-bottom: 3rem;
         // z-index: 100000;  
     }

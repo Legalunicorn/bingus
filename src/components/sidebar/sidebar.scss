@@ -97,21 +97,22 @@
 @media only screen and (max-width: 480px){
     .sidebar{
         // opacity: 0;
+        top:auto;
         // border: 2px solid red;
-        padding:0rem;
+        padding:0;
         margin:0;
         width: 100%;
         max-width: 100%;
         position: fixed;
         height: 3rem;
         min-height: fit-content;
-        // min-height: 60px;
-        left:0;
-        margin-top: auto;
         bottom:0;
-        justify-content: space-around;
+        // top:0;
+        margin-top: auto;
         
+        justify-content: space-around;
         z-index: 9999;
+        transition: 0.3s ease-in-out;
 
 
 
