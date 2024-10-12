@@ -1,27 +1,24 @@
-import { createContext, useState } from "react"
+import { createContext, useState } from "react";
 
+//I did not end up implementing this
 
 export const ThemeContext = createContext();
 
+export const ThemeContextProvider = ({ children }) => {
+  const [isDark, setDark] = useState(true);
 
-export const ThemeContextProvider = ({children}) =>{
+  const toggleTheme = () => {
+    setDark((isDark) => !isDark);
+  };
 
-    const [isDark,setDark] = useState(true);
+  useEffect(() => {
+    const theme = localStorage.getItem("isDark");
+    if (theme) setTheme(theme);
+  });
 
-    const toggleTheme = ()=>{
-        setDark((isDark)=>!isDark)
-    }
-
-    useEffect(()=>{
-        const theme = localStorage.getItem("isDark");
-        if (theme)
-            setTheme(theme);
-    })
-
-
-    return(
-        <ThemeContext.Provider value={{isDark,toggleTheme}}>
-            {children}
-        </ThemeContext.Provider>
-    )
-}
+  return (
+    <ThemeContext.Provider value={{ isDark, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};

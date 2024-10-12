@@ -1,130 +1,127 @@
-.postcard{
-    padding: 1rem 1.5rem;
-    display:flex;
-    flex-direction: column;
-    max-width: 100%;
-    
+.postcard {
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
 
-    .post-header{
-        display:flex;
-        align-content: center;
-        gap: 0.5rem;
+  .post-header {
+    display: flex;
+    align-content: center;
+    gap: 0.5rem;
 
-        span{
-            line-height: 30px;
-            justify-content: center;
-            color:var(--color-neutral-3);
+    span {
+      line-height: 30px;
+      justify-content: center;
+      color: var(--color-neutral-3);
 
-            &:nth-child(2){
-                color: var(--color-text);
-                font-weight:bold;
+      &:nth-child(2) {
+        color: var(--color-text);
+        font-weight: bold;
 
-                &:hover{
-                    text-decoration: underline;
-                    cursor:pointer;
-                }
-            }
-
-      
+        &:hover {
+          text-decoration: underline;
+          cursor: pointer;
         }
-
-        img{ //pfp
-            object-fit:cover;
-            border-radius: 50%;
-            aspect-ratio: 1/1;
-            // height: 35px;
-            height: 2rem;
-            margin-right: 0.75rem;
-        }
-
-        svg{
-            color: var(--color-neutral-2);
-            margin-left:auto;
-            opacity: 0.5;
-            // border: 1px solid red;
-            min-height: 20px;
-            min-width: 20px;
-
-            &:hover{
-                color: rgb(192, 36, 36);
-                opacity: 1.0;
-            }
-        }
+      }
     }
 
-    .post-body{
-        padding-top: 0.75rem;
-        font-weight: 350;
-        overflow-wrap: break-word;
-
-        .post-tags{
-            padding: 0.25rem 0;
-        }
-
-        span{
-            margin-right:0.5rem;
-            font-style: italic;
-            color: var(--color-accent);
-            opacity: 0.7;
-
-            &:hover{
-                opacity: 1;
-                text-decoration: underline;
-            }
-        }
-
-        img{ //pic
-            padding: 0.75rem 0;
-            border-radius: 2rem;
-            width: 100%;
-        }
+    img {
+      //pfp
+      object-fit: cover;
+      border-radius: 50%;
+      aspect-ratio: 1/1;
+      // height: 35px;
+      height: 2rem;
+      margin-right: 0.75rem;
     }
 
-    .post-buttons{
-        font-size: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-        padding-top: 1rem;
-        padding-bottom: 1.5rem;
-        color: var(--color-neutral-1);
-        opacity: 0.8;
+    svg {
+      color: var(--color-neutral-2);
+      margin-left: auto;
+      opacity: 0.5;
+      // border: 1px solid red;
+      min-height: 20px;
+      min-width: 20px;
 
-        p{
-            // font-weight: bold;
-            display: flex;
-            gap: 0.25rem;
-            justify-content: center;
-        }
-        
-        svg{     
-            &:nth-child(n+3){
-            opacity: 0.5;
-                &:hover{
-                    opacity: 1;
-                }
-            }
+      &:hover {
+        color: rgb(192, 36, 36);
+        opacity: 1;
+      }
+    }
+  }
 
-            &:hover{
-                cursor:pointer;
-            }
-        }
+  .post-body {
+    padding-top: 0.75rem;
+    font-weight: 350;
+    overflow-wrap: break-word;
+
+    .post-tags {
+      padding: 0.25rem 0;
     }
 
-    &:hover{
-        background-color: var(--color-neutral-bg);
+    span {
+      margin-right: 0.5rem;
+      font-style: italic;
+      color: var(--color-accent);
+      opacity: 0.7;
+
+      &:hover {
+        opacity: 1;
+        text-decoration: underline;
+      }
     }
 
+    img {
+      //pic
+      padding: 0.75rem 0;
+      border-radius: 2rem;
+      width: 100%;
+    }
+  }
 
+  .post-buttons {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1.5rem;
+    color: var(--color-neutral-1);
+    opacity: 0.8;
+
+    p {
+      // font-weight: bold;
+      display: flex;
+      gap: 0.25rem;
+      justify-content: center;
+    }
+
+    svg {
+      &:nth-child(n + 3) {
+        opacity: 0.5;
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &:hover {
+    background-color: var(--color-neutral-bg);
+  }
 }
 
-.red-heart{
-    color:red;
+.red-heart {
+  color: red;
 }
 
-.postcard-pfp{
-    object-fit:cover;
-    border-radius: 50%;
-    aspect-ratio: 1/1;
-    height: 35px;
+.postcard-pfp {
+  object-fit: cover;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  height: 35px;
 }

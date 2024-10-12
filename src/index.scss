@@ -1,7 +1,18 @@
-
-:root{
-  font-family: Inter,system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  line-height:1.5;
+:root {
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+  line-height: 1.5;
   font-weight: 400;
   font-size: 15px;
   font-synthesis: none;
@@ -15,7 +26,7 @@
   --content-width: 1600px;
   --header-height: 70px;
 
-  --color-text:  #f7f4f8;
+  --color-text: #f7f4f8;
   --color-bg: #121212;
   --color-primary: #e2a998;
   --color-secondary: #83311b;
@@ -23,10 +34,9 @@
 
   --color-neutral-bg: #252525;
 
-  --color-neutral-1: #C4C2CE;
-  --color-neutral-2: #7C818F;
+  --color-neutral-1: #c4c2ce;
+  --color-neutral-2: #7c818f;
   --color-neutral-3: #565565;
-
 
   --color-text-dm: #f7f4f8;
   // --color-text-lm: #231510;
@@ -39,29 +49,26 @@
 
   --color-secondary-dm: #83311b;
   // --color-secondary-lm: #e4927c;
-  
+
   --color-accent-dm: #e66c47;
   // --color-accent-lm:#b83e19;
-
-
-
 }
 
 *,
 *::before,
-*::after{
-  margin:0;
-  padding:0;
+*::after {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 
-  &:focus{
-    outline:none;
+  &:focus {
+    outline: none;
   }
 }
 
-button{
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  border:none;
+button {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  border: none;
   padding: 0.5rem 1.25rem;
   background-color: var(--color-bg);
   color: var(--color-text);
@@ -69,14 +76,12 @@ button{
   border-radius: 1.75rem;
 }
 
-#main{
+#main {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-
 }
 
-a{
+a {
   text-decoration: none;
 }
-

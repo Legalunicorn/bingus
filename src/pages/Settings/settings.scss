@@ -1,26 +1,25 @@
-.settings{
-    padding: 1rem;
-    // border: 1px solid red;
+.settings {
+  padding: 1rem;
+  // border: 1px solid red;
 }
 
-.section{
-    padding: 0.5rem;
-    font-weight: bold;
-    color: var(--color-neutral-1);
-    margin-bottom: 0.5rem;
+.section {
+  padding: 0.5rem;
+  font-weight: bold;
+  color: var(--color-neutral-1);
+  margin-bottom: 0.5rem;
 }
 
-.settings-button{
-    display: flex;
-    gap: 0.25rem;
-    padding: 1rem;
-    border-radius: 0.75rem;
-    background-color: var(--color-neutral-bg);
-    opacity: 0.7;
+.settings-button {
+  display: flex;
+  gap: 0.25rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background-color: var(--color-neutral-bg);
+  opacity: 0.7;
 
-    &:hover{
-        cursor: pointer;
-        opacity: 1;
-    }
-
+  &:hover {
+    cursor: pointer;
+    opacity: 1;
+  }
 }

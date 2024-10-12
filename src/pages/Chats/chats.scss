@@ -1,19 +1,18 @@
-.chat-list{
-    // padding: 1.5rem 1rem;
+.chat-list {
+  // padding: 1.5rem 1rem;
 }
 
-.grey{
-    text-align: center;
-    color: var(--color-neutral-2);
-    padding: 4rem;
+.grey {
+  text-align: center;
+  color: var(--color-neutral-2);
+  padding: 4rem;
 }
 
-.redirect{
-    color: rgb(100, 18, 231);
+.redirect {
+  color: rgb(100, 18, 231);
 
-    &:hover{
-        text-decoration: underline;
-        cursor:pointer;
-    }
-    
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 }

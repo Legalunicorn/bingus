@@ -1,21 +1,20 @@
-.tag-preview{
-    display: flex;
-    border-radius: 0.75rem;
-    background-color: var(--color-neutral-bg);
-    width: fit-content;
-    padding: 0.25rem 0.75rem;
-    align-items: center;
-    gap: 0.25rem;
+.tag-preview {
+  display: flex;
+  border-radius: 0.75rem;
+  background-color: var(--color-neutral-bg);
+  width: fit-content;
+  padding: 0.25rem 0.75rem;
+  align-items: center;
+  gap: 0.25rem;
 
-    svg{
-        height: 1rem;
-        width: 1rem;
-        border-radius: 50%;
-        padding: 1px;
+  svg {
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    padding: 1px;
 
-        &:hover{
-
-            background-color: var(--color-neutral-2);
-        }
+    &:hover {
+      background-color: var(--color-neutral-2);
     }
+  }
 }
