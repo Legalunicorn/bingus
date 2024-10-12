@@ -13,7 +13,7 @@ import ProfileStats from "../../components/profileStats/ProfileStats";
 import Loader from "../../components/Loaders/Loader";
 
 const EditProfile = () => {
-  const MAX_FILE_SIZE = 1024 * 1024 * 6;
+  const MAX_FILE_SIZE = 1024 * 1024 * 8;
   const { user, dispatch } = useAuthContext();
   const myFetch = useFetch();
   const queryClient = useQueryClient();
@@ -102,7 +102,7 @@ const EditProfile = () => {
   const onChangeAttachment = (e) => {
     if (e.target.files && e.target.files[0]) {
       if (e.target.files[0].size > MAX_FILE_SIZE) {
-        toast.warn("File exceed 6mb");
+        toast.warn("File exceed 8mb");
       } else {
         setAttachment(URL.createObjectURL(e.target.files[0]));
       }
@@ -132,7 +132,7 @@ const EditProfile = () => {
                   id="attachment"
                   name="attachment"
                   onChange={onChangeAttachment}
-                  accept=".png, .jpeg, .jpg, .gif"
+                  accept=".png, .jpeg, .jpg"
                 />
               </div>
               <div>

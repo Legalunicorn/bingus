@@ -28,7 +28,7 @@ const CreatePost = () => {
   const attachmentRef = useRef(null);
   const tagsRef = useRef(null);
 
-  const MAX_FILE_SIZE = 1024 * 1024 * 6; //only 8MB allowed;
+  const MAX_FILE_SIZE = 1024 * 1024 * 8; //only 8MB allowed;
 
   useEffect(() => {
     //short cut to add tags
@@ -58,7 +58,7 @@ const CreatePost = () => {
   const onAttachmentChange = (e) => {
     if (e.target.files && e.target.files[0]) {
       if (e.target.files[0].size > MAX_FILE_SIZE) {
-        toast.warn("File exceeded 6mb");
+        toast.warn("File exceeded 8mb");
       } else setAttachment(URL.createObjectURL(e.target.files[0]));
     }
   };
