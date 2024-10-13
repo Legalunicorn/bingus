@@ -93,7 +93,7 @@ const PostCard = ({
 
         {post.attachment && type==="img" && <img src={post.attachment} alt="Post Media" />}
         {post.attachment && type==="video" && 
-          <video  poster="https://res.cloudinary.com/ds80ayjp7/image/upload/v1728632981/bingus/wwflo3w8mq1jjphniu4f.png" controls autoPlay>
+          <video  poster="https://res.cloudinary.com/ds80ayjp7/image/upload/v1728632981/bingus/wwflo3w8mq1jjphniu4f.png" controls >
             <source src={post.attachment} type="video/mp4"/>
           </video>}
 

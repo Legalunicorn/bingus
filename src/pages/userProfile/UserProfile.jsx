@@ -114,7 +114,7 @@ const UserProfile = () => {
               {user?.profile?.github && (
                 <div>
                   <IconBrandGithub />
-                  <a target="_blank" href={`//${user.profile.github}`}>
+                  <a target="_blank" href={`${user.profile.github.trim()}`}>
                     github
                   </a>
                 </div>
