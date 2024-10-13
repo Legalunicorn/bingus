@@ -9,7 +9,7 @@ import TagPreview from "./TagPreview";
 import {
   IconAlertOctagon,
   IconBrandGithub,
-  IconPaperclip,
+  IconPaperclip, 
   IconTagsFilled,
   IconX,
 } from "@tabler/icons-react";
