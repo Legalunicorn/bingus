@@ -82,3 +82,5 @@ or
 
 `& yarn run dev`
 
+Have fun!
+
