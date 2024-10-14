@@ -23,7 +23,7 @@ const UserProfile = () => {
 
   const myFetch = useFetch();
   const getUser = async ({ queryKey }) => {
-    console.log("Passing ID:", queryKey);
+    // console.log("Passing ID:", queryKey);
     return await myFetch(`/users/${queryKey[1]}`);
   };
   const queryKey = ["user", userId, "post"];
@@ -39,7 +39,7 @@ const UserProfile = () => {
   const handleChat = async () => {
     try {
       const data = await myFetch(`/chats/user/${userId}`, { method: "PUT" });
-      console.log(data);
+      // console.log(data);
       navigate(`/p/message?chat=${data.chat.id}`);
     } catch (err) {
       console.log(err); //TODO handle create chat error here

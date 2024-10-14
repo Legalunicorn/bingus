@@ -10,7 +10,7 @@
 import "./chats.scss";
 import { useQuery } from "@tanstack/react-query";
 import { useFetch } from "../../hooks/useFetch";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import ChatPreview from "../../components/profilePreview/ChatPreview";
 import BackNav from "../../components/backNav/BackNav";
@@ -21,6 +21,7 @@ const Chats = () => {
   //README phase out
   const myFetch = useFetch();
   const navigate = useNavigate();
+
 
   const { data, isPending, isError } = useQuery({
     queryFn: () => myFetch("/chats"),

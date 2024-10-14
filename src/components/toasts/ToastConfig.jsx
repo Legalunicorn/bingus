@@ -4,10 +4,13 @@ import "react-toastify/dist/ReactToastify.css";
 const ToastConfig = () => {
   return (
     <ToastContainer
-      newestOnTop={true}
-      autoClose={2500}
-      position="top-right"
-      theme="dark" //TODO when theme is implemented, get the theme context to change this
+      limit={5}
+      // position="top-center"
+      // newestOnTop={true}
+      autoClose={1800}
+      // hideProgressBar
+      draggable
+      theme="colored" //TODO when theme is implemented, get the theme context to change this
     />
   );
 };

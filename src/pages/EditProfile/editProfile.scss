@@ -28,16 +28,23 @@
   }
 
   .save-changes {
+    border: 2px solid var(--color-text);
     height: fit-content;
-    font-family: Alata;
+    font-family: Inter;
     font-weight: bold;
     margin: 0.5rem 1rem;
     border-radius: 0.5rem;
 
+    color: var(--color-bg);
+    background-color: var(--color-text);
+
     &:hover:enabled {
       cursor: pointer;
-      color: var(--color-bg);
-      background-color: var(--color-text);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+      // color: var(--color-bg);
+      // background-color: var(--color-text);
+
     }
 
     &:disabled {

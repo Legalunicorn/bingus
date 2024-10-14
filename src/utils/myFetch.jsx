@@ -31,11 +31,10 @@ export const myFetch = async (
     ...options, //for more options if i have them like method
   });
   const data = await response.json();
-  console.log("the res is : ", response);
-  console.log("the data is :", data);
+  // console.log("the res is : ", response);
+  // console.log("the data is :", data);
   if (response.ok) return data; //no errors
   if (response.status == 401 && data.error == "TokenExpiredError") {
-    console.log("OOO OOO AAA AAA ");
     // navigate("/auth/login");
     throw new Error("Token has expired. Please login again.");
   } else {

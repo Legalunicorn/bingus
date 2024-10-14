@@ -16,6 +16,7 @@ const VITE_DEFAULT_PFP = import.meta.env.VITE_DEFAULT_PFP;
 const PostCard = ({
   post, //should be an object with the following
   pageQueryKey,
+  showDelete=false
 }) => {
   const written_time = formatDistanceToNowStrict(new Date(post.createdAt));
   const queryKey = pageQueryKey || ["feed"];
@@ -51,7 +52,7 @@ const PostCard = ({
 
   //Find content type based on extensions bc im totally a genius
 
-  if (post && post.attachment) console.log(post.attachment)
+  // if (post && post.attachment) console.log(post.attachment)
 
   return (
     <div onClick={() => navigate(`/p/posts/${post.id}`)} className="postcard">
@@ -74,8 +75,8 @@ const PostCard = ({
           {post.author.username}
         </span>
         <span>•</span>
-        <span>{written_time} ago</span>
-        {post.userId === currUserId && (
+        <span className="written-time">{written_time} ago</span>
+        {post.userId === currUserId && showDelete &&  (
           <IconTrash
             onClick={(e) => {
               e.stopPropagation();

@@ -29,7 +29,7 @@ const ViewPost = () => {
           <BadRequest />
         ) : (
           <>
-            <PostCard post={post} pageQueryKey={["post", postId]} />
+            <PostCard post={post} pageQueryKey={["post", postId]} showDelete={true} />
             <CreateComment postId={post.id} />
 
             <p>View comments ({post._count.comments})</p>

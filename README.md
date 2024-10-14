@@ -1,6 +1,7 @@
 
 <h1 align="center">Bingus</h1>
 
+
 <p align="center">A social media clone project (frontend repo)</p>
 
 ![preview](/public/images/preview_ui.png)
@@ -80,4 +81,6 @@ VITE_DEFAULT_PFP="https://res.cloudinary.com/ds80ayjp7/image/upload/v1725690182/
 or  
 
 `& yarn run dev`
+
+Have fun!
 
