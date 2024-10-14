@@ -174,7 +174,7 @@ const Signup = () => {
         className="google"
         onClick={() => {
           window.location.href = `${API_URL}/auth/oauth/google`;
-          console.log("hey");
+          // console.log("hey");
         }}
       >
         <img className="google-icon" src={GoogleLogo} alt="" />

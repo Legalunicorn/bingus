@@ -6,7 +6,6 @@
 
   .post-header {
     display: flex;
-    align-content: center;
     gap: 0.5rem;
 
     span {
@@ -24,13 +23,17 @@
         }
       }
     }
+    .written-time{
+      margin-right: auto;
+      margin-left: 0;
+    }
 
-    img,video {
+
+    img {
       //pfp
       object-fit: cover;
       border-radius: 50%;
       aspect-ratio: 1/1;
-      // height: 35px;
       height: 2rem;
       margin-right: 0.75rem;
     }
@@ -90,7 +93,6 @@
     opacity: 0.8;
 
     p {
-      // font-weight: bold;
       display: flex;
       gap: 0.25rem;
       justify-content: center;

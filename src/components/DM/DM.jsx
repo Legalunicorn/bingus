@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import BackNav from "../backNav/BackNav";
 import "./DM.scss";
-import { Form, useParams } from "react-router-dom";
+import { Form, useLocation, useParams } from "react-router-dom";
 import { IconSend } from "@tabler/icons-react";
 import { useFetch } from "../../hooks/useFetch";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -27,6 +27,7 @@ const DM = () => {
   const socketRef = useRef(null);
   const bottomChatRef = useRef(null);
   const inputRef = useRef(null); //to focus on input
+  const pfp_url = useLocation().state.url;
 
   // fetch initial message with useQuery
   const { data, isPending, isError } = useQuery({
@@ -75,7 +76,6 @@ const DM = () => {
   // send message mutation
   const sendMessageMutation = useMutation({
     mutationFn: async (input) => {
-      // console.log("emiting:",chatId,input,currUserId)
       socketRef.current.emit("send message", {
         chatId,
         input,
@@ -110,13 +110,20 @@ const DM = () => {
     }
   };
 
+  if (data) console.log(data.otherUser)
+
   return (
     <div className="content DM">
       <div>
-        <BackNav
+        {data && data.otherUser.username
+        ?<BackNav
           label={(data && data.otherUser.username) || ""}
           customNav="/p/message"
+          labelLink={`/p/users/${data.otherUser.id}`}
+          image={pfp_url}
         />
+        :<BackNav label={""} customNav="/p/message"/>
+        }
         {isPending ? (
           <div>
             <Loader loading={isPending} />

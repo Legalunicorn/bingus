@@ -21,6 +21,8 @@
       text-overflow: ellipsis;
     }
     p:first-child {
+      width:fit-content;
+
       font-weight: bold;
 
       &:hover {
@@ -34,7 +36,6 @@
     }
   }
   button {
-    // font-family: n;
     font-weight: bold;
     width: 6.75rem;
     margin-left: auto;
@@ -46,7 +47,6 @@
       background-color: var(--color-neutral-1);
       &:hover {
         border: 1px solid var(--color-primary);
-        // border: 2px solid var(red);
         background-color: var(--color-primary);
         cursor: pointer;
       }
@@ -59,13 +59,15 @@
       background-color: var(--color-text);
     }
   }
+
+  &.chat-preview {
+    padding: 0.75rem;
+    padding-left: 1rem;
+    &:hover {
+      background-color: var(--color-neutral-bg);
+      cursor:pointer;
+    }
+  }
+  
 }
 
-.chat-preview {
-  margin: 0 !important;
-  padding: 0.75rem;
-  padding-left: 1rem;
-  &:hover {
-    background-color: var(--color-neutral-bg);
-  }
-}
