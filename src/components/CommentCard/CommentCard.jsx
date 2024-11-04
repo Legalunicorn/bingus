@@ -15,7 +15,7 @@ import {
 } from "@tanstack/react-query";
 import ReplyCard from "../ReplyCard/ReplyCard";
 const VITE_DEFAULT_PFP = import.meta.env.VITE_DEFAULT_PFP;
-import { Form } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import TextareaAutosize from "react-textarea-autosize";
 import useCommentMutation from "../../hooks/useCommentMutation";
 import Loader from "../Loaders/Loader";
@@ -26,6 +26,7 @@ const CommentCard = ({ comment, postId }) => {
   const [showInput, setShowInput] = useState(false);
   const [input, setInput] = useState("");
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
 
   const myFetch = useFetch();
   const fetchReplies = async ({ pageParam }) => {
@@ -89,7 +90,10 @@ const CommentCard = ({ comment, postId }) => {
           <img src={VITE_DEFAULT_PFP} alt="" />
         )}
 
-        <span>{comment.user.username}</span>
+        <span
+          className="comment-header-name"
+          onClick={()=>{navigate(`/p/users/${comment.user.id}`)}}
+        >{comment.user.username}</span>
         <span>•</span>
         <span>{written_time} ago</span>
       </div>
