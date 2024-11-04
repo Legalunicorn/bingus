@@ -103,20 +103,6 @@ const Home = () => {
           <p>Last updated: 4 Nov 2024</p>
 
         </div>
-        {/* iasdassdaondaond Lorem ipsum dolor sit amet, consectetur adipisicing
-        elit. Nemo vero magni, modi impedit, maxime amet consequatur porro quas
-        accusamus harum quo ea? Totam aut sapiente sequi incidunt necessitatibus
-        nemo nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Est, sit cupiditate eligendi hic neque, dolorum, incidunt consectetur
-        perferendis saepe ipsa voluptatibus quaerat harum iure dicta rem maxime
-        aperiam sapiente inventore! Ad corrupti atque hic incidunt, eligendi
-        expedita laudantium ex odit nesciunt nisi voluptatem veritatis similique
-        praesentium non quam sint error ut fugiat totam, quod quis, impedit
-        corporis at eaque. Ratione quis amet illum aliquid neque tempora
-        molestias, a rerum, perspiciatis laudantium eius, nesciunt recusandae
-        numquam iure! Quo commodi deserunt minus ullam. Quaerat tenetur, quasi
-        eaque voluptates officia incidunt. Necessitatibus, vel asperiores ipsum
-        enim obcaecati vero iste cum. Reiciendis, repellendus fuga? */}
       </div>
     </div>
   );

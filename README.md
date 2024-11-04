@@ -2,7 +2,7 @@
 <h1 align="center">Bingus</h1>
 
 
-<p align="center">A social media clone project (frontend repo)</p>
+<p align="center">A fullstack social media clone project (frontend repo)</p>
 
 ![preview](/public/images/preview_ui.png)
 
