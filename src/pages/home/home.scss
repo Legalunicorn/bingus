@@ -35,6 +35,26 @@
     }
   }
 
+  .announcement{
+    p:first-child{
+      font-weight: bold;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--color-neutral-bg);
+
+    }
+    ul{
+      margin-left: 1rem;
+      padding: 1rem 0;
+    }
+    li{
+      color: var(--color-neutral-1);
+    }
+    // p:last-child{
+    //   text-align: right;
+    // }
+  }
+
   .side-content-box {
     > p:first-child {
       font-size: 1.25rem;

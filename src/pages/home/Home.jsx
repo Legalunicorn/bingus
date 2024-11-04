@@ -92,7 +92,18 @@ const Home = () => {
             </div>
           </>
         )}
-        iasdassdaondaond Lorem ipsum dolor sit amet, consectetur adipisicing
+        <div className="announcement">
+          <p>Announcements</p>
+          <ul>
+            <li>Made username in comment card clickable</li>
+            <li>Added "announcements" to home page</li>
+
+          </ul>
+          
+          <p>Last updated: 4 Nov 2024</p>
+
+        </div>
+        {/* iasdassdaondaond Lorem ipsum dolor sit amet, consectetur adipisicing
         elit. Nemo vero magni, modi impedit, maxime amet consequatur porro quas
         accusamus harum quo ea? Totam aut sapiente sequi incidunt necessitatibus
         nemo nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -105,7 +116,7 @@ const Home = () => {
         molestias, a rerum, perspiciatis laudantium eius, nesciunt recusandae
         numquam iure! Quo commodi deserunt minus ullam. Quaerat tenetur, quasi
         eaque voluptates officia incidunt. Necessitatibus, vel asperiores ipsum
-        enim obcaecati vero iste cum. Reiciendis, repellendus fuga?
+        enim obcaecati vero iste cum. Reiciendis, repellendus fuga? */}
       </div>
     </div>
   );
