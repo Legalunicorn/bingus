@@ -1,16 +1,12 @@
 .DM {
-  // height: 85vh;
-  // height: 100% I !important;
+  animation: appear 0.3s linear;
   padding-bottom: 5rem;
   max-height: 85vh !important;
   position: relative;
-  // overflow:hidden;
-  // z-index: 99999999;
   // border: 1px solid cyan;
 }
 
 .chat-messages {
-  // border: 2px solid GREEN;
   flex: 1;
   display: flex;
   flex-direction: column;

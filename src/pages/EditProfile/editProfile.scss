@@ -1,4 +1,5 @@
 .self-profile {
+  animation: appear 0.3s linear;
   .profile-main {
     .editable-pfp {
       max-width: 30%;
@@ -19,6 +20,7 @@
         left: 0;
         top: 75%;
         left: 75%;
+        cursor:pointer;
       }
 
       input {
@@ -68,6 +70,7 @@
     max-width: 100%;
     text-overflow: ellipsis;
     svg:hover {
+      cursor: pointer;
       opacity: 0.5;
     }
   }

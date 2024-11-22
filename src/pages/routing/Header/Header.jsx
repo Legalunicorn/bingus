@@ -26,13 +26,13 @@ const Header = () => {
       {user && user.profilePicture ? (
         <img
           src={user.profilePicture}
-          alt="profile_picture"
+          alt=""
           onClick={() => navigate(`/p/users/${user.id}`)}
         />
       ) : (
         <img
           src={VITE_DEFAULT_PFP}
-          alt="profile_picture"
+          alt=""
           onClick={() => navigate(`/p/users/${user.id}`)}
         />
       )}

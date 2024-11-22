@@ -86,7 +86,7 @@ const UserProfile = () => {
                         Unfollow
                       </button>
                     ) : (
-                      <button onClick={() => follow.mutate()}>Follow</button>
+                      <button className="follow" onClick={() => follow.mutate()}>Follow</button>
                     )}
                     <button onClick={handleChat}>
                       <IconMessageCircle />

@@ -1,6 +1,5 @@
 .view-post {
-  //change the post card here specifically
-  // max-width: 100%;
+  animation: appear 0.3s linear;
 
   .postcard {
     border-bottom: 1px solid var(--color-neutral-bg);
@@ -47,5 +46,10 @@
     &:focus {
       outline: none;
     }
+  }
+
+  .comment-section{
+    animation: rise 0.3s ease;
+    // border:1px solid red;
   }
 }

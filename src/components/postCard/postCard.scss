@@ -1,8 +1,10 @@
 .postcard {
+  animation: appear 0.3s linear;
   padding: 1rem 1.5rem;
   display: flex;
   flex-direction: column;
   max-width: 100%;
+  cursor: pointer;
 
   .post-header {
     display: flex;
@@ -16,10 +18,10 @@
       &:nth-child(2) {
         color: var(--color-text);
         font-weight: bold;
+        cursor: pointer;
 
         &:hover {
           text-decoration: underline;
-          cursor: pointer;
         }
       }
     }
@@ -126,4 +128,15 @@
   border-radius: 50%;
   aspect-ratio: 1/1;
   height: 35px;
+}
+
+
+@keyframes appear{
+  from{
+      opacity: 0;
+
+  }
+  to{
+      opacity:1;
+  }
 }

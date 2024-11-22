@@ -6,6 +6,7 @@ import GoogleLogo from "../../assets/images/google.svg";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { myFetch } from "../../utils/myFetch";
 import { IconAlertOctagon } from "@tabler/icons-react";
+import Loader from "../../components/Loaders/Loader";
 const API_URL = import.meta.env.VITE_API_URL;
 
 const Login = () => {
@@ -99,6 +100,7 @@ const Login = () => {
       <p className="signup">
         Don't have an account?{" "}
         <span onClick={() => navigate("../signup")}>Sign up</span>
+        {disabled && <Loader color="grey" loading={true}/>}
       </p>
       <p className="error-box">
         {error ? (

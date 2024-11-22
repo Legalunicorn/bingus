@@ -1,4 +1,6 @@
 #home-page {
+  animation: appear 0.3s linear;
+  animation: rise 0.8s ease-in-out;
   .feed-options {
     font-family: Alata;
     display: flex;
@@ -15,10 +17,10 @@
   }
 
   .content-side {
+    animation: rise 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    // position: sticky;
     height: fit-content;
 
     top: var(--header-height);
@@ -36,6 +38,7 @@
   }
 
   .announcement{
+    animation: appear 0.3s linear  ;
     p:first-child{
       font-weight: bold;
       font-size: 1.25rem;

@@ -3,12 +3,19 @@
   src: url("../../assets/fonts/Roboto/Roboto-Medium.ttf");
 }
 .auth-page {
+  
   display: flex;
   background-color: var(--color-bg);
 
   min-height: 100vh;
 
+  img,p,span,button,input{
+    animation: appear 0.5s linear;
+    animation: rise 0.5s linear;
+  }
+
   > div:first-child {
+    
     //AKA form-side
     display: flex;
     flex-direction: column;
@@ -139,6 +146,7 @@
 
   > div:nth-child(2) {
     //art-side
+    animation: appear 1s linear;
     padding: 2rem 1rem;
     // background-image: linear-gradient( var(--color-bg), var(--color-neutral-3));
     flex: 2 0 60%;
@@ -195,6 +203,8 @@
 
   input,
   button {
+
+
     font-size: 1rem;
     outline: 0px solid var(--color-primary);
     font-family: Alata;
@@ -241,6 +251,8 @@
 }
 
 #guest-login {
+  // animation: appear 0.3s linear;
+  // animation: rise 0.5s linear;
   width: 100%;
   padding: 0.75rem 1rem;
   margin: 0.5rem;
@@ -279,3 +291,5 @@
     display: none;
   }
 }
+
+

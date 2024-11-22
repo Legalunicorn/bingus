@@ -3,6 +3,7 @@
 }
 
 .new-post > div:first-child {
+  animation: appear 0.3s linear;
   padding: 1.5rem;
   .textarea {
     padding: 1rem 1.5rem 1rem 0.5rem;
@@ -90,7 +91,6 @@
       padding: 0.5rem 0.75rem;
       border-radius: 0.75rem;
       &:focus {
-        // border:0;
         outline: 0;
 
         border: 1px solid var(--color-accent);
@@ -98,7 +98,6 @@
     }
     .options-name {
       margin: 1rem 0;
-      // transition: 0.25s ease-in-out;
     }
     .form-options {
       display: flex;
@@ -160,7 +159,3 @@
   }
 }
 
-// .submit-post{
-//     // border:1 px solid red;
-//     // display: flex;
-// }

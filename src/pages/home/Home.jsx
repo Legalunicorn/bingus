@@ -30,6 +30,7 @@ const Home = () => {
     top_users = [],
   } = feedQuery.data || {};
 
+
   return (
     <div className="content" id="home-page">
       <div className="content-main">
@@ -75,6 +76,7 @@ const Home = () => {
       </div>
       <div className="content-side">
         {feedQuery.isLoading ? (
+          // <></>
           <Loader loading={feedQuery.isLoading} />
         ) : (
           <>
@@ -93,17 +95,19 @@ const Home = () => {
           </>
         )}
         <div className="announcement">
-          <p>Announcements</p>
-          <ul>
-            <li>Made username in comment card clickable</li>
-            <li>Added "announcements" to home page</li>
+            <>
+              <p>Announcements</p>
+              <ul>
+                <li>Added animations to loading pages</li>
 
-          </ul>
+              </ul>
+
+              <p>Last updated: 22 Nov 2024</p>
+            </>
           
-          <p>Last updated: 4 Nov 2024</p>
-
         </div>
       </div>
+      
     </div>
   );
 };

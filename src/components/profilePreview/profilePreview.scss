@@ -4,6 +4,7 @@
   gap: 0.5rem;
   margin-bottom: 0.5rem;
   max-width: 100%;
+  animation: appear 0.3s linear;
   img {
     height: 2rem;
     aspect-ratio: 1/1;
@@ -24,9 +25,10 @@
       width:fit-content;
 
       font-weight: bold;
+      cursor: pointer;
 
       &:hover {
-        cursor: pointer;
+        
         text-decoration: underline;
       }
     }
@@ -45,10 +47,10 @@
       color: var(--color-secondary);
       color: var(--color-bg);
       background-color: var(--color-neutral-1);
+      cursor: pointer;
       &:hover {
         border: 1px solid var(--color-primary);
         background-color: var(--color-primary);
-        cursor: pointer;
       }
     }
 
@@ -63,9 +65,9 @@
   &.chat-preview {
     padding: 0.75rem;
     padding-left: 1rem;
+    cursor: pointer;
     &:hover {
       background-color: var(--color-neutral-bg);
-      cursor:pointer;
     }
   }
   

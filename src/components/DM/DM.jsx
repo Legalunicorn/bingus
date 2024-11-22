@@ -125,7 +125,7 @@ const DM = () => {
         :<BackNav label={""} customNav="/p/message"/>
         }
         {isPending ? (
-          <div>
+          <div className="chat-messages">
             <Loader loading={isPending} />
           </div>
         ) : isError ? (

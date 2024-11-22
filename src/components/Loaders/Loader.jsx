@@ -9,7 +9,7 @@ const Loader = ({ loading, loaderType = "dot", color = "white" }) => {
           className="loader"
           aria-label="Loading spinner"
           loading={loading || false}
-          color={"white"}
+          color={color}
           size={"11"}
         />
       </>

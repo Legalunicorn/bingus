@@ -1,5 +1,6 @@
 .chat-list {
   // padding: 1.5rem 1rem;
+
 }
 
 .grey {
@@ -15,4 +16,8 @@
     text-decoration: underline;
     cursor: pointer;
   }
+}
+
+.chats{
+  animation: appear 0.3s linear;
 }

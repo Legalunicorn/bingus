@@ -1,9 +1,13 @@
-.search-users .search {
-  // border: 1px solid red;
-  padding: 1rem;
-  // .search{
-  //     padding:
+.search-users
+
+  // .results{
+  //   animation: appear 0.3s linear;
   // }
+
+  .search {
+  padding: 1rem;
+  animation: appear 0.3s linear;
+
 
   form {
     margin-left: auto;
@@ -31,8 +35,9 @@
   }
 }
 
+.search-users 
 .no-results {
   color: var(--color-neutral-2);
-  text-align: center;
+  text-align: center !important;
   padding: 2rem;
 }
