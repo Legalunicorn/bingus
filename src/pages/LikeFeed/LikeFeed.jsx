@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import BackNav from "../../components/backNav/BackNav";
 import Loader from "../../components/Loaders/Loader";
 import BadRequest from "../Error/BadRequest";
+import MultiplePostCardSkeleton from "../../components/skeleton/PostCardSkeleton/MultiplePostCardSkeleton";
 const LikeFeed = () => {
   const myFetch = useFetch();
   const { data, isLoading, isError } = useQuery({
@@ -17,7 +18,8 @@ const LikeFeed = () => {
         <div className="like-feed">
           <BackNav label="Liked Posts" />
           {isLoading ? (
-            <Loader loading={isLoading} />
+            // <Loader loading={isLoading} />
+            <MultiplePostCardSkeleton/>
           ) : isError ? (
             <BadRequest />
           ) : data.posts.length > 0 ? (

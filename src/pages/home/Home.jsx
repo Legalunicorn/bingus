@@ -8,6 +8,9 @@ import { useNavigate } from "react-router-dom";
 import Loader from "../../components/Loaders/Loader";
 import BadRequest from "../Error/BadRequest";
 import { useFetch } from "../../hooks/useFetch";
+import MultiplePostCardSkeleton from "../../components/skeleton/PostCardSkeleton/MultiplePostCardSkeleton";
+import MultipleProfilePreviewSkeleton from "../../components/skeleton/ProfilePreview/MultipleProfilePreivewSkeleton";
+import AnnouncementSkeleton from "../../components/skeleton/Announcement/AnnouncementSkeleton";
 
 const Home = () => {
   const myFetch = useFetch();
@@ -49,7 +52,8 @@ const Home = () => {
           </span>
         </div>
         {feedQuery.isLoading ? (
-          <Loader loading={feedQuery.isLoading} />
+          <MultiplePostCardSkeleton />
+          // <Loader loading={feedQuery.isLoading} />
         ) : feedQuery.isError ? (
           <BadRequest />
         ) : feedSort == "recent" ? (
@@ -76,38 +80,48 @@ const Home = () => {
       </div>
       <div className="content-side">
         {feedQuery.isLoading ? (
-          // <></>
-          <Loader loading={feedQuery.isLoading} />
+          <>
+            <section className="side-content-box">
+              <p>Latest users</p>
+              <MultipleProfilePreviewSkeleton />
+            </section>
+            <section className="side-content-box">
+              <p>Most followed</p>
+              <MultipleProfilePreviewSkeleton />
+            </section>
+            <AnnouncementSkeleton/>
+  
+          </>
+
         ) : (
           <>
-            <div className="side-content-box">
+            <section className="side-content-box">
               <p>Latest users</p>
               {new_users.map((user) => (
                 <ProfilePreview key={user.id} user={user} />
               ))}
-            </div>
-            <div className="side-content-box">
+            </section>
+            <section className="side-content-box">
               <p>Most followed</p>
               {top_users.map((user) => (
                 <ProfilePreview key={user.id} user={user} />
               ))}
-            </div>
-          </>
-        )}
-        <div className="announcement">
-            <>
+            </section>
+            <div className="announcement">
               <p>Announcements</p>
               <ul>
                 <li>Added animations to loading pages</li>
+                <li>Added Skeleton Loading to home page</li>
 
               </ul>
 
-              <p>Last updated: 22 Nov 2024</p>
-            </>
-          
-        </div>
+              <p>Last updated: 24 Nov 2024</p>
+            </div>
+          </>
+        )}
+
       </div>
-      
+
     </div>
   );
 };

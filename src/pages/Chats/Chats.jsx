@@ -16,6 +16,7 @@ import ChatPreview from "../../components/profilePreview/ChatPreview";
 import BackNav from "../../components/backNav/BackNav";
 import Loader from "../../components/Loaders/Loader";
 import BadRequest from "../Error/BadRequest";
+import MultipleProfilePreviewSkeleton from "../../components/skeleton/ProfilePreview/MultipleProfilePreivewSkeleton";
 
 const Chats = () => {
   //README phase out
@@ -33,7 +34,11 @@ const Chats = () => {
       <div>
         <BackNav label="Messages" />
         {isPending ? (
-          <Loader loading={isPending} />
+          // <Loader loading={isPending} />
+          <MultipleProfilePreviewSkeleton 
+            count={7}
+            classes={"chat-preview"}
+            />
         ) : isError ? (
           <BadRequest />
         ) : data.chats.length > 0 ? (

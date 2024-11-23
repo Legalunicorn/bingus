@@ -8,7 +8,7 @@ export function useFetch() {
 
   const handleFetch = async (url, options = {}, content_type = true) => {
 
-
+    await new Promise(resolve => setTimeout(resolve, 5000));
     const response = await fetch(API_URL + url, {
       headers: {
         ...(content_type ? { "Content-Type": "application/json" } : {}),

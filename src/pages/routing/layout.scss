@@ -13,6 +13,7 @@
   display: flex;
   flex: 3 0 75%;
   max-width: 75%;
+  // border: 1px solid lime;
 
   > div:first-child {
     border-right: 1px solid var(--color-neutral-bg);
@@ -26,6 +27,7 @@
     padding: 1rem 1.5rem;
     width: 40%; //added this and now it works
     flex: 1 1 40%; // Side content, same width as nav ba r
+    // flex:1;
   }
 }
 

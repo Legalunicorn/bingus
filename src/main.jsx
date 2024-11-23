@@ -5,6 +5,7 @@ import { AuthContextProvider } from "./context/AuthContext";
 import router from "./pages/routing/routes";
 import "./index.scss";
 import "./assets/styles/animations.scss"
+import "./assets/styles/skeleton.scss"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import ToastConfig from "./components/toasts/ToastConfig";
