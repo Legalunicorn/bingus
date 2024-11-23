@@ -9,7 +9,7 @@ const PostCardSkeleton = () => {
     return (
         <div className="postcard">
             <div className="post-header">
-                <img className="skeleton" src="" alt="" />
+                <div className="skeleton skeleton-image"></div>
                 <span className="skeleton skeleton-text-medium"></span>
                 <span className="">•</span>
                 <span className="written-time skeleton skeleton-text-short"></span>
@@ -22,8 +22,7 @@ const PostCardSkeleton = () => {
                     <p className="skeleton skeleton-line"></p>
                 </div>
                 <p className="post-tags">
-                    {/* <span className="skeleton">hi</span>
-                    <span className="skeleton"></span> */}
+            
                 </p>
             </div>
             <div className="post-buttons">
