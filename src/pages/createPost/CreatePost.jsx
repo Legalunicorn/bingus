@@ -9,7 +9,7 @@ import TagPreview from "./TagPreview";
 import {
   IconAlertOctagon,
   IconBrandGithub,
-  IconPaperclip, 
+  IconPaperclip,
   IconTagsFilled,
   IconX,
 } from "@tabler/icons-react";
@@ -24,7 +24,7 @@ const CreatePost = () => {
   const [tag, setTag] = useState(""); //current input tag.
   const [git, setGit] = useState("");
   const [attachment, setAttachment] = useState(null);
-  const [attachmentType , setAttachmentType] = useState(null);
+  const [attachmentType, setAttachmentType] = useState(null);
   const [options, setOptions] = useState("tags"); //Tags, or GitHub
   const attachmentRef = useRef(null);
   const tagsRef = useRef(null);
@@ -57,11 +57,11 @@ const CreatePost = () => {
     }
   };
   const onAttachmentChange = (e) => {
-    console.log(e.target.files[0],"FILE")
+    console.log(e.target.files[0], "FILE")
     if (e.target.files && e.target.files[0]) {
       if (e.target.files[0].size > MAX_FILE_SIZE) {
         toast.warn("File exceeded 8mb");
-      } else{ 
+      } else {
         if (e.target.files[0].type.startsWith("image")) setAttachmentType('image')
         if (e.target.files[0].type.startsWith("video")) setAttachmentType('video')
         setAttachment(URL.createObjectURL(e.target.files[0]));
@@ -127,15 +127,15 @@ const CreatePost = () => {
           />
           {attachment && (
             <div className="media-container">
-              {attachmentType=="image" && <img src={attachment} alt="Unknown file format" />}
-              {attachmentType=="video" && 
-              <video controls>
-                <source src={attachment} type={attachment.type}/>
-                Your browser does not support the video tag.
-              </video>}
+              {attachmentType == "image" && <img src={attachment} alt="Unknown file format" />}
+              {attachmentType == "video" &&
+                <video controls>
+                  <source src={attachment} type={attachment.type} />
+                  Your browser does not support the video tag.
+                </video>}
 
               {/* <img src={attachment} alt="" /> */}
-              
+
               <IconX onClick={removeAttachment} />
             </div>
           )}

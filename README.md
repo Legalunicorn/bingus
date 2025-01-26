@@ -2,11 +2,11 @@
 <h1 align="center">Bingus</h1>
 
 
-<p align="center">A fullstack social media clone project (frontend repo)</p>
+<p align="center">A Full-stack social media project (frontend repo)</p>
 
 ![preview](/public/images/preview_ui.png)
 
-## Demo:  [Live](https://bingus-production.up.railway.app/)
+## Demo:  [Live](https://bingus.hiroc.vip)
 
 ## Built with
 - Vite + React
